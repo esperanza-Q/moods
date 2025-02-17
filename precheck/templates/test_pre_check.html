@@ -1,0 +1,22 @@
+<h1>프리체크</h1><br><br>
+{{profile.nickname}}<br><br>
+<img src={{profile.profile_image.url}} alt='image'><br><br><hr>
+<form method="POST" enctype="multipart/form-data" action={%url 'precheck:precheck_B' user.id%}>
+
+    {% csrf_token %}
+        
+    {{ form.content }}
+    <input type="file" name="checkimage" required>
+    <button type="submit">저장</button>
+
+</form>
+
+{% if form.errors %}
+    <ul>
+        {% for field in form %}
+            {% for error in field.errors %}
+                <li>{{ error }}</li>
+            {% endfor %}
+        {% endfor %}
+    </ul>
+{% endif %}

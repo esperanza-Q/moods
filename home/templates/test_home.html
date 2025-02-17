@@ -1,0 +1,20 @@
+{% load static %}
+
+
+{% comment %} {% block content %} {% endcomment %}
+
+<link rel="stylesheet" href="{% static 'css/test_home.css' %}">
+{% comment %} <script src="{% static 'js/이름름.js' %}"></script> {% endcomment %}
+{% comment %} {% if is_active == 0 %}
+{% else %} {% endcomment %}
+{%if user.is_authenticated %} {% comment %}인증 받아야만 사용 가능{% endcomment %}
+<div id='profilebox'>
+    {{profile.nickname}}님!<br>
+    <img src="{{ profile.profile_image.url }}" alt="Profile Image" width="150"><br>
+</div>
+
+<a href="{%url 'accounts:logout' %}"><button>로그아웃</button></a>
+{%else%}
+로그인 되었습니다!<br>
+<a href="{%url 'accounts:logout' %}"><button>로그아웃</button></a>
+{%endif%}
