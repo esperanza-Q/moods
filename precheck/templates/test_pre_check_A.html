@@ -1,5 +1,7 @@
 <h1>프리체크 후 페이지</h1><br><br>
 {{profile.nickname}}<br><br>
 <img src={{profile.profile_image.url}} alt='image'><br><br><hr>
-{{checkpost.content}}
+<pre>{{checkpost.content}}</pre>
 <p><img src="{{checkimage.checkimage.url}}" alt="Image"></p>
+
+<a href="{%url 'accounts:logout' %}"><button>로그아웃</button></a>

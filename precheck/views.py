@@ -18,8 +18,7 @@ def precheck_A(request, user_id, checkpost_id):
     profile=get_object_or_404(Profile, user_id=user_id)
     checkpost = get_object_or_404(Checkpost, user_id=user_id)
     checkimage=CheckImage.objects.filter(checkpost=checkpost).first()
-    print(checkpost.content) #제대로 내용 전달되나 확인용
-    print(checkimage)
+    
     context = {
         'checkpost': checkpost,
         'checkimage': checkimage,
@@ -34,6 +33,7 @@ def precheck_B(request, user_id):
         if form.is_valid():
             checkpost = form.save(commit=False)
             checkpost.user = request.user  # 포스트 작성자 지정
+            checkpost.verified_check = profile
             checkpost.save()  # 포스트 저장
 
             # 이미지 파일이 있다면 저장
@@ -41,6 +41,7 @@ def precheck_B(request, user_id):
             if checkimage:
                 # CheckImage 객체 생성
                 CheckImage.objects.create(checkpost=checkpost, checkimage=checkimage)
+                
             
             return redirect(reverse('precheck:precheck_A', kwargs={'user_id': user_id, 'checkpost_id': checkpost.id}), profile) # 인증글 작성 후 precheck_A로 리디렉션
         else:
