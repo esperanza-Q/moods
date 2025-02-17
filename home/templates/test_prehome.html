@@ -1,0 +1,11 @@
+{% load static %}
+
+
+{% comment %} {% block content %} {% endcomment %}
+
+{% comment %} <link rel="stylesheet" href="{% static 'css/이름.css' %}">
+<script src="{% static 'js/이름름.js' %}"></script> {% endcomment %}
+
+
+<a href="{%url 'accounts:signup' %}"><button>회원가입</button></a>
+<a href="{%url 'accounts:login' %}"><button>로그인</button></a>
