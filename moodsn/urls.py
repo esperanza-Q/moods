@@ -25,6 +25,7 @@ urlpatterns = [
     path('moodsn/', include('home.urls')),
     path('moodsn/accounts/', include('accounts.urls')),
     path('moodsn/precheck/', include('precheck.urls')),
+    path('moodsn/cafe/', include('cafe.urls')),
 ] + static(settings.MEDIA_URL, document_root=settings.MEDIA_ROOT)
 
 if settings.DEBUG:

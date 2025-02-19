@@ -14,7 +14,12 @@
 </div>
 
 <a href="{%url 'accounts:logout' %}"><button>로그아웃</button></a>
+    {%if user.is_superuser %}
+        <a href="{%url 'cafe:cafeadd' %}"><button>카페 추가</button></a>
+    {%endif%}
 {%else%}
-로그인 되었습니다!<br>
+{% comment %} 로그인 되었습니다!<br>
 <a href="{%url 'accounts:logout' %}"><button>로그아웃</button></a>
+    {% endcomment %}
 {%endif%}
+
