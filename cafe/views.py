@@ -3,7 +3,7 @@ from django.urls import reverse
 from .models import Cafe, CafeImage
 
 # Create your views here.
-def cafeadd(request):
+def cafeadd(request, user_id):
     if not request.user.is_superuser:
         return redirect('home:prehome')
     
@@ -26,6 +26,6 @@ def cafeadd(request):
                 cafeimage=cafeimage
             )
             
-        return redirect('/admin/')
+        return redirect('home:home', user_id)
     
     return render(request, 'test_cafe_add.html')  # GET 요청 시 폼을 가진 페이지 반환
