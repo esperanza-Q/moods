@@ -4,4 +4,6 @@
 <pre>{{checkpost.content}}</pre>
 <p><img src="{{checkimage.checkimage.url}}" alt="Image"></p>
 
+
+<a href={%url 'precheck:precheck_delete' user_id=user.id checkpost_id=checkpost.id %}><button>다시 작성하기</button></a>
 <a href="{%url 'accounts:logout' %}"><button>로그아웃</button></a>

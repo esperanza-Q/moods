@@ -3,6 +3,9 @@ from django.db.models import Count, Q
 from django.urls import reverse
 from cafe.models import Cafe, CafeImage
 from django.http import HttpResponseBadRequest
+from .models import Review
+from django.contrib.auth.models import User
+
 
 
 # Create your views here.
@@ -50,10 +53,45 @@ def select_searched(request, user_id):
     
 def select_detail(request, user_id, cafe_id):
     cafe = get_object_or_404(Cafe, pk =cafe_id)
+    cafeimage=CafeImage.objects.filter(cafe_id=cafe_id).first()
+    
+    existing_review = Review.objects.filter(user=request.user, cafe=cafe).exists()
+    
+    if existing_review:
+        already='Y'
+    else:
+        already='N'
 
     context = {
         'cafe': cafe,
         'cafe_id':cafe.id,
-        'user_id': user_id
+        'user_id': user_id,
+        'cafeimage':cafeimage,
+        'already':already,
     }
     return render(request, 'test_select_detail.html', context)
+
+def review_form(request):
+    return render(request, 'review_form.html')
+
+def review(request, user_id, cafe_id):
+    cafe=get_object_or_404(Cafe, pk=cafe_id)
+    user=get_object_or_404(User, pk=user_id)
+    
+    if request.method=="POST":
+        review_image=request.FILES.get('review_image')
+        review_content=request.POST.get('review_content','')
+        
+        Review.objects.create(
+            cafe=cafe,
+            user=user,
+            review_image=review_image,
+            review_content=review_content,
+        )
+        return redirect('cafe_select:select_detail', user_id=user_id, cafe_id=cafe_id)
+    else:
+        context={
+            'user_id':user_id,
+            'cafe_id':cafe_id
+        }
+        return render(request, 'test_review_write.html', context)
