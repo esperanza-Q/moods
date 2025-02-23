@@ -9,7 +9,14 @@
         });
     });
 </script>
-    
+<div>
+    <form method='post' action={% url 'cafe_select:select_searched' user_id %}>
+        {% csrf_token %}
+        <input type="text" name="select_searchbar" placeholder="카페명" style="width:300px;">
+        <button type="submit">검색</button>
+    </form>
+</div>
+
 
 {% for cafe, cafeimage in cafe_list %}
 

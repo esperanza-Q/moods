@@ -51,6 +51,12 @@ def precheck_B(request, user_id):
     else:
         form = Checkpostform()  # GET 요청일 경우 새 폼을 생성
         return render(request, 'test_pre_check.html', {'user_id': user_id, 'form': form, 'profile':profile})
+
+
+def precheck_delete(request, user_id, checkpost_id):
+    checkpost = get_object_or_404(Checkpost, id=checkpost_id)
+    checkpost.delete()
+    return redirect('precheck:precheck', user_id)
     
 def test(request):
     return render(request, 'test.html')
