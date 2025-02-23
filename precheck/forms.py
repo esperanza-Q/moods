@@ -9,10 +9,10 @@ class Checkpostform(forms.ModelForm):
         fields=['content']
         
     checkimage = forms.ImageField(required=True)
-        # widgets = {
-        #     'title': TextInput(attrs={
-        #         'class': "form-control",
-        #         'style': 'max-width: 300px;'
-        #         # 'placeholder': 'Name'
-        #         }),
-        # }
+    widgets = {
+        'content': Textarea(attrs={
+                'class': "form-control",
+                'style': 'width: 500px; height: 500px;'
+                # 'placeholder': 'Age'
+            }),
+    }
