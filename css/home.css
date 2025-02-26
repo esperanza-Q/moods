@@ -73,7 +73,7 @@ body{
 }
 
 .hbottomboxleft:hover{
-    background-color: #f1f0f0e7;
+    background-color: #fffbd9a8;
 }
 
 .hbottomboxright {
@@ -90,7 +90,7 @@ body{
 
 
 .hbottomboxright:hover{
-    background-color: #f1f0f0e7;
+    background-color: #fffbd9a8;
 }
 
 .tophomeimg {
@@ -137,7 +137,7 @@ body{
 }
 
 .hsearchdetail {
-    padding-top: 15px;
+    padding-top: 10px;
     font-size: 15px;
 }
 
