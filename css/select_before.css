@@ -1,0 +1,15 @@
+header{
+    display: flex;
+    flex-direction: row;
+}
+
+.selectsearch {
+    display: flex;
+    flex-direction: row;
+    border: 1px solid #BF0E00;
+}
+
+.slectsearchtext {
+    color: gray;
+    font-size: 15px;
+}
