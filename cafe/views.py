@@ -28,4 +28,4 @@ def cafeadd(request, user_id):
             
         return redirect('home:home', user_id)
     
-    return render(request, 'test_cafe_add.html')  # GET 요청 시 폼을 가진 페이지 반환
+    return render(request, 'test_cafe_add.html', {'user_id':user_id})  # GET 요청 시 폼을 가진 페이지 반환

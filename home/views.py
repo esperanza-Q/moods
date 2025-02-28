@@ -18,7 +18,7 @@ def home(request, user_id):
             'profile':profile,
             'user_id':user_id
             }
-        return render(request, 'test_home.html', context)
+        return render(request, 'home.html', context)
 
 def prehome(request):
-    return render(request, 'test_prehome.html')
+    return render(request, 'home.html')

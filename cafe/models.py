@@ -6,6 +6,7 @@ class Cafe(models.Model):
     cafename=models.CharField(max_length=20)
     cafelocations=models.CharField(max_length=100)
     cafeinfo=models.CharField(max_length=50)
+    # cafeID=models.CharField(max_length=50, null=False)
     
     
     def __str__(self):
