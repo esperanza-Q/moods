@@ -10,7 +10,7 @@ from django.contrib.auth.models import User
 
 # Create your views here.
 def select_before(request, user_id):
-    return render(request, 'test_select_before.html', {'user_id':user_id})
+    return render(request, 'select_before.html', {'user_id':user_id})
 
 def select_searched(request, user_id):
     if request.method=='POST':

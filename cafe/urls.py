@@ -4,6 +4,6 @@ from .views import cafeadd
 app_name = 'cafe'
 
 urlpatterns = [
-    path('cafeadd/', cafeadd, name='cafeadd'),
+    path('<int:user_id>/cafeadd', cafeadd, name='cafeadd'),
 
 ]

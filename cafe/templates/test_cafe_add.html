@@ -1,4 +1,4 @@
-<form method='POST' enctype="multipart/form-data" action={%url 'cafe:cafeadd' %}>
+<form method='POST' enctype="multipart/form-data" action={%url 'cafe:cafeadd' user_id %}>
     {% csrf_token %}
     cafename&nbsp;&nbsp; <input type='text' name='cafename'><br>
     cafelocation&nbsp;&nbsp;<input type='text' name='cafelocation'><br>
