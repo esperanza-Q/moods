@@ -1,0 +1,57 @@
+{%load static%}
+<title>
+    {% comment %} <script src="{% static 'js/test_modal.js' %}"></script>  {% endcomment %}
+    <script src="{% static 'js/test_modal.js' %}"></script>
+    <link rel="stylesheet" href="{% static 'css/test_modal.css' %}">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta3/css/all.min.css">
+</title>
+<body>
+    <div style="width:350px; border:2px solid black;">
+        <form method='post' action={% url 'cafe_select:select_searched' user_id %}>
+            {% csrf_token %}
+            <input type="text" name="select_searchbar" placeholder="카페명" style="width:300px;">
+            <button type="submit">검색</button>
+        </form>
+    </div><br>
+
+    <!-- 리뷰쓰기 버튼 -->
+    {% if already == 'Y' %}
+        <strong>리뷰 쓰기 완료!</strong>
+    {% else %}
+        <a href={%url 'cafe_select:review' user_id=user_id cafe_id=cafe_id %}><button>리뷰쓰기</button></a><br><br>
+    {% endif %}
+
+    <div style="border:2px solid black; width:600px; height:160px; display: flex; align-items: center; padding: 10px;">
+        <img src="{{cafeimage.cafeimage.url}}" style="width:160px;height:160px;">
+        <div style="margin-left: 20px;">
+            <p><strong>{{ cafe.cafename }}</strong></p>
+            <p>{{ cafe.cafelocations }}</p>
+            <p>{{ cafe.cafeinfo }}</p>
+        </div>
+    </div>
+
+    {% comment %} <!-- 모달 -->
+    <div id="reviewModal" class="modal">
+        <div class="modal-content">
+            <span class="close">&times;</span>
+            <h2>리뷰 작성</h2>
+            <form method="POST" enctype="multipart/form-data" action="{% url 'cafe_select:review' cafe_id=cafe_id user_id=user_id %}">
+                {% csrf_token %}
+                <div>
+                    <label for="file">파일 선택:</label>
+                    <input type="file" name="review_image" id="file">
+                </div>
+                <div>
+                    <label for="review_text">리뷰 내용:</label><br>
+                    <textarea name="review_content" id="review_text" rows="4" cols="50" placeholder="리뷰를 작성해주세요."></textarea>
+                </div>
+                <div>
+                    <button type="submit">제출</button>
+                </div>
+            </form>
+        </div>
+    </div> {% endcomment %}
+    
+    
+    
+</body>

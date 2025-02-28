@@ -1,0 +1,17 @@
+{% if messages %}
+    <script>
+        window.onload = function() {
+            {% for message in messages %}
+                alert("{{ message }}");
+            {% endfor %}
+        };
+    </script>
+{% endif %}
+
+<form method='POST' action={%url 'accounts:login' %}>
+    {% csrf_token %}
+    ID&nbsp;&nbsp; <input type='text' name='u_username' placeholder='ID'><br>
+    PW&nbsp;&nbsp;<input type='password' name='u_password'><br>
+    <button type='submit'>LOGIN</button>
+</form>
+<a href={%url 'accounts:signup'%}>SIGNUP</a>
