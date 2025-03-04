@@ -4,7 +4,7 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>로그인</title>
-    <link rel="stylesheet" href="account_login.css">
+    <link rel="stylesheet" href="login.css">
     <style>
         @import url('https://fonts.googleapis.com/css2?family=Kalnia&display=swap');
     </style>
@@ -13,12 +13,20 @@
     <div class="login-container">
         <img src="moodsn_logo.png" alt="로고" class="logo">
         <div class="login-box">
-            <input type="text" placeholder="ID" class="input-field">
-            <input type="password" placeholder="PW" class="input-field">
-            <button class="login-button" onclick="login()">LOG IN</button>
-            <button class="signup-button" onclick="location.href='account_signup.html'">SIGN UP</button>
+            <div class="input-group">
+                <label for="id-input">ID</label>
+                <input type="text" id="id-input" class="input-field">
+            </div>
+            <div class="input-group">
+                <label for="pw-input">PW</label>
+                <input type="password" id="pw-input" class="input-field">
+            </div>
+            <div class="auth-links">
+                <span class="login-text" onclick="login()">LOGIN</span>
+                <span class="signup-text" onclick="location.href='signup.html'">SIGNUP</span>
+            </div>
         </div>
     </div>
-    <script src="account_login.js"></script>
+    <script src="login.js"></script>
 </body>
 </html>
