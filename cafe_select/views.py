@@ -5,6 +5,8 @@ from cafe.models import Cafe, CafeImage
 from django.http import HttpResponseBadRequest
 from .models import Review
 from django.contrib.auth.models import User
+from dotenv import load_dotenv
+import os
 
 
 
@@ -57,6 +59,10 @@ def select_detail(request, user_id, cafe_id):
     
     existing_review = Review.objects.filter(user=request.user, cafe=cafe).exists()
     
+    load_dotenv()
+
+    myjskey=os.getenv('JS_KEY')
+    
     if existing_review:
         already='Y'
     else:
@@ -68,6 +74,7 @@ def select_detail(request, user_id, cafe_id):
         'user_id': user_id,
         'cafeimage':cafeimage,
         'already':already,
+        'myjskey':myjskey
     }
     return render(request, 'test_select_detail.html', context)
 

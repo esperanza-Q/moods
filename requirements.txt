@@ -2,3 +2,6 @@
 https://tablog.neocities.org/keywordposition
 
 pip install selenium
+pip install pandas
+pip install requests
+pip install python-dotenv

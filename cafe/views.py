@@ -1,6 +1,7 @@
 from django.shortcuts import render, redirect
 from django.urls import reverse
 from .models import Cafe, CafeImage
+from rest_api.api import get_location
 
 # Create your views here.
 def cafeadd(request, user_id):
@@ -11,11 +12,17 @@ def cafeadd(request, user_id):
         cafename = request.POST['cafename']
         cafelocation = request.POST['cafelocation']
         cafeinfo = request.POST['cafeinfo']
+        cafeID = request.POST['cafeID']
+        
+        cafe_x, cafe_y = get_location(cafelocation)
     
         cafe = Cafe.objects.create(
             cafename=cafename,
             cafelocations=cafelocation,
-            cafeinfo=cafeinfo
+            cafeinfo=cafeinfo,
+            cafeID=cafeID,
+            cafe_x=cafe_x,
+            cafe_y=cafe_y,
         )
         
         cafeimage = request.FILES.get('cafeimage')  # 파일이 있으면 가져오기
