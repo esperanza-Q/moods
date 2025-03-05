@@ -40,7 +40,24 @@
                         <div class="mypageemail">EMAIL</div>
                         <div class="mypageuseremail">사용자 이메일</div>
                     </div>
-                    <button class="mypageprofilechage">수정하기</button>
+                    <div class="mypageprofilechagemodal">
+                        <button class="mypageprofilechage" onclick="openModal()">수정하기</button>
+
+                        <div id="profilechangeModal" class="modal">
+                            <div class="modal-content">
+                                <div class="modaltop">
+                                    <div class="modaltoptext">회원 정보 수정하기</div>
+                                    <span class="close-btn" onclick="closeModal()">&times;</span>
+                                </div>
+                                <buttun class="reviewimg">+</buttun>
+                                <!--<div class="reviewimgafter"></div>-->
+                                <button class="submit-btn">확인</button>
+                            </div>
+                        </div>
+                </div>
+
+                    <script src="../js/mypage.js"></script>
+
                 </div>
             </div>
 
