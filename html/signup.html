@@ -1,0 +1,47 @@
+<!DOCTYPE html>
+<html lang="ko">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Sign Up</title>
+    <link rel="stylesheet" href="signup.css">
+    <style>
+        @import url('https://fonts.googleapis.com/css2?family=Kalnia&display=swap');
+    </style>
+</head>
+<body>
+    <div class="container">
+        <img src="moodsn_logo.png" alt="Logo" class="logo">
+        <h1 class="signup-title">SIGN UP</h1>
+        <form class="signup-form">
+            <div class="input-container">
+                <label for="name">NAME</label>
+                <input type="text" id="name" name="name" class="input-field" required>
+            </div>
+            
+            <div class="input-container">
+                <label for="email">EMAIL</label>
+                <input type="email" id="email" name="email" class="input-field" required>
+            </div>
+            
+            <div class="input-container">
+                <label for="id">ID</label>
+                <input type="text" id="id" name="id" class="input-field" required>
+            </div>
+            
+            <div class="input-container">
+                <label for="pw">PW</label>
+                <input type="password" id="pw" name="pw" class="input-field" required>
+            </div>
+            
+            <div class="input-container">
+                <label for="re-pw">Re-PW</label>
+                <input type="password" id="re-pw" name="re-pw" class="input-field" required>
+            </div>
+            
+            <span class="signup-btn" onclick="signUp()">SIGN UP</span>
+        </form>
+    </div>
+    <script src="signup.js"></script>
+</body>
+</html>

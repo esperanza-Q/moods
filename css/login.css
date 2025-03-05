@@ -1,0 +1,85 @@
+@import url('https://fonts.googleapis.com/css2?family=Kalnia&display=swap');
+
+body {
+    font-family: 'Kalnia', sans-serif;
+    background-color: #FFFFEE;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    height: 100vh;
+    margin: 0;
+}
+
+.login-container {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+}
+
+.logo {
+    width: 300px; 
+    height: auto;
+    margin-bottom: 20px;
+}
+
+.login-box {
+    background-color: #F6F6DA;
+    padding: 25px;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    width: 250px;
+}
+
+.input-group {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    width: 100%;
+    margin: 10px 0;
+}
+
+.input-group label {
+    font-size: 14px;
+    color: #9BA692;
+    font-weight: bold; 
+    width: 30px;
+    text-align: right;
+    margin-right: 10px;
+}
+
+.input-field {
+    width: 140px;
+    height: 15px;
+    padding: 5px;
+    border: 2px solid #9BA692;
+    border-radius: 0;
+    font-size: 14px;
+    background-color: white;
+}
+
+.auth-links {
+    margin-top: 15px;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    width: 100%;
+}
+
+.login-text {
+    font-size: 18px; 
+    font-weight: bold; 
+    color: #9BA692;
+    cursor: pointer;
+    margin-bottom: 10px;
+}
+
+.signup-text {
+    font-size: 14px; 
+    color: #9BA692;
+    cursor: pointer;
+}
+
+.login-text:hover, .signup-text:hover {
+    text-decoration: underline;
+}
