@@ -1,0 +1,112 @@
+@import url('https://fonts.googleapis.com/css2?family=Kalnia&display=swap');
+
+body {
+    background: linear-gradient(#FFFFF3, #FFFEE0);
+}
+
+.selectheader {
+    display: flex;
+    flex-direction: row;
+    align-items: center;
+    justify-content: space-between;
+    padding: 20px;
+    position: relative;
+}
+
+.selectheader::after {
+    content: '';
+    position: absolute;
+    bottom: -1px;
+    left: 0;
+    width: 100%;
+    height: 2px;
+    background-color: #BF0E00;
+}
+
+.headerline {
+    border-top: 2px solid #BF0E00;
+    width: 100%;
+    margin-top: 15px;
+}
+
+.selectcontainer {
+    display: flex;
+    flex-direction: row;
+    margin-top: 20px;
+}
+
+.selectleft {
+    flex: 1;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+}
+
+.profile-section {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    background-color: #eef8ff88;
+    padding: 20px;
+    border-radius: 10px;
+    position: relative;
+}
+
+.profile-img {
+    width: 100px;
+    height: 100px;
+    border-radius: 50%;
+    background-color: rgb(192, 192, 192);
+}
+
+.nickname-box {
+    margin-top: 10px;
+    font-size: 18px;
+    font-weight: bold;
+}
+
+.selectmain {
+    flex: 2;
+    border: 1px solid #BF0E00;
+    border-top: none;
+    width: 830px;
+    padding: 20px;
+    background-color: white;
+    border-radius: 10px;
+}
+
+.mypost-title {
+    font-size: 20px;
+    color: #BF0E00;
+    font-family: Kalnia, sans-serif;
+}
+
+textarea {
+    width: 100%;
+    height: 200px;
+    padding: 10px;
+    border: 1px solid #ccc;
+    border-radius: 5px;
+    background-color: #EEF8FF;
+}
+
+.mypost-upload {
+    margin-top: 10px;
+    padding: 10px 20px;
+    background-color: #F6F6DA;
+    color: black;
+    border: 1px solid black;
+    border-radius: 5px;
+    cursor: pointer;
+}
+
+.mypost-upload:hover {
+    background-color: #fff09ea1;
+}
+
+.footer {
+    height: 110px;
+    background-color: #f7f2cd;
+    padding: 15px;
+    text-align: center;
+}
