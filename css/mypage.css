@@ -222,6 +222,22 @@ textarea {
     background-color: #EEF8FF;
 }
 
+.namechange{
+    display: flex;
+    flex-direction: row;
+    align-items: center;
+}
+
+.namechangeleft{
+
+
+}
+
+.namechangeright{
+    background-color: #EEF8FF;
+    border-radius: 20px;
+}
+
 .submit-btn {
     width: 60px;
     padding: 8px 15px;
