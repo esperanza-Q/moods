@@ -112,10 +112,10 @@ body{
 }
 
 .mypagename{
-    font-size: 28px;
+    font-size: 25px;
     background-color: #E9F6FF;
     border-radius: 30px;
-    width: 90px;
+    width: 80px;
     padding: 8px;
 }
 
@@ -167,12 +167,20 @@ body{
 
 .modal-content {
     background-color: white;
-    width: 417px;
-    height: 460px;
+    width: 370px;
+    height: 430px;
     text-align: center;
     display: flex;
     flex-direction: column;
     border: 1px solid black;
+}
+
+.namechangebox{
+    display: flex;
+    flex-direction: row;
+    align-items: center;
+    justify-content: center;
+    gap: 15px;
 }
 
 .modaltop{
@@ -196,14 +204,21 @@ body{
     cursor: pointer;
 }
 
-.reviewimg{
+.profileimgchange{
     font-size: 40px;
-    margin-top: 30px;
-    margin-bottom: 40px;
+    color:#BF0E00;
+    border: 2px solid #BF0E00;
+    width: 170px;
+    height: 170px;
+    border-radius: 50%;
+    margin: 50px auto;
     cursor: pointer;
+    display: flex;
+    justify-content: center;
+    align-items: center;
 }
 
-/*.reviewimgafter{
+/*.profileimgafter{
     margin-top: 30px;
     width: 170px;
     height: 170px;
@@ -212,41 +227,23 @@ body{
     margin-bottom: 20px;
 }*/
 
-textarea {
-    width: 340px;
-    height: 200px;
-    padding: 10px;
-    margin: 0 auto;
-    border: 1px solid #ccc;
-    border-radius: 5px;
-    background-color: #EEF8FF;
-}
-
 .namechange{
-    display: flex;
-    flex-direction: row;
-    align-items: center;
-}
-
-.namechangeleft{
-
-
-}
-
-.namechangeright{
-    background-color: #EEF8FF;
+    width: 100px;
+    height: 20px;
+    background-color: #E9F6FF;
+    border: none;
     border-radius: 20px;
 }
 
 .submit-btn {
-    width: 60px;
-    padding: 8px 15px;
+    width: 40px;
     background-color: #FFFEE0;
     color: black;
     border: 1px solid black;
     border-radius: 20px;
+    font-size: 13px;
     cursor: pointer;
-    margin: auto;
+    margin: 40px auto;
 }
 
 .submit-btn:hover {
