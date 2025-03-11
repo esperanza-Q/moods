@@ -1,0 +1,9 @@
+위도 경도 찾는 사이트
+https://tablog.neocities.org/keywordposition
+
+pip install selenium
+pip install pandas
+pip install requests
+pip install python-dotenv
+pip install mysqlclient
+pip install pillow

@@ -1,0 +1,63 @@
+{%load static%}
+<title>
+    {% comment %} <script src="{% static 'js/test_modal.js' %}"></script>  {% endcomment %}
+    <script src="{% static 'js/test_modal.js' %}"></script>
+    <link rel="stylesheet" href="{% static 'css/test_modal.css' %}">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta3/css/all.min.css">
+</title>
+<body>
+    <div style="width:350px; border:2px solid black;">
+        <form method='post' action={% url 'cafe_select:select_searched' user_id %}>
+            {% csrf_token %}
+            <input type="text" name="select_searchbar" placeholder="카페명" style="width:300px;">
+            <button type="submit">검색</button>
+        </form>
+    </div><br>
+
+    <!-- 리뷰쓰기 버튼 -->
+    {% if already == 'Y' %}
+        <strong>리뷰 쓰기 완료!</strong>
+    {% else %}
+        <a href={%url 'cafe_select:review' user_id=user_id cafe_id=cafe_id %}><button>리뷰쓰기</button></a><br><br>
+    {% endif %}
+
+    <div style="border:2px solid black; width:700px; display:flex; height:500px; padding: 10px;">
+        <img src="{{cafeimage.cafeimage.url}}" style="width:160px;height:160px; margin-left:20px; margin-right:40px;">
+        <a href="https://place.map.kakao.com/{{cafe.cafeID}}" target='_blank'><div id="cafemap" style="width:500px;height:500px;border:1px solid black;"></div></a>
+        
+    </div>
+
+    <div style="margin-left: 20px;"><br><br>
+        <p><strong>{{ cafe.cafename }}</strong></p><br>
+        <p>{{ cafe.cafelocations }}</p><br>
+        <p>{{ cafe.cafeinfo }}</p><br>
+    </div>
+
+    
+
+<!-- 카카오 지도 API 스크립트 -->
+<script type="text/javascript" src="https://dapi.kakao.com/v2/maps/sdk.js?appkey={{myjskey}}"></script>
+
+<script>
+    // 카카오 지도 API가 로드되면 실행되는 코드
+    kakao.maps.load(function() {
+        var cafeLat = {{ cafe.cafe_x }};
+        var cafeLng = {{ cafe.cafe_y }};
+        
+        var container = document.getElementById('cafemap');
+        var options = {
+            center: new kakao.maps.LatLng(cafeLng, cafeLat),
+            level: 2  // 지도 확대/축소 레벨
+        };
+
+        var map = new kakao.maps.Map(container, options);
+        
+        // 마커 추가
+        var marker = new kakao.maps.Marker({
+            position: new kakao.maps.LatLng(cafeLng, cafeLat)
+        });
+        marker.setMap(map);
+    });
+</script>
+
+</body>
