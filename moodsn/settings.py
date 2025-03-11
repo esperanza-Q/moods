@@ -81,26 +81,26 @@ WSGI_APPLICATION = 'moodsn.wsgi.application'
 # https://docs.djangoproject.com/en/5.1/ref/settings/#databases
 import os
 from pathlib import Path
-from dotenv import load_dotenv
+# from dotenv import load_dotenv
 
 # BASE_DIR 정의
 BASE_DIR = Path(__file__).resolve().parent.parent
 
 # .env 파일 불러오기
-load_dotenv(os.path.join(BASE_DIR, '.env'))
+# load_dotenv(os.path.join(BASE_DIR, '.env'))
 
 # SECRET_KEY 불러오기
-SECRET_KEY = os.getenv('DJANGO_SECRET_KEY')
+SECRET_KEY = '6ml47co^s9ld8rk^jlw_g^j94&7bg80ix4!5%qp4qhke-8k*)6'
 
 # DATABASE 설정
 DATABASES = {
     'default': {
         'ENGINE': 'django.db.backends.mysql',
-        'NAME': os.getenv('DB_NAME'),
-        'USER': os.getenv('DB_USER'),
-        'PASSWORD': os.getenv('DB_PASSWORD'),
-        'HOST': os.getenv('DB_HOST', 'localhost'),  # 기본값으로 localhost
-        'PORT': os.getenv('DB_PORT', '3306'),       # 기본값으로 3306
+        'NAME': 'moodsn',
+        'USER': 'root',
+        'PASSWORD':'yuri0510',
+        'HOST': '127.0.0.1',  # 기본값으로 localhost
+        'PORT': '3306',       # 기본값으로 3306
     }
 }
 
