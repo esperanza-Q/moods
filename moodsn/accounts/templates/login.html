@@ -1,0 +1,41 @@
+{% extends "base.html" %}
+{% load static %}
+{% block content %}
+
+<!DOCTYPE html>
+<html lang="ko">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>로그인</title>
+    <link rel="stylesheet" href="{% static 'css/login.css' %}">
+    <style>
+        @import url('https://fonts.googleapis.com/css2?family=Kalnia&display=swap');
+    </style>
+    <!-- {% if messages %}
+        <script>
+            window.onload = function() {
+                {% for message in messages %}
+                    alert("{{ message }}");
+                {% endfor %}
+            };
+        </script>
+    {% endif %}  -->
+</head>
+<body>
+    <div class="login-container">
+        <img src="{% static 'img/moodsn_logo.png' %}" alt="로고" class="logo">
+        <div class="login-box">
+            <form method='POST' action={%url 'accounts:login' %}>
+                {% csrf_token %}
+                <input type="text" name='u_username' placeholder="ID" class="input-field">
+                <input type="password" name='u_password' placeholder="PW" class="input-field">
+                <button class="login-button" type='submit'>LOG IN</button>
+            </form>
+            <a href={%url 'accounts:signup'%}><button class="signup-button">SIGN UP</button></a>
+        </div>
+    </div>
+    <script src="account_login.js"></script>
+</body>
+</html>
+{% endblock %}

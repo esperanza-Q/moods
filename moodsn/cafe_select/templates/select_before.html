@@ -1,0 +1,50 @@
+{% extends "base.html" %}
+{% load static %}
+{% block content %}
+
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>SELECT</title>
+    <link rel="stylesheet" href="{% static 'css/select_before.css' %}">
+</head>
+<body>
+    <div class="selectheader">
+        <div class="selectlogoimg"><img src="{% static 'img/home_img/homeheaderlogo.png' %}" style="width: 180px"></div>
+        <form method='post' action={% url 'cafe_select:select_searched' user_id %}>
+            {% csrf_token %}
+            <input type="text" name="select_searchbar" class="selectsearch" placeholder="남기고 싶은 카페를 검색해보세요"> 
+            <button type="submit" class="selectsearchicon"><img src="{% static 'img/select_img/selectsearchicon.png' %}" style="width: 25px"></button>
+        </form>
+    </div>
+
+    <div class="headerline" style="border-top: 1px solid #b22222; width: 100%;"></div>
+
+    <div class="selectcontainer">
+        <div class="selectleft">
+        </div>
+
+        <div class="selectmain">
+        </div>
+
+        <div class="selectright">
+        </div>
+    </div>
+
+    <div class="footer">
+        &copy; moodsn <br><br><br> Backend 손정민 <br> Frontend 성유리 이가윤
+        {% comment %} 여기 임시로 넣어둠ㄹㄹ {% endcomment %}
+        <div>
+            <a href={%url 'home:home' user_id %}>moods카페</a><br><br>
+            <a href={%url 'cafe_select:select_before' user_id%}>select</a>&nbsp;&nbsp;&nbsp;
+            <a href='#'>search</a>&nbsp;&nbsp;&nbsp;
+            <a href={%url 'mypage:mypage' user_id%}>mypage</a>
+        </div>
+    </div>
+
+</body>
+</html>
+
+{% endblock content %}
