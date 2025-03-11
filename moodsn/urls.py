@@ -28,6 +28,7 @@ urlpatterns = [
     path('moodsn/cafe/', include('cafe.urls')),
     path('moodsn/cafe_select/', include('cafe_select.urls')),
     path('kakaopai/', include('kakaopai.urls')),
+    path('moodsn/mypage/', include('mypage.urls')),
 ] + static(settings.MEDIA_URL, document_root=settings.MEDIA_ROOT)
 
 if settings.DEBUG:

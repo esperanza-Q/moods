@@ -51,7 +51,7 @@ def select_searched(request, user_id):
         
         
         
-        return render(request, 'test_select_after.html', {'user_id':user_id, 'cafe_list':sorted_cafe})
+        return render(request, 'select_after.html', {'user_id':user_id, 'cafe_list':sorted_cafe})
     
 def select_detail(request, user_id, cafe_id):
     cafe = get_object_or_404(Cafe, pk =cafe_id)

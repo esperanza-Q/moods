@@ -81,8 +81,8 @@
             <div class="profilein">
                 <img src="{{profile.profile_image.url }}" class="profileimg" alt="Profile Image" width="150">
                 <div class="loginnotice">{{profile.nickname}}</div>
-                <button class="loginbutton">MYPAGE
-                </button>
+                <a href={%url 'mypage:mypage' user_id%}><button class="loginbutton">MYPAGE
+                </button></a>
                 <a href="{%url 'accounts:logout' %}"><button class="signupbutton">LOGOUT</button></a>
             </div>
         </div>
