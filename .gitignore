@@ -1,6 +1,5 @@
 /venv/
 /myvenv/
-
 *.pot
 *.pyc
 __pycache__/

@@ -9,6 +9,7 @@ class Cafe(models.Model):
     cafeID=models.IntegerField(null=False, default=0)
     cafe_x=models.FloatField(max_length=50, null=False, default=0.0)
     cafe_y=models.FloatField(max_length=50, null=False, default=0.0)
+    cafe_most_tags=models.JSONField(default=list)
 
     def __str__(self):
         return self.cafename

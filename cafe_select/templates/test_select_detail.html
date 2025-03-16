@@ -1,4 +1,13 @@
 {%load static%}
+{% if messages %}
+    {% for message in messages %}
+        {% if message.tags == "error" %}
+            <div class="error-box">{{ message }}</div>
+        {% elif message.tags == "warning" %}
+            <div class="warning-box">{{ message }}</div>
+        {% endif %}
+    {% endfor %}
+{% endif %}
 <title>
     {% comment %} <script src="{% static 'js/test_modal.js' %}"></script>  {% endcomment %}
     <script src="{% static 'js/test_modal.js' %}"></script>
@@ -15,7 +24,7 @@
     </div><br>
 
     <!-- 리뷰쓰기 버튼 -->
-    {% if already == 'Y' %}
+    {% if review_already == 'Y' %}
         <strong>리뷰 쓰기 완료!</strong>
     {% else %}
         <a href={%url 'cafe_select:review' user_id=user_id cafe_id=cafe_id %}><button>리뷰쓰기</button></a><br><br>
@@ -33,7 +42,56 @@
         <p>{{ cafe.cafeinfo }}</p><br>
     </div>
 
-    
+    <div class="moodsselectcontainer">
+    {% if mood_already == 'Y' %}
+        <strong>분위기 태그 투표 완료!</strong><br><br>
+        <a href={% url "cafe_select:reselect_tag" user_id=user_id cafe_id=cafe_id %}><button>다시 투표하기</button></a>
+    {% else %}
+        <form method="POST" action = {%url 'cafe_select:select_tag' user_id=user_id cafe_id=cafe_id %}>
+            {% csrf_token %}
+            <input type="checkbox" id="tag1" name="mood_tag" value="coffee">
+            <label for="tag1">#커피가 맛있는</label>&nbsp;&nbsp;&nbsp;
+
+            <input type="checkbox" id="tag2" name="mood_tag" value="refined">
+            <label for="tag2">#세련된</label>&nbsp;&nbsp;&nbsp;
+
+            <input type="checkbox" id="tag3" name="mood_tag" value="together">
+            <label for="tag3">#단체모임하기 좋은</label><br>
+
+            <input type="checkbox" id="tag4" name="mood_tag" value="dessert">
+            <label for="tag4">#디저트가 맛있는</label>&nbsp;&nbsp;&nbsp;
+
+            <input type="checkbox" id="tag5" name="mood_tag" value="clean">
+            <label for="tag5">#깔끔한</label>&nbsp;&nbsp;&nbsp;
+
+            <input type="checkbox" id="tag6" name="mood_tag" value="study">
+            <label for="tag6">#카공하기 좋은</label><br>
+
+            <input type="checkbox" id="tag7" name="mood_tag" value="cozy">
+            <label for="tag7">#포근한</label>&nbsp;&nbsp;&nbsp;
+
+            <input type="checkbox" id="tag8" name="mood_tag" value="big">
+            <label for="tag8">#넓은</label>&nbsp;&nbsp;&nbsp;
+
+            <input type="checkbox" id="tag9" name="mood_tag" value="alone">
+            <label for="tag9">#혼자 있기 좋은</label><br>
+
+            <input type="checkbox" id="tag10" name="mood_tag" value="cuty">
+            <label for="tag10">#아기자기한</label>&nbsp;&nbsp;&nbsp;
+
+            <input type="checkbox" id="tag11" name="mood_tag" value="always">
+            <label for="tag11">#24시간 영업하는</label>&nbsp;&nbsp;&nbsp;
+
+            <input type="checkbox" id="tag12" name="mood_tag" value="picture">
+            <label for="tag12">#사진 찍기 좋은</label><br>
+
+            <button type="submit">확인</button>
+
+        </form>
+    {% endif %}
+
+    </div>
+
 
 <!-- 카카오 지도 API 스크립트 -->
 <script type="text/javascript" src="https://dapi.kakao.com/v2/maps/sdk.js?appkey={{myjskey}}"></script>

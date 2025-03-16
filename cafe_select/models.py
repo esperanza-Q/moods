@@ -14,3 +14,8 @@ class Review(models.Model):
     def __str__(self):
         return self.review_content[:50]
     
+class Mood_tags(models.Model):
+    user = models.ForeignKey(User, on_delete=models.CASCADE)
+    cafe = models.ForeignKey(Cafe, on_delete=models.CASCADE)
+    mood_select = models.JSONField(default=list)
+    
