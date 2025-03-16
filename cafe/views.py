@@ -23,6 +23,7 @@ def cafeadd(request, user_id):
             cafeID=cafeID,
             cafe_x=cafe_x,
             cafe_y=cafe_y,
+            cafe_most_tags=[],
         )
         
         cafeimage = request.FILES.get('cafeimage')  # 파일이 있으면 가져오기
