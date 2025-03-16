@@ -336,6 +336,12 @@ textarea {
     background-color: #fff09ea1;
 }
 
+.topline{
+    border: none;
+    background-color: rgb(209, 209, 209);
+    height: 1px;
+}
+
 .footer{
     height: 110px;
     background-color: #f7f2cd;
