@@ -1,14 +1,10 @@
-{% extends "base.html" %}
-{% load static %}
-{% block content %}
-
 <!DOCTYPE html>
 <html lang="en">
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>home</title>
-    <link rel="stylesheet" href="{% static 'css/home.css' %}">
+    <link rel="stylesheet" href="../css/prehome.css">
     <script src="../js/home.js"></script>
 </head>
 
@@ -63,10 +59,10 @@
     <div class="profilecontainer">
         <div class="profilein">
             <div class="profileimg"></div>
-            <div class="profilename">닉네임</div>
-            <button class="profilemypage">MYPAGE
+            <div class="loginnotice">로그인이 필요합니다</div>
+            <button class="loginbutton">LOGIN
             </button>
-            <button class="logoutbutton">LOG OUT</button>
+            <button class="signupbutton">SIGN UP</button>
         </div>
     </div>
 
@@ -84,14 +80,9 @@
     </div>
 
 
-    
     <div class="footer">
         &copy; moodsn <br><br><br> Backend 손정민 <br> Frontend 성유리 이가윤
-        {%if user.is_superuser %}
-            <a href="{%url 'cafe:cafeadd' user_id %}"><button>카페 추가</button></a>
-        {%endif%}
     </div>
 
 </body>
 </html>
-{% endblock content %}

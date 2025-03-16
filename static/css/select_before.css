@@ -7,8 +7,26 @@ body{
     flex-direction: row;
 }
 
+.selectheaderleft{
+    flex:1;
+}
+
+.selectheadermiddle{
+    width:830px;
+}
+
+.selecthdaerright{
+    flex: 1;
+}
+
 .selectlogoimg {
+    float: right;
     margin-top: 85px;
+}
+
+.selectsearchpart {
+    display: flex;
+    flex-direction: row;
 }
 
 .selectsearch {
@@ -39,11 +57,33 @@ body{
     flex: 1;
 }
 
+.navigationbar ul {
+    list-style-type: none;
+    float: right;
+    margin-right: 70px;
+    margin-top: 60px;
+}
+
+.navigationbar ul a{
+    text-decoration: none;
+    color:#BF0E00;
+    font-size: 18px;
+}
+
+.navigationbar ul a:hover{
+    background-color: #fae5e3;
+    border-radius: 10px;
+}
+
+.navigationbar ul li {
+    margin-bottom: 50px;
+}
+
 .selectmain {
     border: 1px solid #BF0E00;
     border-top: none;
     width: 830px;
-    height: 550px;
+    height: 800px;
     display: flex;
     justify-content: center;
     align-items: center;

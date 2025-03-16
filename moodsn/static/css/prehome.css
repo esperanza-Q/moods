@@ -190,33 +190,33 @@ body{
     margin-top: 20px;
 }
 
-.profilename {
-    font-size: 23px;
+.loginnotice {
+    font-size: 15px;
     margin-top: 18px;
 }
 
-.profilemypage {
-    font-size: 23px;
-    margin-top: 13px;
+.loginbutton {
+    font-size: 22px;
+    margin-top: 15px;
     background: none;
     border: none;
 }
 
-.profilemypage:hover{
+.loginbutton:hover{
     border: 1px solid black;
     border-radius: 20px;
     background-color: #CCDFEC
 }
 
-.logoutbutton {
-    font-size: 15px;
-    margin-top: 13px;
+.signupbutton {
+    font-size: 22px;
+    margin-top: 10px;
     margin-bottom: 8px;
     background: none;
     border: none;
 }
 
-.logoutbutton:hover{
+.signupbutton:hover{
     border: 1px solid black;
     border-radius: 20px;
     background-color: #CCDFEC
