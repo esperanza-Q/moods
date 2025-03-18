@@ -83,7 +83,7 @@ body{
     border: 1px solid #BF0E00;
     border-top: none;
     width: 830px;
-    height: 370px;
+    height: 410px;
 
 }
 
@@ -94,28 +94,26 @@ body{
     margin-left: 70px;
 }
 
-.sdetailbottombox{
-    display: flex;
-    flex-direction: column;
-    padding: 60px;
-}
-
-.moodsselectcontainer {
+.mymoodselectcontainer {
     display: flex;
     background-color: #d1edff65;
+    margin: 30px 50px 50px 50px;
     border-radius: 20px;
-    margin-top: -35px;
 }
 
 .tag-box {
-    width: 22%;
+    width: 180px;
     padding: 15px;
     display: flex;
     flex-direction: column;
-    gap: 10px;
+    gap: 20px;
 }
 
-.tag {
+.tag{
+    display: none;
+}
+
+.taglabel {
     background-color: none;
     padding: 10px;
     border-radius: 20px;
@@ -126,28 +124,30 @@ body{
     cursor: pointer;
 }
 
-.tag:hover{
+.taglabel:hover{
     background-color: #ffb6a75f;
     border: 1px solid #ff7f5079;
 }
 
-.moodsselectbutton{
+.mymoodselectbutton{
     background: none;
     border: none;
     background-color: #d1edff65;
     padding: 5px;
     width: 60px;
     border-radius: 20px;
-    margin: 20px auto;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    margin: 10px auto;
     cursor: pointer;
     color:#979797;
 }
 
-.moodsselectbutton:hover{
+.mymoodselectbutton:hover{
     background-color: #d1edffc3;
     border:1px solid #93b7cec3;
 }
-
 
 .selectright{
     flex: 1;
