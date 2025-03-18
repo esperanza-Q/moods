@@ -217,6 +217,9 @@ body{
     width: 60px;
     border-radius: 20px;
     margin: 20px auto;
+    display: flex;
+    justify-content: center;
+    align-items: center;
     cursor: pointer;
     color:#979797;
 }
