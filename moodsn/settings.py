@@ -43,7 +43,9 @@ INSTALLED_APPS = [
     'precheck',
     'cafe',
     'cafe_select',
+    'cafe_search',
     'kakaopai',
+    'mypage',
 ]
 
 MIDDLEWARE = [
