@@ -1,0 +1,42 @@
+{% comment %} 프로필 이미지 수정 폼 커스텀
+
+{% comment %} 기본프로필 체크와 새프로필 업로드 동시에 할 경우 아무것도 실행되지 않고 다시 수정페이지 뜸.
+둘 중 하나만 선택가능하게 하는 건 JS로 구현가능 {% endcomment %}
+{% load static %}
+{% comment %} <link rel="stylesheet" href="{% static 'css/user.css' %}"> {% endcomment %}
+
+{% if widget.is_initial %}
+    <div style="display: inline-block; cursor: pointer;">
+        <img id="profileImage" src="{{ widget.value.url }}" alt="Profile Image" style="max-width: 200px; max-height: 200px;" >
+    </div>
+    <br>
+{% endif %}
+<input type="file" name="{{ widget.name }}" id="{{ widget.attrs.id }}" style="visibility:hidden; height:0px;" >
+
+<script>
+    let tempImageURL = "{{ widget.value.url }}"; // 기본 URL로 초기화(업로드 미리보기 용 변수)
+    const profileImage = document.getElementById('profileImage');
+    const fileInput = document.getElementById('{{ widget.attrs.id }}');
+
+    // 파일이 선택될 때 URL을 임시 저장하고 미리보기 업데이트(저장은 X, 보여지는 사진만 교체됨)
+    fileInput.addEventListener('change', function(event) {
+        const file = event.target.files[0];
+        
+        if (file) {
+            const reader = new FileReader();
+            reader.onload = function(e) {
+                tempImageURL = e.target.result; // 업로드한 이미지 URL을 임시 변수에 저장
+                profileImage.src = tempImageURL; // 미리보기 이미지를 업데이트
+            };
+            reader.readAsDataURL(file); // 파일 읽기 시작
+        } else {
+            // 선택된 파일이 없으면 원래 이미지로 설정
+            profileImage.src = "{{ widget.value.url }}";
+        }
+    });
+
+    // 이미지 클릭 시 파일 선택 창 열기
+    profileImage.addEventListener('click', function() {
+        fileInput.click();
+    });
+</script>  

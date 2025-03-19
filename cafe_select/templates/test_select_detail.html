@@ -1,4 +1,13 @@
 {%load static%}
+{% if messages %}
+    {% for message in messages %}
+        {% if message.tags == "error" %}
+            <div class="error-box">{{ message }}</div>
+        {% elif message.tags == "warning" %}
+            <div class="warning-box">{{ message }}</div>
+        {% endif %}
+    {% endfor %}
+{% endif %}
 <title>
     {% comment %} <script src="{% static 'js/test_modal.js' %}"></script>  {% endcomment %}
     <script src="{% static 'js/test_modal.js' %}"></script>
@@ -15,43 +24,103 @@
     </div><br>
 
     <!-- 리뷰쓰기 버튼 -->
-    {% if already == 'Y' %}
-        <strong>리뷰 쓰기 완료!</strong>
+    {% if review_already == 'Y' %}
+        <strong>리뷰 쓰기 완료!</strong><br><br>
     {% else %}
         <a href={%url 'cafe_select:review' user_id=user_id cafe_id=cafe_id %}><button>리뷰쓰기</button></a><br><br>
     {% endif %}
 
-    <div style="border:2px solid black; width:600px; height:160px; display: flex; align-items: center; padding: 10px;">
-        <img src="{{cafeimage.cafeimage.url}}" style="width:160px;height:160px;">
-        <div style="margin-left: 20px;">
-            <p><strong>{{ cafe.cafename }}</strong></p>
-            <p>{{ cafe.cafelocations }}</p>
-            <p>{{ cafe.cafeinfo }}</p>
-        </div>
+    {% comment %} <div style="border:2px solid black; width:700px; display:flex; height:500px; padding: 10px;">
+        <img src="{{cafeimage.cafeimage.url}}" style="width:160px;height:160px; margin-left:20px; margin-right:40px;">
+        <a href="https://place.map.kakao.com/{{cafe.cafeID}}" target='_blank'><div id="cafemap" style="width:500px;height:500px;border:1px solid black;"></div></a>
+        
+    </div> {% endcomment %}
+
+    <div style="border:2px solid black; width:1050px; display:flex; height:500px; padding: 10px; justify-content: center; align-items: center;">
+        <img src="{{cafeimage.cafeimage.url}}" style="width:500px;height:500px; margin-left:10px; margin-right:40px;">
+        <a href="https://place.map.kakao.com/{{cafe.cafeID}}" target='_blank'><div id="cafemap" style="width:500px;height:500px;border:1px solid black;margin-right:10px;"></div></a>       
+    </div><br><br>
+
+    <div style="margin-left: 20px;"><br><br>
+        <p><strong>{{ cafe.cafename }}</strong></p><br>
+        <p>{{ cafe.cafelocations }}</p><br>
+        <p>{{ cafe.cafeinfo }}</p><br>
     </div>
 
-    {% comment %} <!-- 모달 -->
-    <div id="reviewModal" class="modal">
-        <div class="modal-content">
-            <span class="close">&times;</span>
-            <h2>리뷰 작성</h2>
-            <form method="POST" enctype="multipart/form-data" action="{% url 'cafe_select:review' cafe_id=cafe_id user_id=user_id %}">
-                {% csrf_token %}
-                <div>
-                    <label for="file">파일 선택:</label>
-                    <input type="file" name="review_image" id="file">
-                </div>
-                <div>
-                    <label for="review_text">리뷰 내용:</label><br>
-                    <textarea name="review_content" id="review_text" rows="4" cols="50" placeholder="리뷰를 작성해주세요."></textarea>
-                </div>
-                <div>
-                    <button type="submit">제출</button>
-                </div>
-            </form>
-        </div>
-    </div> {% endcomment %}
-    
-    
-    
+    <div class="moodsselectcontainer">
+    {% if mood_already == 'Y' %}
+        <strong>분위기 태그 투표 완료!</strong><br><br>
+        <a href={% url "cafe_select:reselect_tag" user_id=user_id cafe_id=cafe_id %}><button>다시 투표하기</button></a>
+    {% else %}
+        <form method="POST" action = {%url 'cafe_select:select_tag' user_id=user_id cafe_id=cafe_id %}>
+            {% csrf_token %}
+            <input type="checkbox" id="tag1" name="mood_tag" value="coffee">
+            <label for="tag1">#커피가 맛있는</label>&nbsp;&nbsp;&nbsp;
+
+            <input type="checkbox" id="tag2" name="mood_tag" value="refined">
+            <label for="tag2">#세련된</label>&nbsp;&nbsp;&nbsp;
+
+            <input type="checkbox" id="tag3" name="mood_tag" value="together">
+            <label for="tag3">#단체모임하기 좋은</label><br>
+
+            <input type="checkbox" id="tag4" name="mood_tag" value="dessert">
+            <label for="tag4">#디저트가 맛있는</label>&nbsp;&nbsp;&nbsp;
+
+            <input type="checkbox" id="tag5" name="mood_tag" value="clean">
+            <label for="tag5">#깔끔한</label>&nbsp;&nbsp;&nbsp;
+
+            <input type="checkbox" id="tag6" name="mood_tag" value="study">
+            <label for="tag6">#카공하기 좋은</label><br>
+
+            <input type="checkbox" id="tag7" name="mood_tag" value="cozy">
+            <label for="tag7">#포근한</label>&nbsp;&nbsp;&nbsp;
+
+            <input type="checkbox" id="tag8" name="mood_tag" value="big">
+            <label for="tag8">#넓은</label>&nbsp;&nbsp;&nbsp;
+
+            <input type="checkbox" id="tag9" name="mood_tag" value="alone">
+            <label for="tag9">#혼자 있기 좋은</label><br>
+
+            <input type="checkbox" id="tag10" name="mood_tag" value="cuty">
+            <label for="tag10">#아기자기한</label>&nbsp;&nbsp;&nbsp;
+
+            <input type="checkbox" id="tag11" name="mood_tag" value="always">
+            <label for="tag11">#24시간 영업하는</label>&nbsp;&nbsp;&nbsp;
+
+            <input type="checkbox" id="tag12" name="mood_tag" value="picture">
+            <label for="tag12">#사진 찍기 좋은</label><br>
+
+            <button type="submit">확인</button>
+
+        </form>
+    {% endif %}
+
+    </div>
+
+
+<!-- 카카오 지도 API 스크립트 -->
+<script type="text/javascript" src="https://dapi.kakao.com/v2/maps/sdk.js?appkey={{myjskey}}"></script>
+
+<script>
+    // 카카오 지도 API가 로드되면 실행되는 코드
+    kakao.maps.load(function() {
+        var cafeLat = {{ cafe.cafe_x }};
+        var cafeLng = {{ cafe.cafe_y }};
+        
+        var container = document.getElementById('cafemap');
+        var options = {
+            center: new kakao.maps.LatLng(cafeLng, cafeLat),
+            level: 2  // 지도 확대/축소 레벨
+        };
+
+        var map = new kakao.maps.Map(container, options);
+        
+        // 마커 추가
+        var marker = new kakao.maps.Marker({
+            position: new kakao.maps.LatLng(cafeLng, cafeLat)
+        });
+        marker.setMap(map);
+    });
+</script>
+
 </body>

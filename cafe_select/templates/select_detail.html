@@ -1,0 +1,122 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>SELECT</title>
+    <link rel="stylesheet" href="../css/select_detail.css">
+</head>
+<body>
+    <div class="selectheader">
+        <div class="selectheaderleft">
+            <div class="selectlogoimg"><img src="../home_img/homeheaderlogo.png" style="width: 180px"></div>
+        </div>
+        <div class="selectheadermiddle">
+            <div class="selectsearchpart"><input type="text" class="selectsearch" placeholder="남기고 싶은 카페를 검색해보세요"> 
+                <button class="selectsearchicon"><img src="../select_img/selectsearchicon.png" style="width: 25px"></button></div>
+        </div>
+        <div class="selecthdaerright"></div>
+    </div>
+ 
+    <div class="headerline" style="border-top: 1px solid #b22222; width: 100%;"></div>
+
+    <div class="selectcontainer">
+        <div class="selectleft">
+            <div class="navigationbar"><ul><li class="selecthover"><a href="./select_before.html">select</a></li>
+                <li><a href="./search_before.html">search</a></li>
+                <li><a href="./mypage.html">mypage</a></li></ul></div>
+        </div>
+
+        <div class="selectmain">
+
+            <div class="sdetailtopbox">
+                <div class="topboxcafeintro">
+                    <div class="topboxcafeintrotop">
+                        <div class="topboxcafeintroimg"><img src="../select_img/topboxcafeintroimg.png" width="30px"></div>
+                        <div class="topboxcafeintroname">카페명</div>
+                    </div>
+                    <div class="topboxcafeintrocomment">코멘트 한 줄</div>
+                </div>
+
+                <div class="sdetailreview">
+                    <div class="sdetailreviewimg"><img src="../select_img/sdetailreviewimg.png" width="30px"></div>
+                    <div class="modalcontainer">
+                        <button class="sdetailreviewtext" onclick="openModal()">리뷰 쓰기</button>
+
+                        <div id="reviewModal" class="modal">
+                            <div class="modal-content">
+                                <div class="modaltop">
+                                    <div class="modaltoptext">리뷰 쓰기</div>
+                                    <span class="close-btn" onclick="closeModal()">&times;</span>
+                                </div>
+                                <buttun class="reviewimg">+</buttun>
+                                <!--<div class="reviewimgafter"></div>-->
+                                <textarea placeholder="리뷰를 입력하세요..."></textarea>
+                                <button class="submit-btn">확인</button>
+                            </div>
+                        </div>
+                    </div>
+
+                    <script src="../js/select_detail.js"></script>
+                </div>
+
+                <!--<div class="reviewafter">
+                    <div class="reviewafterimg"><img src="../select_img/check.png"></div>
+                    <div class="reviewaftertext">리뷰 쓰기 완료!</div>
+                </div>-->
+            </div>
+
+            <hr class="topline" style="color:#BF0E00;">
+
+            <div class="sdetailmiddlebox">
+                <div class="middleboximg"></div>
+                <div class="middleboxmap"></div>
+            </div>
+
+            <div class="sdetailbottombox">
+                <div class="toptitletext">분위기 태그 선택하기</div>
+
+                <div class="moodsselectcontainer">
+                        <div class="tag-box">
+                            <button class="tag">#커피가 맛있는</button>
+                            <button class="tag">#세련된</button>
+                            <button class="tag">#단체모임하기 좋은</button>
+                        </div>
+                        <div class="tag-box">
+                            <button class="tag">#디저트가 맛있는</button>
+                            <button class="tag">#깔끔한</button>
+                            <button class="tag">#카공하기 좋은</button>
+                        </div>
+                        <div class="tag-box">
+                            <button class="tag">#포근한</button>
+                            <button class="tag">#넓은</button>
+                            <button class="tag">#혼자 있기 좋은</button>
+                        </div>
+                        <div class="tag-box">
+                            <button class="tag">#아기자기한</button>
+                            <button class="tag">#24시간 영업하는</button>
+                            <button class="tag">#사진 찍기 좋은</button>
+                        </div>
+                    </div>
+
+                <button class="moodsselectbutton">확인</button>
+
+                <!--<div class="moodsselectafter">
+                    <div class="moodsselectafterimg"><img src="../select_img/check.png"></div>
+                    <div class="moodsselectaftertext">분위기 태그 선택 완료!</div>
+                </div>-->
+
+            </div>
+
+        </div>
+
+        <div class="selectright">
+        </div>
+    </div>
+
+    <div class="footer">
+        &copy; moodsn <br><br><br> Backend 손정민 <br> Frontend 성유리 이가윤
+    </div>
+
+</body>
+</html>

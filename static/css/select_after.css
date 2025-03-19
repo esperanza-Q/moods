@@ -85,9 +85,39 @@ body{
     width: 830px;
     height: 550px;
     display: flex;
-    justify-content: center;
-    align-items: center;
+}
 
+.maincafesearch{
+    display: flex;
+    flex-direction: row;
+    padding: 40px;
+}
+
+.maincafesearchtext {
+    display: flex;
+    flex-direction: column;
+    margin-left: 30px;
+    margin-top: 18px;
+}
+
+.maincafesearchimg {
+    background-color: #b3afae;
+    width: 130px;
+    height: 130px;
+}
+
+.maincafesearchname{
+    font-size: 23px;
+}
+
+.maincafesearchcomment{
+    margin-top: 25px;
+}
+
+.bottomline{
+    width: 830px;
+    color:#c9c5c5;
+    margin-top: -5px; 
 }
 
 .selectright{
@@ -98,7 +128,6 @@ body{
     display: flex;
     flex-direction: row;
 }
-
 .footer{
     height: 110px;
     background-color: #f7f2cd;
