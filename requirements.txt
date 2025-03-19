@@ -5,3 +5,8 @@ pip install selenium
 pip install pandas
 pip install requests
 pip install python-dotenv
+
+tagname_dic={"coffee":"커피가 맛있는","refined":"세련된","together":"단체모임하기 좋은","dessert":"디저트가 맛있는","clean":"깔끔한","study":"카공하기 좋은","cozy":"포근한","big":"넓은","alone":"혼자 있기 좋은","cuty":"아기자기한","always":"24시간 영업하는","picture":"사진 찍기 좋은"}
+tagcount_dic={"coffee":0,"refined":0,"together":0,"dessert":0,"clean":0,"study":0,"cozy":0,"big":0,"alone":0,"cuty":0,"always":0,"picture":0}
+
+import heapq

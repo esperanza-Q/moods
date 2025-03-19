@@ -6,6 +6,7 @@ from django.contrib.auth.decorators import login_required
 
 @login_required
 def home(request, user_id):
+    
     user = get_object_or_404(User, pk=user_id)
     profile=get_object_or_404(Profile, user=user)
     
@@ -22,3 +23,10 @@ def home(request, user_id):
 
 def prehome(request):
     return render(request, 'home.html')
+
+def firstpage(request):
+    if request.user.is_authenticated:
+        return redirect('home:home', user_id=request.user.id)
+    else:
+        return redirect('home:prehome')
+    

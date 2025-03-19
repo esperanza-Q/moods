@@ -25,16 +25,21 @@
 
     <!-- 리뷰쓰기 버튼 -->
     {% if review_already == 'Y' %}
-        <strong>리뷰 쓰기 완료!</strong>
+        <strong>리뷰 쓰기 완료!</strong><br><br>
     {% else %}
         <a href={%url 'cafe_select:review' user_id=user_id cafe_id=cafe_id %}><button>리뷰쓰기</button></a><br><br>
     {% endif %}
 
-    <div style="border:2px solid black; width:700px; display:flex; height:500px; padding: 10px;">
+    {% comment %} <div style="border:2px solid black; width:700px; display:flex; height:500px; padding: 10px;">
         <img src="{{cafeimage.cafeimage.url}}" style="width:160px;height:160px; margin-left:20px; margin-right:40px;">
         <a href="https://place.map.kakao.com/{{cafe.cafeID}}" target='_blank'><div id="cafemap" style="width:500px;height:500px;border:1px solid black;"></div></a>
         
-    </div>
+    </div> {% endcomment %}
+
+    <div style="border:2px solid black; width:1050px; display:flex; height:500px; padding: 10px; justify-content: center; align-items: center;">
+        <img src="{{cafeimage.cafeimage.url}}" style="width:500px;height:500px; margin-left:10px; margin-right:40px;">
+        <a href="https://place.map.kakao.com/{{cafe.cafeID}}" target='_blank'><div id="cafemap" style="width:500px;height:500px;border:1px solid black;margin-right:10px;"></div></a>       
+    </div><br><br>
 
     <div style="margin-left: 20px;"><br><br>
         <p><strong>{{ cafe.cafename }}</strong></p><br>
