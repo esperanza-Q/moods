@@ -145,10 +145,10 @@ def reselect_tag(request, user_id, cafe_id):
 def most_tag(cafe_id):
     cafe=get_object_or_404(Cafe, pk=cafe_id)
     tags=Mood_tags.objects.filter(cafe=cafe)
-    tag_dic={"coffee":0,"refined":0,"together":0,"dessert":0,"clean":0,"study":0,"cozy":0,"big":0,"alone":0,"cuty":0,"always":0,"picture":0}
+    tagcount_dic={"coffee":0,"refined":0,"together":0,"dessert":0,"clean":0,"study":0,"cozy":0,"big":0,"alone":0,"cuty":0,"always":0,"picture":0}
     for tag in tags:
         moodtag=tag.mood_select
         for t in moodtag:
-            tag_dic[t]+=1
-    max3=heapq.nlargest(3, tag_dic, key = tag_dic.get)
+            tagcount_dic[t]+=1
+    max3=heapq.nlargest(3, tagcount_dic, key = tagcount_dic.get)
     Cafe.objects.filter(id=cafe_id).update(cafe_most_tags = max3)

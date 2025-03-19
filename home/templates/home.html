@@ -51,7 +51,7 @@
                     <div class="hselectdetail">카페의 리뷰를 남기고<br>
                         분위기 선택하러 가기</div>
                 </button></a>
-                <a href="./search_before.html">
+                <a href="{% url 'cafe_search:search_before' user_id%}">
                 <button class="hbottomboxright">
                     <div class="hsearchimg"><img src="{% static 'img/home_img/searchimg.png' %}"  style="width: 50px;"></div>
                     <div class="hsearchtext"><img src="{% static 'img/home_img/Search.png' %}" style="width: 120px;"></div>
