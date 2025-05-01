@@ -195,11 +195,17 @@ body{
     margin-top: 18px;
 }
 
-.loginbutton {
+.loginbutton a {
+    text-decoration: none;
     font-size: 22px;
     margin-top: 15px;
     background: none;
     border: none;
+    color: black;
+}
+
+.loginbutton {
+    margin-top: 10px;
 }
 
 .loginbutton:hover{
@@ -208,12 +214,14 @@ body{
     background-color: #CCDFEC
 }
 
-.signupbutton {
+.signupbutton a {
+    text-decoration: none;
     font-size: 22px;
     margin-top: 10px;
     margin-bottom: 8px;
     background: none;
     border: none;
+    color: black;
 }
 
 .signupbutton:hover{
