@@ -1,0 +1,160 @@
+body {
+    font-family: Kalnia, sans-serif;
+    background-color: #FFFDEA;
+    margin: 0;
+    padding: 0;
+}
+
+/* 헤더 */
+.selectheader {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    padding: 20px 40px 0 40px;
+}
+
+.selectheaderleft {
+    display: flex;
+    align-items: center;
+}
+
+.selectlogoimg img {
+    width: 180px;
+}
+
+.headerline {
+    height: 1px;
+    background-color: #C8B6A6;
+    margin: 0 40px 30px 40px;
+}
+
+/* 사이드바 */
+.sidebar {
+    position: fixed;
+    top: 140px;
+    left: 0;
+    width: 180px;
+    padding-left: 30px;
+}
+
+.sidebar ul {
+    list-style: none;
+    padding: 0;
+}
+
+.sidebar li {
+    margin: 30px 0;
+}
+
+.sidebar a {
+    text-decoration: none;
+    color: #BF0E00;
+    font-size: 18px;
+}
+
+.sidebar a:hover {
+    background-color: #fae5e3;
+    padding: 5px 10px;
+    border-radius: 10px;
+}
+
+/* 본문 */
+.main-content {
+    margin-left: 200px;
+    padding: 20px 50px;
+}
+
+/* 카페 상단 텍스트 */
+.cafe-header h2 {
+    font-size: 28px;
+    margin-bottom: 5px;
+}
+
+.cafe-header p {
+    color: #333;
+    font-size: 16px;
+    margin-bottom: 30px;
+}
+
+/* 사진과 지도 */
+.image-map-container {
+    display: flex;
+    gap: 30px;
+    margin-bottom: 40px;
+}
+
+.cafe-image, .cafe-map {
+    width: 300px;
+    height: 200px;
+    background-color: #ddd;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+
+/* 태그 영역 */
+.moods-section h3 {
+    font-size: 20px;
+    color: #808F7F;
+    margin-bottom: 10px;
+}
+
+.tag-buttons {
+    margin-bottom: 40px;
+}
+
+.tag {
+    border: 1px solid #808F7F;
+    border-radius: 20px;
+    padding: 6px 12px;
+    margin-right: 10px;
+    font-size: 14px;
+}
+
+/* 리뷰 */
+.review-section h3 {
+    font-size: 20px;
+    color: #808F7F;
+    margin-bottom: 10px;
+}
+
+.review-scroll-box {
+    background-color: #E8F3FC;
+    border-radius: 15px;
+    max-height: 300px;
+    overflow-y: scroll;
+    padding: 20px;
+}
+
+.review-box {
+    display: flex;
+    align-items: center;
+    background-color: white;
+    border-radius: 15px;
+    padding: 10px 20px;
+    margin-bottom: 15px;
+}
+
+.review-img {
+    width: 100px;
+    height: 100px;
+    background-color: #ccc;
+    margin-right: 20px;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+
+.review-content {
+    flex-grow: 1;
+    font-size: 14px;
+}
+
+/* 푸터 */
+.footer {
+    margin-top: 50px;
+    text-align: center;
+    color: #333;
+    padding: 20px;
+    background-color: #FAE7DA;
+}

@@ -182,14 +182,18 @@ body{
 }
 
 .tag-box {
-    width: 22%;
+    width: 180px;
     padding: 15px;
     display: flex;
     flex-direction: column;
-    gap: 10px;
+    gap: 20px;
 }
 
-.tag {
+.tag{
+    display: none;
+}
+
+.taglabel {
     background-color: none;
     padding: 10px;
     border-radius: 20px;
@@ -200,7 +204,12 @@ body{
     cursor: pointer;
 }
 
-.tag:hover{
+.taglabel:hover{
+    background-color: #ffb6a75f;
+    border: 1px solid #ff7f5079;
+}
+
+.tag:checked + .taglabel {
     background-color: #ffb6a75f;
     border: 1px solid #ff7f5079;
 }
@@ -213,6 +222,9 @@ body{
     width: 60px;
     border-radius: 20px;
     margin: 20px auto;
+    display: flex;
+    justify-content: center;
+    align-items: center;
     cursor: pointer;
     color:#979797;
 }
