@@ -1,0 +1,194 @@
+body {
+    margin: 0;
+    font-family: 'Kalnia', sans-serif;
+    background: linear-gradient(#FFFFF3, #FFFEE0);
+}
+
+.container {
+    display: flex;
+}
+
+/* 왼쪽 고정 사이드바 */
+.sidebar {
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 200px;
+    height: 100vh;
+    background-color: transparent;
+    padding-top: 30px;
+    text-align: center;
+}
+
+.sidebar .logo {
+    margin-bottom: 40px;
+}
+
+.sidebar ul {
+    list-style: none;
+    padding: 0;
+}
+
+.sidebar li {
+    margin: 40px 0;
+}
+
+.sidebar a {
+    text-decoration: none;
+    color: #BF0E00;
+    font-size: 18px;
+}
+
+.sidebar a:hover {
+    background-color: #fae5e3;
+    padding: 5px 10px;
+    border-radius: 10px;
+}
+
+/* 오른쪽 본문 */
+.main-content {
+    margin-left: 200px;
+    padding: 30px 50px;
+    width: calc(100% - 200px);
+    overflow-y: auto;
+}
+
+.search-tag-header {
+    margin-bottom: 30px;
+}
+
+.search-tag {
+    background-color: #ffffff;
+    border: 1px solid #BF0E00;
+    border-radius: 20px;
+    padding: 10px 20px;
+    font-size: 18px;
+    color: #BF0E00;
+}
+
+.cafe-list {
+    display: flex;
+    flex-direction: column;
+    gap: 25px;
+}
+
+.cafe-card {
+    display: flex;
+    background-color: #eef6ff;
+    padding: 20px;
+    border-radius: 10px;
+    align-items: center;
+}
+
+.cafe-img {
+    width: 120px;
+    height: 120px;
+    background-color: #ddd;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    margin-right: 25px;
+    font-size: 14px;
+}
+
+.cafe-info {
+    flex-grow: 1;
+}
+
+.cafe-name {
+    font-weight: bold;
+    font-size: 20px;
+    margin-bottom: 5px;
+}
+
+.cafe-address {
+    color: #333;
+    font-size: 14px;
+    margin-bottom: 10px;
+}
+
+.cafe-tags {
+    display: flex;
+    gap: 10px;
+}
+
+.tag {
+    border: 1px solid #485F50;
+    border-radius: 20px;
+    padding: 5px 12px;
+    font-size: 13px;
+    color: #485F50;
+}
+
+/* footer */
+.footer {
+    background-color: #f7d5c4;
+    text-align: center;
+    padding: 30px;
+    margin-top: 50px;
+}
+
+.selectheader {
+    margin-top: 50px;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    padding: 20px 40px 0 40px;
+}
+
+.selectheaderleft {
+    display: flex;
+    align-items: center;
+}
+
+.selectlogoimg img {
+    width: 180px;
+}
+
+.selecthdaerright {
+    flex-grow: 1;
+}
+
+.headerline {
+    height: 1px;
+    background-color: #C8B6A6;
+    margin: 0 40px 30px 40px;
+}
+
+/* 왼쪽 메뉴 고정 스타일 */
+.sidebar {
+    position: fixed;
+    top: 140px; /* 헤더 높이 고려 */
+    left: 0;
+    width: 180px;
+    padding-left: 30px;
+}
+
+.sidebar ul {
+    list-style: none;
+    padding: 0;
+}
+
+.sidebar li {
+    margin: 30px 0;
+}
+
+.sidebar a {
+    text-decoration: none;
+    color: #BF0E00;
+    font-size: 18px;
+}
+
+.sidebar a:hover {
+    background-color: #fae5e3;
+    padding: 5px 10px;
+    border-radius: 10px;
+}
+
+/* 본문 내용 */
+.main-content {
+    margin-left: 200px;
+    padding: 20px 50px;
+    width: calc(100% - 200px);
+    overflow-y: auto;
+}

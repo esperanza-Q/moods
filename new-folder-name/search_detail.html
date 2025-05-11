@@ -1,0 +1,71 @@
+<!DOCTYPE html>
+<html lang="ko">
+<head>
+    <meta charset="UTF-8">
+    <title>카페 상세 페이지</title>
+    <link rel="stylesheet" href="search_detail.css">
+</head>
+<body>
+    <!-- 헤더 -->
+    <div class="selectheader">
+        <div class="selectheaderleft">
+            <div class="selectlogoimg">
+                <img src="{% static 'img/home_img/homeheaderlogo.png' %}" style="width: 180px">
+            </div>
+        </div>
+        <div class="selecthdaerright"></div>
+    </div>
+    <div class="headerline"></div>
+
+    <!-- 사이드바 -->
+    <div class="sidebar">
+        <ul>
+            <li><a href="{% url 'cafe_select:select_before' user_id %}">select</a></li>
+            <li><a href="#">search</a></li>
+            <li><a href="{% url 'mypage:mypage' user_id %}">mypage</a></li>
+        </ul>
+    </div>
+
+    <!-- 본문 -->
+    <div class="main-content">
+        <!-- 카페 정보 상단 -->
+        <div class="cafe-header">
+            <h2>☕ {{ cafe.name }}</h2>
+            <p>{{ cafe.comment }}</p>
+        </div>
+
+        <!-- 사진 & 지도 -->
+        <div class="image-map-container">
+            <div class="cafe-image">대표사진</div>
+            <div class="cafe-map">지도 api</div>
+        </div>
+
+        <!-- 태그 -->
+        <div class="moods-section">
+            <h3>#Moods</h3>
+            <div class="tag-buttons">
+                {% for tag in cafe.tags %}
+                    <span class="tag">#{{ tag }}</span>
+                {% endfor %}
+            </div>
+        </div>
+
+        <!-- 리뷰 -->
+        <div class="review-section">
+            <h3>Review</h3>
+            <div class="review-scroll-box">
+                {% for review in cafe.reviews %}
+                <div class="review-box">
+                    <div class="review-img">사진</div>
+                    <div class="review-content">{{ review.text }}</div>
+                </div>
+                {% endfor %}
+            </div>
+        </div>
+    </div>
+
+    <footer class="footer">
+        footer
+    </footer>
+</body>
+</html>
