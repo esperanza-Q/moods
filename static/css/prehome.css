@@ -70,11 +70,10 @@ body{
     flex-direction: column;
     text-align: center;
     background: none;
-    cursor: pointer;
 }
 
 .hbottomboxleft:hover{
-    background-color: #fef8c5a8;
+    background-color: #fffbd9a8;
 }
 
 .hbottomboxright {
@@ -87,12 +86,11 @@ body{
     flex-direction: column;
     text-align: center;
     background: none;
-    cursor: pointer;
 }
 
 
 .hbottomboxright:hover{
-    background-color: #fef8c5a8;
+    background-color: #fffbd9a8;
 }
 
 .tophomeimg {
@@ -192,34 +190,41 @@ body{
     margin-top: 20px;
 }
 
-.profilename {
-    font-size: 23px;
+.loginnotice {
+    font-size: 15px;
     margin-top: 18px;
 }
 
-.profilemypage a {
+.loginbutton a {
     text-decoration: none;
-    color: black;
-    font-size: 20px;
+    font-size: 22px;
+    margin-top: 15px;
     background: none;
     border: none;
+    color: black;
 }
 
-.profilemypage:hover{
+.loginbutton {
+    margin-top: 10px;
+}
+
+.loginbutton:hover{
     border: 1px solid black;
     border-radius: 20px;
     background-color: #CCDFEC
 }
 
-.logoutbutton {
-    font-size: 15px;
-    margin-top: 13px;
+.signupbutton a {
+    text-decoration: none;
+    font-size: 22px;
+    margin-top: 10px;
     margin-bottom: 8px;
     background: none;
     border: none;
+    color: black;
 }
 
-.logoutbutton:hover{
+.signupbutton:hover{
     border: 1px solid black;
     border-radius: 20px;
     background-color: #CCDFEC

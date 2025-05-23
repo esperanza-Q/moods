@@ -1,0 +1,155 @@
+body {
+    background: linear-gradient(#FFFFF3, #FFFEE0);
+}
+
+.selectheader {
+    margin-top: 50px;
+    display: flex;
+    flex-direction: row;
+}
+
+.selectheaderleft {
+    flex: 1;
+}
+
+.selectheadermiddle {
+    width: 830px;
+}
+
+.selecthdaerright {
+    flex: 1;
+}
+
+.selectlogoimg {
+    float: right;
+    margin-top: 85px;
+}
+
+.selectsearchpart {
+    display: flex;
+    flex-direction: row;
+}
+
+.selectsearch {
+    border: 1px solid #BF0E00;
+    border-radius: 20px;
+    width: 450px;
+    height: 38px;
+    margin-top: 121px;
+    margin-left: 30px;
+    padding-left: 15px;
+}
+
+.selectsearchicon {
+    margin-top: 120px;
+    margin-left: 2px;
+    background: none;
+    border: none;
+    cursor: pointer;
+}
+
+.headerline {
+    border-top: 1px solid #b22222;
+    width: 100%;
+    margin-top: 15px;
+}
+
+.selectcontainer {
+    display: flex;
+    flex-direction: row;
+}
+
+.selectleft {
+    flex: 1;
+}
+
+.selectmain {
+    border: 1px solid #BF0E00;
+    border-top: none;
+    width: 830px;
+    padding: 40px;
+}
+
+.selectright {
+    flex: 1;
+}
+
+.navigationbar ul {
+    list-style-type: none;
+    float: right;
+    margin-right: 70px;
+    margin-top: 60px;
+}
+
+.navigationbar ul a {
+    text-decoration: none;
+    color: #BF0E00;
+    font-size: 18px;
+}
+
+.navigationbar ul a:hover {
+    background-color: #fae5e3;
+    border-radius: 10px;
+}
+
+.navigationbar ul li {
+    margin-bottom: 50px;
+}
+
+.footer {
+    height: 110px;
+    background-color: #f7f2cd;
+    padding: 15px;
+}
+
+.sdetailbottombox {
+    text-align: center;
+}
+
+.toptitletext {
+    font-size: 24px;
+    font-weight: bold;
+    margin-bottom: 30px;
+    color: #BF0E00;
+}
+
+.moodsselectcontainer {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    gap: 20px;
+}
+
+.tag-box {
+    display: flex;
+    gap: 20px;
+}
+
+.taglabel {
+    border: 1px solid #BF0E00;
+    border-radius: 20px;
+    padding: 8px 16px;
+    color: #BF0E00;
+    cursor: pointer;
+    font-size: 15px;
+}
+
+.tag:checked + .taglabel {
+    background-color: #BF0E00;
+    color: white;
+}
+
+.tag {
+    display: none;
+}
+
+.moodsselectbutton {
+    margin-top: 30px;
+    padding: 10px 20px;
+    background-color: #fae5e3;
+    border: none;
+    border-radius: 20px;
+    color: #BF0E00;
+    font-size: 16px;
+    cursor: pointer;
+}

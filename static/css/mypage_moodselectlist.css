@@ -83,12 +83,67 @@ body{
     border: 1px solid #BF0E00;
     border-top: none;
     width: 830px;
-    height: 800px;
+    height: 100%;
+}
+
+.moodselectsearchhead{
+    color: gray;
+    font-size: 20px;
+    margin-top: 50px;
+    margin-left: 70px;
+}
+
+.moodselecttag{
+    margin-left: 70px;
+    margin-top: 20px;
+    background-color: #ffa39c4d;
+    width: 120px;
+    border-radius: 20px;
+    padding: 7px;
+    font-size: 15px;
     display: flex;
     justify-content: center;
     align-items: center;
+    margin-bottom: 20px;
 
 }
+
+.mypmoodselectmain1{
+    display: flex;
+    flex-direction: row;
+    padding-top: 30px;
+    padding-left: 70px;
+}
+
+.mypmoodselecttext1 {
+    display: flex;
+    flex-direction: column;
+    margin-left: 30px;
+    margin-top: 18px;
+}
+
+.mypmoodselectimg1 {
+    background-color: #b3afae;
+    width: 130px;
+    height: 130px;
+}
+
+.mypmoodselectname1{
+    font-size: 23px;
+}
+
+.mypmoodselectcomment1{
+    margin-top: 25px;
+}
+
+.moodselectbottomline{
+    border: none;
+    height: 1px;
+    width: 830px;
+    margin-top: 30px;
+    background-color: rgb(209, 209, 209);
+}
+
 
 .selectright{
     flex: 1;
@@ -104,3 +159,4 @@ body{
     background-color: #f7f2cd;
     padding: 15px;
 }
+
