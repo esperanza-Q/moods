@@ -7,7 +7,7 @@
 </title>
 <body>
     <div>
-        <a href="{%url 'cafe_search:search_before' user_id=user_id%}"><button>검색 다시하기</button></a>
+        <a href="{%url 'cafe_search:search_before' request.user.id=request.user.id%}"><button>검색 다시하기</button></a>
     </div><br>
 
     <div style="margin-left: 20px;"><br>

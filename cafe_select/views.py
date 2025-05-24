@@ -12,13 +12,13 @@ import heapq
 
 
 # Create your views here.
-def select_before(request, user_id):
-    return render(request, 'select_before.html', {'user_id':user_id})
+def select_before(request):
+    return render(request, 'select_before.html')
 
-def select_searched(request, user_id):
+def select_searched(request):
     if request.method=='POST':
         select_searchbar=request.POST.get('select_searchbar','')
-        return redirect(f'{reverse("cafe_select:select_searched", kwargs={"user_id": user_id})}?searched={select_searchbar}')
+        return redirect(f'{reverse("cafe_select:select_searched", kwargs={"request.user.id": request.user.id})}?searched={select_searchbar}')
     else:
         select_searchbar=request.GET.get('searched','')
         search_terms=set(select_searchbar.replace(',',' ').split())
@@ -52,9 +52,9 @@ def select_searched(request, user_id):
         
         
         
-        return render(request, 'select_after.html', {'user_id':user_id, 'cafe_list':sorted_cafe})
+        return render(request, 'select_after.html', {'cafe_list':sorted_cafe})
     
-def select_detail(request, user_id, cafe_id):
+def select_detail(request, cafe_id):
     cafe = get_object_or_404(Cafe, pk =cafe_id)
     cafeimage=CafeImage.objects.filter(cafe_id=cafe_id).first()
     
@@ -78,7 +78,6 @@ def select_detail(request, user_id, cafe_id):
     context = {
         'cafe': cafe,
         'cafe_id':cafe.id,
-        'user_id': user_id,
         'cafeimage':cafeimage,
         'review_already':review_already,
         'mood_already':mood_already,
@@ -89,9 +88,9 @@ def select_detail(request, user_id, cafe_id):
 def review_form(request):
     return render(request, 'review_form.html')
 
-def review(request, user_id, cafe_id):
+def review(request, cafe_id):
     cafe=get_object_or_404(Cafe, pk=cafe_id)
-    user=get_object_or_404(User, pk=user_id)
+    user=get_object_or_404(User, pk=request.user.id)
     
     if request.method=="POST":
         review_image=request.FILES.get('review_image')
@@ -103,25 +102,24 @@ def review(request, user_id, cafe_id):
             review_image=review_image,
             review_content=review_content,
         )
-        return redirect('cafe_select:select_detail', user_id=user_id, cafe_id=cafe_id)
+        return redirect('cafe_select:select_detail', cafe_id=cafe_id)
     else:
         context={
-            'user_id':user_id,
             'cafe_id':cafe_id
         }
         return render(request, 'test_review_write.html', context)
     
-def select_tag(request, user_id, cafe_id):
+def select_tag(request, cafe_id):
     cafe=get_object_or_404(Cafe, pk=cafe_id)
-    user=get_object_or_404(User, pk=user_id)
+    user=get_object_or_404(User, pk=request.user.id)
     if request.POST:
         select = request.POST.getlist('mood_tag')
         if len(select) > 3 :
             messages.warning(request, "분위기 태그는 최대 3개까지만 선택 가능합니다.")
-            return redirect('cafe_select:select_detail', user_id=user_id, cafe_id=cafe_id)
+            return redirect('cafe_select:select_detail', cafe_id=cafe_id)
         elif len(select)==0:
             messages.error(request, "분위기 태그를 최소 1개 이상 선택해주세요!")
-            return redirect('cafe_select:select_detail', user_id=user_id, cafe_id=cafe_id)
+            return redirect('cafe_select:select_detail', cafe_id=cafe_id)
         else:
             mood_tag=Mood_tags.objects.create(
                 user=user,
@@ -130,17 +128,17 @@ def select_tag(request, user_id, cafe_id):
             )
             most_tag(cafe_id)
             
-            return redirect('cafe_select:select_detail', user_id=user_id, cafe_id=cafe_id)
-    return redirect('cafe_select:select_detail', user_id=user_id, cafe_id=cafe_id)
+            return redirect('cafe_select:select_detail', cafe_id=cafe_id)
+    return redirect('cafe_select:select_detail', cafe_id=cafe_id)
 
-def reselect_tag(request, user_id, cafe_id):
+def reselect_tag(request, cafe_id):
     cafe=get_object_or_404(Cafe, pk=cafe_id)
-    user=get_object_or_404(User, pk=user_id)
+    user=get_object_or_404(User, pk=request.user.id)
     
     Mood_tags.objects.filter(user=user, cafe=cafe).delete()
     most_tag(cafe_id)
     
-    return redirect('cafe_select:select_detail', user_id=user_id, cafe_id=cafe_id)
+    return redirect('cafe_select:select_detail', cafe_id=cafe_id)
 
 def most_tag(cafe_id):
     cafe=get_object_or_404(Cafe, pk=cafe_id)

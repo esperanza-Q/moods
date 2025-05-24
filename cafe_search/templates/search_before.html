@@ -22,9 +22,9 @@
         <div class="selectleft">
             <div class="navigationbar">
                 <ul>
-                    <li><a href="{% url 'cafe_select:select_before' user_id %}">select</a></li>
+                    <li><a href="{% url 'cafe_select:select_before' request.user.id %}">select</a></li>
                     <li><a href="#">search</a></li>
-                    <li><a href="{% url 'mypage:mypage' user_id %}">mypage</a></li>
+                    <li><a href="{% url 'mypage:mypage' %}">mypage</a></li>
                 </ul>
             </div>
         </div>

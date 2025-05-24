@@ -6,19 +6,18 @@ from django.contrib.auth.decorators import login_required
 # Create your views here.
 
 @login_required
-def mypage(request, user_id):
-    user = get_object_or_404(User, pk=user_id)
+def mypage(request):
+    user = get_object_or_404(User, pk=request.user.id)
     profile=get_object_or_404(Profile, user=user)
     
     context={
         'profile':profile,
         'user':user,
-        'user_id':user_id
     }
     return render(request, 'test_mypage.html', context)
 
-def profile_update(request, user_id):
-    user = get_object_or_404(User, pk=user_id)
+def profile_update(request):
+    user = get_object_or_404(User, pk=request.user.id)
     profile=get_object_or_404(Profile, user=user)
     
     if request.method == 'GET':
@@ -26,7 +25,6 @@ def profile_update(request, user_id):
         complete=0
         context={
             # 'profile_update_from':profile_update_form,
-            'user_id':user_id,
             'profile':profile,
             'complete':complete,
         }
@@ -40,5 +38,5 @@ def profile_update(request, user_id):
         profile.nickname=nickname
         profile.save()
 
-        return redirect('mypage:mypage',user_id)
+        return redirect('mypage:mypage')
     

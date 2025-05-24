@@ -78,3 +78,7 @@ label {
 .signup-btn:hover {
     background-color: #D9D9B9;
 }
+
+.hidden-submit {
+    display: none;
+}

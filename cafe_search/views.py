@@ -13,23 +13,23 @@ import os
 
 
 # Create your views here.
-def search_before(request, user_id):
-    return render(request, "test_search_before.html", {'user_id':user_id})
+def search_before(request):
+    return render(request, "test_search_before.html")
 
-def search_after(request, user_id):
-    user=get_object_or_404(User, pk=user_id)
+def search_after(request):
+    user=get_object_or_404(User, pk=request.user.id)
     if request.method=='POST':
         if request.POST:
             if len(request.POST.getlist('s_mood_tag')) > 3 :
                 messages.warning(request, "분위기 태그는 최대 3개까지만 선택 가능합니다.")
-                return redirect('cafe_search:search_before', user_id=user_id)
+                return redirect('cafe_search:search_before')
             elif len(request.POST.getlist('s_mood_tag'))==0:
                 messages.error(request, "분위기 태그를 최소 1개 이상 선택해주세요!")
-                return redirect('cafe_search:search_before', user_id=user_id)
+                return redirect('cafe_search:search_before')
             else:
                 searched = ','.join(request.POST.getlist('s_mood_tag'))
             
-        return redirect(f'{reverse("cafe_search:search_after", kwargs={"user_id": user_id})}?searched={searched}')
+        return redirect(f'{reverse("cafe_search:search_after", kwargs={"request.user.id": request.user.id})}?searched={searched}')
     else:
         searched_term = request.GET.get('searched', '')
         searched=searched_term.split(',')
@@ -45,12 +45,11 @@ def search_after(request, user_id):
             cafe_list.append((cafe, cafeimage))
         context = {
             'cafe_list':cafe_list,
-            'user_id' : user_id,
         }
         return render(request, "test_search_after.html", context)
     
-def search_detail(request, user_id, cafe_id):
-    user=get_object_or_404(User, pk=user_id)
+def search_detail(request, cafe_id):
+    user=get_object_or_404(User, pk=request.user.id)
     cafe=get_object_or_404(Cafe, pk=cafe_id)
     cafeimage=CafeImage.objects.filter(cafe=cafe).first()
     reviews_all=Review.objects.filter(cafe=cafe)
@@ -65,7 +64,6 @@ def search_detail(request, user_id, cafe_id):
     myjskey=os.getenv('JS_KEY')
     
     context={
-        'user_id' : user_id,
         'cafe' : cafe,
         'cafe_id' : cafe_id,
         'cafeimage' : cafeimage,

@@ -20,9 +20,9 @@
     <!-- 왼쪽 메뉴 고정 영역 -->
     <div class="sidebar">
         <ul>
-            <li><a href="{% url 'cafe_select:select_before' user_id %}">select</a></li>
+            <li><a href="{% url 'cafe_select:select_before' request.user.id %}">select</a></li>
             <li><a href="#">search</a></li>
-            <li><a href="{% url 'mypage:mypage' user_id %}">mypage</a></li>
+            <li><a href="{% url 'mypage:mypage' request.user.id %}">mypage</a></li>
         </ul>
     </div>
 

@@ -40,14 +40,14 @@ def signup(request):
             auth.login(request, user)
             
             if user.profile.user_type == 'verified':
-                return redirect('home:home', user.id)  # 인증된 유저
+                return redirect('home:home')  # 인증된 유저
             else:
-                return redirect('precheck:precheck', user.id)  # 인증 전 유저
+                return redirect('precheck:precheck')  # 인증 전 유저
             
         else:
             messages.error(request, 'PW와 Re-PW가 일치하지 않습니다!')
             return redirect('accounts:signup')
-    return render(request, 'test_signup.html')
+    return render(request, 'signup.html')
 
 def login(request):
     if request.method=='POST':
@@ -57,10 +57,10 @@ def login(request):
         if user is not None:
             auth.login(request, user)
             if user.profile.user_type == 'verified':
-                return redirect('home:home', user.id)  # 인증된 유저
+                return redirect('home:home')  # 인증된 유저
             else:
                 # return redirect(reverse('accounts:precheck', kwargs={'user_id': user.id}))  # 인증 전 유저
-                return redirect('precheck:precheck', user.id)
+                return redirect('precheck:precheck')
         else:
             messages.error(request, '아이디 혹은 비밀번호가 일치하지 않습니다!')
             return redirect('accounts:login')

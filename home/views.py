@@ -5,9 +5,9 @@ from django.contrib.auth.decorators import login_required
 # Create your views here.
 
 @login_required
-def home(request, user_id):
+def home(request):
     
-    user = get_object_or_404(User, pk=user_id)
+    user = get_object_or_404(User, pk=request.user.id)
     profile=get_object_or_404(Profile, user=user)
     
     if request.user.profile.user_type == 'guest':
@@ -16,17 +16,16 @@ def home(request, user_id):
         
         
         context = {
-            'profile':profile,
-            'user_id':user_id
+            'profile':profile
             }
         return render(request, 'home.html', context)
 
 def prehome(request):
-    return render(request, 'home.html')
+    return render(request, 'prehome.html')
 
 def firstpage(request):
     if request.user.is_authenticated:
-        return redirect('home:home', user_id=request.user.id)
+        return redirect('home:home')
     else:
         return redirect('home:prehome')
     

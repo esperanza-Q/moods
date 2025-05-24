@@ -1,5 +1,5 @@
 <h2>리뷰 작성</h2>
-<form method="POST" enctype="multipart/form-data" action="{% url 'cafe_select:review' cafe_id=cafe_id user_id=user_id %}">
+<form method="POST" enctype="multipart/form-data" action="{% url 'cafe_select:review' cafe_id=cafe_id request.user.id=request.user.id %}">
     {% csrf_token %}
     <div>
         <input type="file" name="review_image" required>

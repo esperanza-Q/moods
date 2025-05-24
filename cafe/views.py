@@ -4,7 +4,7 @@ from .models import Cafe, CafeImage
 from rest_api.api import get_location
 
 # Create your views here.
-def cafeadd(request, user_id):
+def cafeadd(request):
     if not request.user.is_superuser:
         return redirect('home:prehome')
     
@@ -34,6 +34,6 @@ def cafeadd(request, user_id):
                 cafeimage=cafeimage
             )
             
-        return redirect('home:home', user_id)
+        return redirect('home:home')
     
-    return render(request, 'test_cafe_add.html', {'user_id':user_id})  # GET 요청 시 폼을 가진 페이지 반환
+    return render(request, 'test_cafe_add.html')  # GET 요청 시 폼을 가진 페이지 반환

@@ -32,7 +32,7 @@
         <div class="selectmain">
             <div class="moodselectsearchhead">내 기록 모아보기 > 분위기 남긴 카페 내역</div>
 
-            <form method="POST" action = {%url 'cafe_select:select_tag' user_id=user_id cafe_id=cafe_id %}>
+            <form method="POST" action = {%url 'cafe_select:select_tag' request.user.id=request.user.id cafe_id=cafe_id %}>
                 <div class="mymoodselectcontainer">
                     <div class="tag-box">
                         <input type="checkbox" id="tag1" class="tag" name="mood_tag" value="coffee">
