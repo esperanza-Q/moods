@@ -1,0 +1,52 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>MYPAGE</title>
+    <link rel="stylesheet" href="../css/mypage_reviewlist.css">
+</head>
+<body>
+    <div class="selectheader">
+        <div class="selectheaderleft">
+            <div class="selectlogoimg"><a href="../html/home.html">
+                <img src="../home_img/homeheaderlogo.png" style="width: 180px">
+              </a></div>
+        </div>
+        <div class="selectheadermiddle">
+            <div class="selectsearchpart"><input type="text" class="selectsearch" placeholder="남기고 싶은 카페를 검색해보세요"> 
+                <button class="selectsearchicon"><img src="../select_img/selectsearchicon.png" style="width: 25px"></button></div>
+        </div>
+        <div class="selecthdaerright"></div>
+    </div>
+ 
+    <div class="headerline" style="border-top: 1px solid #b22222; width: 100%;"></div>
+
+    <div class="selectcontainer">
+        <div class="selectleft">
+            <div class="navigationbar"><ul><li><a href="./select_before.html">select</a></li>
+                <li><a href="./search_before.html">search</a></li>
+                <li><a href="./mypage.html">mypage</a></li></ul></div>
+        </div>
+
+        <div class="selectmain">
+            <div class="moodselectsearchhead">내 기록 모아보기 > 리뷰 남긴 카페 내역</div>
+
+            <!-- 수정 시작 -->
+            <div class="reviewScroll" id="reviewListContainer"></div>
+            <!-- 수정 끝 -->
+        </div>
+
+        <div class="selectright">
+        </div>
+    </div>
+
+    <div class="footer">
+        &copy; moodsn <br><br><br> Backend 손정민 <br> Frontend 성유리 이가윤
+    </div>
+
+    <!--수정 시작, mypage_reviewlist.js파일 추가-->
+    <script src="../js/mypage_reviewlist.js"></script>
+    <!--수정끝-->
+</body>
+</html>
