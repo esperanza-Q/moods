@@ -1,0 +1,178 @@
+body{
+    background: linear-gradient(#FFFFF3, #FFFEE0);
+}
+
+.selectheader{
+    display: flex;
+    flex-direction: row;
+}
+
+.selectheaderleft{
+    flex:1;
+}
+
+.selectheadermiddle{
+    width:830px;
+}
+
+.selecthdaerright{
+    flex: 1;
+}
+
+.selectlogoimg {
+    float: right;
+    margin-top: 85px;
+}
+
+.selectsearchpart {
+    display: flex;
+    flex-direction: row;
+}
+
+.selectsearch {
+    display: flex;
+    flex-direction: row;
+    border: 1px solid #BF0E00;
+    border-radius: 20px;
+    width: 450px;
+    height: 38px;
+    margin-top: 121px;
+    margin-left: 30px;
+    padding-left: 15px; 
+}
+
+.selectsearchicon {
+    margin-top: 120px;
+    margin-left: 2px;
+    background: none;
+    border: none;
+    cursor: pointer;
+}
+
+.headerline {
+    margin-top: 15px;
+}
+
+.selectleft {
+    flex: 1;
+}
+
+.navigationbar ul {
+    list-style-type: none;
+    float: right;
+    margin-right: 70px;
+    margin-top: 60px;
+}
+
+.navigationbar ul a{
+    text-decoration: none;
+    color:#BF0E00;
+    font-size: 18px;
+}
+
+.navigationbar ul a:hover{
+    background-color: #fae5e3;
+    border-radius: 10px;
+}
+
+.navigationbar ul li {
+    margin-bottom: 50px;
+}
+
+.selectmain {
+    border: 1px solid #BF0E00;
+    border-top: none;
+    width: 830px;
+    height: 800px;
+    display: flex;
+    flex-direction: column;
+    border-top: none;
+    overflow: hidden;
+}
+
+.moodselectsearchhead{
+    background-color: #f8f4da;
+    width: 340px;
+    padding: 10px;
+    border-radius: 10px;
+    color: gray;
+    font-size: 20px;
+    margin-top: 40px;
+    margin-left: 50px;
+}
+
+.moodselecttag{
+    margin-left: 50px;
+    margin-top: 20px;
+    background-color: #ffa39c4d;
+    width: 120px;
+    border-radius: 20px;
+    padding: 7px;
+    font-size: 15px;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    margin-bottom: 10px;
+}
+
+.mypmoodselectlist {
+    width: 100%;
+  max-height: 100%;
+  overflow-y: auto;
+  display: flex;
+  flex-direction: column;
+}
+
+.mypmoodselectmain{
+    display: flex;
+    flex-direction: row;
+    padding-top: 30px;
+    padding-left: 70px;
+}
+
+.mypmoodselecttext {
+    display: flex;
+    flex-direction: column;
+    margin-left: 30px;
+    margin-top: 18px;
+}
+
+.mypmoodselectimg {
+    background-color: #b3afae;
+    width: 130px;
+    height: 130px;
+}
+
+.mypmoodselectname{
+    font-size: 23px;
+}
+
+.mypmoodselectcomment{
+    margin-top: 25px;
+}
+
+.reviewbottomline{
+    border: none;
+    background-color: rgb(209, 209, 209);
+    height: 1px;
+    width: 100%;
+    margin-top: 20px;
+}
+
+
+
+.selectright{
+    flex: 1;
+}
+
+.selectcontainer{
+    display: flex;
+    flex-direction: row;
+}
+
+.footer{
+    height: 110px;
+    background-color: #f7f2cd;
+    padding: 15px;
+}
+
