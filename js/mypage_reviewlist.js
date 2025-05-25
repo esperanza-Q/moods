@@ -55,9 +55,7 @@ function renderReviews() {
     div.className = "reviewmaincontainer1";
     div.innerHTML = `
       <div class="reviewmain">
-        <div class="reviewleft">
-          <div class="reviewtext">${reviewData.review}</div>
-        </div>
+        <div class="reviewleft">${reviewData.review}</div>
         <div class="reviewright">
           <div class="myreviewimg"></div>
           <div class="myreviewmain">

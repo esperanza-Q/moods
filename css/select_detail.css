@@ -86,11 +86,14 @@ body{
     height: 800px;
 }
 
-.sdetailtopbox{
-    display: flex;
-    flex-direction: row;
-    padding: 55px;
+.sdetailtopbox {
+  display: flex;
+  justify-content: space-between;
+  align-items: flex-start;
+  padding: 55px;
+  gap: 16px;
 }
+
 
 .topboxcafeintro{
     display: flex;
@@ -103,28 +106,38 @@ body{
     flex-direction: row;
 }
 
-.topboxcafeintroname{
-    margin-top: 6px;
-    font-size: 27px;
-    margin-left: 15px;
+.topboxcafeintroname {
+  font-size: 27px;
+  margin-left: 15px;
+  margin-top: 6px;
+  
+  white-space: nowrap;         
+  overflow: hidden;            
+  text-overflow: ellipsis;
+  max-width: 500px;            
 }
+
 
 .topboxcafeintrocomment{
     margin-top: 10px;
 }
 
-.sdetailreview{
-    display: flex;
-    flex-direction: column;
+.sdetailreview {
+  display: flex;
+  flex-direction: column;
+  align-items: flex-end;
+  flex-shrink: 0;
 }
 
+
 .sdetailreviewimg{
-    margin-left: 500px;
     margin-top: 15px;
+    margin-right: 18px;
+    max-width: 100%;
+    height: auto;
 }
 
 .sdetailreviewtext{
-    margin-left: 478px;
     font-size: 13px;
     color:#979797;
     background-color: #ffa39c58;
