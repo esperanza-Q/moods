@@ -57,9 +57,9 @@ function renderReviews() {
     <div class="mypmoodselectmain">
       <div class="mypmoodselectimg"></div>
       <div class="mypmoodselecttext">
-          <div class="mypmoodselectname1">${moodData.name}</div>
-          <div class="mypmoodselectcomment1">${moodData.comment}</div>
-          <div class="mypmoodselectaddress1">${moodData.address}</div>
+          <div class="mypmoodselectname">${moodData.name}</div>
+          <div class="mypmoodselectcomment">${moodData.comment}</div>
+          <div class="mypmoodselectaddress">${moodData.address}</div>
       </div>
   </div>
   <hr class="moodselectbottomline"></hr>

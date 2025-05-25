@@ -117,17 +117,17 @@ body{
 
 .mypmoodselectlist {
     width: 100%;
-  max-height: 100%;
-  overflow-y: auto;
-  display: flex;
-  flex-direction: column;
+    max-height: 100%;
+    overflow-y: auto;
+    display: flex;
+    flex-direction: column;
 }
 
 .mypmoodselectmain{
     display: flex;
     flex-direction: row;
     padding-top: 30px;
-    padding-left: 70px;
+    padding-left: 50px;
 }
 
 .mypmoodselecttext {
@@ -158,8 +158,6 @@ body{
     width: 100%;
     margin-top: 20px;
 }
-
-
 
 .selectright{
     flex: 1;
