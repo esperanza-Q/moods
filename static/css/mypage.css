@@ -228,11 +228,14 @@ body{
 }*/
 
 .namechange{
-    width: 100px;
+    /* display: flex; */
+    width: 200px;
     height: 20px;
     background-color: #E9F6FF;
     border: none;
     border-radius: 20px;
+    text-align: center;
+    padding: 0;
 }
 
 .submit-btn {

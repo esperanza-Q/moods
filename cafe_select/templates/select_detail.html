@@ -62,14 +62,21 @@
 
                         <div id="reviewModal" class="modal">
                             <div class="modal-content">
-                                <div class="modaltop">
-                                    <div class="modaltoptext">리뷰 쓰기</div>
-                                    <span class="close-btn" onclick="closeModal()">&times;</span>
-                                </div>
-                                <button class="reviewimg">+</button>
-                                <!--<div class="reviewimgafter"></div>-->
-                                <textarea placeholder="리뷰를 입력하세요..."></textarea>
-                                <button class="submit-btn">확인</button>
+                                <form method="POST" enctype="multipart/form-data" action="{% url 'cafe_select:review' cafe_id=cafe_id %}">
+                                    {% csrf_token %}
+                                    <div class="modaltop">
+                                        <div class="modaltoptext">리뷰 쓰기</div>
+                                        <span class="close-btn" onclick="closeModal()">&times;</span>
+                                    </div>
+                                    <label for="review_image" class="reviewimg" role="button" tabindex="0">
+                                        <img id="preview-image" src="#" alt="이미지를 선택해주세요" class="hidden-preview" />
+                                        <div id="plus-icon">+</div>
+                                    </label>
+                                    {% comment %} <label for="review_image" class="reviewimg" role="button" tabindex="0"><div class="reviewimg">+</div></label> {% endcomment %}
+                                    <input type="file" id="review_image" name="review_image" required class="hidden-submit" >
+                                    <textarea name="review_content" placeholder="리뷰를 입력하세요..."></textarea><br>
+                                    <button type="submit" class="submit-btn">확인</button>
+                                </form>
                             </div>
                         </div>
                     </div>
@@ -78,7 +85,7 @@
                 </div>
                 {% else %}
                 <div class="reviewafter">
-                    <div class="reviewafterimg"><img src="{%static 'img/select_img/check.png' %}"></div>
+                    <a href={%url "cafe_select:delete_review" cafe_id=cafe.id %}><div class="reviewafterimg"><img src="{%static 'img/select_img/check.png' %}"></div></a>
                     <div class="reviewaftertext">리뷰 쓰기 완료!</div>
                 </div>
                 {% endif %}
@@ -186,6 +193,25 @@
         });
         marker.setMap(map);
     });
+
+    document.getElementById("review_image").addEventListener("change", function (event) {
+        const file = event.target.files[0];
+        const preview = document.getElementById("preview-image");
+        const plusIcon = document.getElementById("plus-icon");
+
+        if (file) {
+            const reader = new FileReader();
+
+            reader.onload = function (e) {
+                preview.src = e.target.result;
+                preview.style.display = "block";
+                plusIcon.style.display = "none";
+            };
+
+            reader.readAsDataURL(file);
+        }
+    });
+
 </script>
 
 </body>

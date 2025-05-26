@@ -38,22 +38,38 @@ def search_after(request):
             tag_obj = Tag.objects.filter(code=search).first()
             if tag_obj:
                 search_tag.append(tag_obj.code)
-        
-        query_list = [Q(cafe_most_tags__code=code) for code in search_tag]
 
-        if not query_list:
+        if not search_tag:
             cafes = Cafe.objects.none()
         else:
-            final_query = reduce(operator.and_, query_list)
-            cafes = Cafe.objects.filter(final_query)
+            # 하나라도 매칭되는 것들 필터
+            tag_query = Q()
+            for tag in search_tag:
+                tag_query |= Q(cafe_most_tags__code=tag)
+
+            # 겹치는 태그 수를 카운트하여 정렬
+            cafes = (
+                Cafe.objects
+                .filter(tag_query)
+                .annotate(matched_tags=Count('cafe_most_tags', filter=Q(cafe_most_tags__code__in=search_tag)))
+                .order_by('-matched_tags')  # 많이 겹치는 순
+                .distinct()
+            )
         
         cafe_list=[]
         
         for cafe in cafes:
             cafeimage=CafeImage.objects.filter(cafe_id=cafe.id).first()
             cafe_list.append((cafe, cafeimage))
+            
+        search_tags=[]
+        for s in searched:
+            se=Tag.objects.filter(code=s).first()
+            search_tags.append(se)
+            
         context = {
             'cafe_list':cafe_list,
+            'search_tags' : search_tags
         }
         return render(request, "search_after.html", context)
     
@@ -65,10 +81,11 @@ def search_detail(request, cafe_id):
     
     reviews=[(Profile.objects.get(user=review.user),review) for review in reviews_all]
     
-    # tagname_dic={"coffee":"커피가 맛있는","refined":"세련된","together":"단체모임하기 좋은","dessert":"디저트가 맛있는","clean":"깔끔한","study":"카공하기 좋은","cozy":"포근한","big":"넓은","alone":"혼자 있기 좋은","cuty":"아기자기한","always":"24시간 영업하는","picture":"사진 찍기 좋은"}
-    # tags=[tagname_dic[tag] for tag in cafe.cafe_most_tags]
+    tag_codes = cafe.cafe_most_tags.values_list('code', flat=True)
     
-    
+    tags=[]
+    for t in tag_codes:
+        tags.append(Tag.objects.filter(code=t).first())
     
     load_dotenv()
     
@@ -80,7 +97,7 @@ def search_detail(request, cafe_id):
         'cafeimage' : cafeimage,
         'reviews' : reviews,
         'myjskey':myjskey,
-        # 'tags' : tags
+        'tags' : tags
     }
     
     return render(request, "search_detail.html", context)
