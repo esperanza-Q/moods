@@ -111,6 +111,14 @@ def review(request, cafe_id):
         }
         return render(request, 'test_review_write.html', context)
 
+def delete_review(request, cafe_id):
+    cafe=get_object_or_404(Cafe, pk=cafe_id)
+    user=get_object_or_404(User, pk=request.user.id)
+    
+    Review.objects.filter(user=user, cafe=cafe).delete()
+    
+    return redirect('cafe_select:select_detail', cafe_id=cafe_id)
+
 @require_POST  
 def select_tag(request, cafe_id):
     cafe=get_object_or_404(Cafe, pk=cafe_id)

@@ -1,52 +1,60 @@
+{%load static%}
 <!DOCTYPE html>
 <html lang="en">
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>MYPAGE</title>
-    <link rel="stylesheet" href="../css/mypage_reviewlist.css">
+    <link rel="stylesheet" href="{%static 'css/mypage_reviewlist.css' %}">
 </head>
 <body>
     <div class="selectheader">
         <div class="selectheaderleft">
-            <div class="selectlogoimg"><a href="../html/home.html">
-                <img src="../home_img/homeheaderlogo.png" style="width: 180px">
-              </a></div>
+            <div class="selectlogoimg"><a href="{%url 'home:firstpage'%}">
+                <img src="{%static 'img/home_img/homeheaderlogo.png' %}" style="width: 180px">
+            </a></div>
         </div>
         <div class="selectheadermiddle">
-            <div class="selectsearchpart"><input type="text" class="selectsearch" placeholder="남기고 싶은 카페를 검색해보세요"> 
-                <button class="selectsearchicon"><img src="../select_img/selectsearchicon.png" style="width: 25px"></button></div>
+            <form class="selectsearchpart" method='get' action={% url 'cafe_select:select_searched'%}>
+                {% csrf_token %}
+                <input type="text" name="select_searchbar" class="selectsearch" placeholder="남기고 싶은 카페를 검색해보세요">
+                <button type="submit" class="selectsearchicon"><img src="{%static 'img/select_img/selectsearchicon.png' %}" style="width: 25px"></button>
+            </form>
         </div>
         <div class="selecthdaerright"></div>
     </div>
- 
+
     <div class="headerline" style="border-top: 1px solid #b22222; width: 100%;"></div>
 
     <div class="selectcontainer">
         <div class="selectleft">
-            <div class="navigationbar"><ul><li><a href="./select_before.html">select</a></li>
-                <li><a href="./search_before.html">search</a></li>
-                <li><a href="./mypage.html">mypage</a></li></ul></div>
+            <div class="navigationbar"><ul><li><a href="{%url 'cafe_select:select_before'%}">select</a></li>
+                <li><a href="{%url 'cafe_search:search_before'%}">search</a></li>
+                <li><a href="{%url 'mypage:mypage'%}">mypage</a></li></ul></div>
         </div>
 
         <div class="selectmain">
             <div class="moodselectsearchhead">내 기록 모아보기 > 리뷰 남긴 카페 내역</div>
 
             <div class="reviewmaincontainer1">
+                {%for review, cafe in reviewCafe %}
                 <div class="reviewmain1">
+                    
                     <div class="reviewleft1">
-                        <div class="reviewtext1">리뷰 내용</div>
+                        <div class="reviewtext1">{{review.review_content}}</div>
                     </div>
                     <div class="reviewright1">
-                        <div class="mypreviewimg1"></div>
+                        <img src="{{review.review_image.url}}" class="mypreviewimg1">
                         <div class="mypreviewmain1">
-                            <div class="mypreviewname1">카페명</div>
-                            <div class="mypreviewcomment1">한 줄 코멘트</div>
-                            <div class="mypreviewaddress1">주소</div>
+                            <a href="{%url 'cafe_select:select_detail' cafe.id %}"><div class="mypreviewname1">{{cafe.cafename}}</div></a>
+                            <div class="mypreviewcomment1">{{cafe.cafeinfo}}</div>
+                            <div class="mypreviewaddress1">{{cafe.cafelocation}}</div>
                         </div>
                     </div>
-                    <button class="deletebutton1">Delete</button>
+                    <a href="{%url "mypage:delete_myreview" cafe_id=cafe.id %}"><button class="deletebutton1">Delete</button></a>
+                    
                 </div>
+                {% endfor %}
                 <hr class="reviewbottomline"></hr>
             </div>
 

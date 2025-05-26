@@ -1,21 +1,25 @@
+{%load static%}
 <!DOCTYPE html>
 <html lang="en">
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>MYPAGE</title>
-    <link rel="stylesheet" href="../css/mypage.css">
+    <link rel="stylesheet" href="{%static 'css/mypage.css' %}">
 </head>
 <body>
     <div class="selectheader">
         <div class="selectheaderleft">
-            <div class="selectlogoimg"><a href="../html/home.html">
-                <img src="../home_img/homeheaderlogo.png" style="width: 180px">
+            <div class="selectlogoimg"><a href="{%url 'home:firstpage' %}">
+                <img src="{% static 'img/home_img/homeheaderlogo.png' %}" style="width: 180px">
             </a></div>
         </div>
         <div class="selectheadermiddle">
-            <div class="selectsearchpart"><input type="text" class="selectsearch" placeholder="남기고 싶은 카페를 검색해보세요"> 
-                <button class="selectsearchicon"><img src="../select_img/selectsearchicon.png" style="width: 25px"></button></div>
+            <form class="selectsearchpart" method='get' action={% url 'cafe_select:select_searched'%}>
+                {% csrf_token %}
+                <input type="text" name="select_searchbar" class="selectsearch" placeholder="남기고 싶은 카페를 검색해보세요">
+                <button type="submit" class="selectsearchicon"><img src="{%static 'img/select_img/selectsearchicon.png' %}" style="width: 25px"></button>
+            </form>
         </div>
         <div class="selecthdaerright"></div>
     </div>
@@ -24,53 +28,64 @@
 
     <div class="selectcontainer">
         <div class="selectleft">
-            <div class="navigationbar"><ul><li><a href="./select_before.html">select</a></li>
-                <li><a href="./search_before.html">search</a></li>
-                <li><a href="./mypage.html">mypage</a></li></ul></div>
+            <div class="navigationbar"><ul><li><a href="{%url 'cafe_select:select_before'%}">select</a></li>
+                <li><a href="{%url 'cafe_search:search_before'%}">search</a></li>
+                <li><a href="{%url 'mypage:mypage'%}">mypage</a></li></ul></div>
         </div>
 
         <div class="selectmain">
             <div class="mypageprofile">
-                <div class="mypageprofileimg"></div>
+                <img src='{{profile.profile_image.url}}' class="mypageprofileimg" alt="Profile Image">
                 <div class="mypageprofiletext">
-                    <div class="mypagename">닉네임</div>
+                    <div class="mypagename">{{profile.nickname}}</div>
                     <div class="mypageidcontainer">
                         <div class="mypageid">ID</div>
-                        <div class="mypageuserid">사용자 아이디</div>
+                        <div class="mypageuserid">{{user.username}}</div>
                     </div>
                     <div class="mypageemailcontainer">
                         <div class="mypageemail">EMAIL</div>
-                        <div class="mypageuseremail">사용자 이메일</div>
+                        <div class="mypageuseremail">{{user.email}}</div>
                     </div>
                     <div class="mypageprofilechagemodal">
                         <button class="mypageprofilechage" onclick="openModal()">수정하기</button>
 
                         <div id="profilechangeModal" class="modal">
+                            
                             <div class="modal-content">
-                                <div class="modaltop">
-                                    <div class="modaltoptext">회원 정보 수정하기</div>
-                                    <span class="close-btn" onclick="closeModal()">&times;</span>
-                                </div>
-                                <buttun class="profileimgchange">+</buttun>
-                                <div class="namechangebox">
-                                    <label for="namechange">닉네임</label>
-                                    <input type="text" class="namechange">
-                                </div>
+                                <form action="{% url 'mypage:profile_update' %}" method="post" enctype="multipart/form-data">
+                                    {% csrf_token %}
+                                    <div class="modaltop">
+                                        <div class="modaltoptext">회원 정보 수정하기</div>
+                                        <span class="close-btn" onclick="closeModal()">&times;</span>
+                                    </div>
+                                    <!-- 이미지 업로드 input (숨겨져 있음) -->
+                                    <input type="file"  name='new_profile' id="profile_image_update" style="display: none;" accept="image/*" />
+
+                                    <!-- 라벨 클릭 시 파일 업로드 창 열림 -->
+                                    <label for="profile_image_update" class="profileimgchange" role="button" tabindex="0">
+                                        <img id="preview-profile_image" src="#" alt="이미지를 선택해주세요" class="hidden-preview profileimgchange" style="display: none;" />
+                                        <div id="plus-icon">+</div>
+                                    </label>
+                                    {% comment %} <buttun class="profileimgchange">+</buttun> {% endcomment %}
+                                    <div class="namechangebox">
+                                        {% comment %} <label for="namechange"></label> {% endcomment %}
+                                        <input type="text" name="upd_nickname" value="{{profile.nickname}}" class="namechange">
+                                    </div>
                                 
                                 <!--<div class="profileimgafter"></div>-->
-                                <button class="submit-btn">확인</button>
+                                <button type="submit" class="submit-btn">확인</button>
                             </div>
                         </div>
                 </div>
 
-                    <script src="../js/mypage.js"></script>
+                    <script src="{% static "js/mypage.js" %}"></script>
 
                 </div>
             </div>
 
             <div class="mypagerecord">내 기록 모아보기</div>
-            <div class="mypagemoodselect"><a href="./mypage_moodselectsearch.html">분위기 남긴 카페 내역 > </a></div>
-            <div class="mypagereview"><a href="./mypage_reviewlist.html">리뷰 남긴 카페 내역 > </a></div>
+            <div class="mypagemoodselect"><a href="{%url 'mypage:my_mood' %}">분위기 남긴 카페 내역 > </a></div>
+            <div class="mypagereview"><a href="{%url 'mypage:my_review' %}">리뷰 남긴 카페 내역 > </a></div>
         </div>
 
         <div class="selectright">
@@ -81,5 +96,25 @@
         &copy; moodsn <br><br><br> Backend 손정민 <br> Frontend 성유리 이가윤
     </div>
     
+<script>
+    document.getElementById("profile_image_update").addEventListener("change", function (event) {
+        const file = event.target.files[0];
+        const preview = document.getElementById("preview-profile_image");
+        const plusIcon = document.getElementById("plus-icon");
+
+        if (file) {
+            const reader = new FileReader();
+
+            reader.onload = function (e) {
+                preview.src = e.target.result;
+                preview.style.display = "block";
+                plusIcon.style.display = "none";
+            };
+
+            reader.readAsDataURL(file);
+        }
+    });
+</script>
+
 </body>
 </html>

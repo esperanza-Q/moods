@@ -1,16 +1,19 @@
+{%load static%}
 <!DOCTYPE html>
 <html lang="ko">
 <head>
     <meta charset="UTF-8">
     <title>카페 상세 페이지</title>
-    <link rel="stylesheet" href="../css/search_detail.css">
+    <link rel="stylesheet" href="{% static 'css/search_detail.css' %}">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta3/css/all.min.css">
+
 </head>
 <body>
     <!-- 헤더 -->
     <div class="selectheader">
         <div class="selectheaderleft">
             <div class="selectlogoimg">
-                <img src="{% static 'img/home_img/homeheaderlogo.png' %}" style="width: 180px">
+                <a href="{%url 'home:firstpage'%}"><img src="{% static 'img/home_img/homeheaderlogo.png' %}" style="width: 180px"></a>
             </div>
         </div>
         <div class="selecthdaerright"></div>
@@ -20,32 +23,32 @@
     <!-- 사이드바 -->
     <div class="sidebar">
         <ul>
-            <li><a href="{% url 'cafe_select:select_before' request.user.id %}">select</a></li>
-            <li><a href="#">search</a></li>
-            <li><a href="{% url 'mypage:mypage' request.user.id %}">mypage</a></li>
+            <li><a href="{% url 'cafe_select:select_before' %}">select</a></li>
+            <li><a href="{%url 'cafe_search:search_before'%}">search</a></li>
+            <li><a href="{% url 'mypage:mypage' %}">mypage</a></li>
         </ul>
     </div>
 
     <!-- 본문 -->
-    <div class="request.user.id">
+    <div class="main-content">
         <!-- 카페 정보 상단 -->
         <div class="cafe-header">
-            <h2>☕ {{ cafe.name }}</h2>
-            <p>{{ cafe.comment }}</p>
+            <h2>☕ {{ cafe.cafename }}</h2>
+            <p>{{ cafe.cafeinfo }}</p>
         </div>
 
         <!-- 사진 & 지도 -->
         <div class="image-map-container">
-            <div class="cafe-image">대표사진</div>
-            <div class="cafe-map">지도 api</div>
+            <img src="{{cafeimage.cafeimage.url}}" class="cafe-image">
+            <a href="https://place.map.kakao.com/{{cafe.cafeID}}" target='_blank'><div id="cafemap" class="cafe-map"></div></a>
         </div>
 
         <!-- 태그 -->
         <div class="moods-section">
             <h3>#Moods</h3>
             <div class="tag-buttons">
-                {% for tag in cafe.tags %}
-                    <span class="tag">#{{ tag }}</span>
+                {%for tag in tags%}
+                    <span class="tag">{{tag.label}}</span>
                 {% endfor %}
             </div>
         </div>
@@ -54,10 +57,10 @@
         <div class="review-section">
             <h3>Review</h3>
             <div class="review-scroll-box">
-                {% for review in cafe.reviews %}
+                {% for writer, review in reviews %}
                 <div class="review-box">
-                    <div class="review-img">사진</div>
-                    <div class="review-content">{{ review.text }}</div>
+                    <img src="{{review.review_image.url}}" class="review-img">
+                    <div class="review-content">{{review.review_content}}</div>
                 </div>
                 {% endfor %}
             </div>
@@ -67,5 +70,31 @@
     <footer class="footer">
         footer
     </footer>
+
+    <!-- 카카오 지도 API 스크립트 -->
+    <script type="text/javascript" src="https://dapi.kakao.com/v2/maps/sdk.js?appkey={{myjskey}}"></script>
+
+    <script>
+    // 카카오 지도 API가 로드되면 실행되는 코드
+    kakao.maps.load(function() {
+        var cafeLat = {{ cafe.cafe_x }};
+        var cafeLng = {{ cafe.cafe_y }};
+        
+        var container = document.getElementById('cafemap');
+        var options = {
+            center: new kakao.maps.LatLng(cafeLng, cafeLat),
+            level: 2  // 지도 확대/축소 레벨
+        };
+
+        var map = new kakao.maps.Map(container, options);
+        
+        // 마커 추가
+        var marker = new kakao.maps.Marker({
+            position: new kakao.maps.LatLng(cafeLng, cafeLat)
+        });
+        marker.setMap(map);
+    });
+    </script>
+
 </body>
 </html>
