@@ -1,0 +1,13 @@
+<h2>리뷰 작성</h2>
+<form method="POST" enctype="multipart/form-data" action="{% url 'cafe_select:review' cafe_id=cafe_id request.user.id=request.user.id %}">
+    {% csrf_token %}
+    <div>
+        <input type="file" name="review_image" required>
+    </div>
+    <div>
+        <textarea name="review_content" rows="4" cols="50" placeholder="리뷰를 작성해주세요."></textarea>
+    </div>
+    <div>
+        <button type="submit">제출</button>
+    </div>
+</form>

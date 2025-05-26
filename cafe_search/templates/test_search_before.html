@@ -1,0 +1,53 @@
+{%load static%}
+{% if messages %}
+    {% for message in messages %}
+        {% if message.tags == "error" %}
+            <div class="error-box">{{ message }}</div>
+        {% elif message.tags == "warning" %}
+            <div class="warning-box">{{ message }}</div>
+        {% endif %}
+    {% endfor %}
+{% endif %}
+
+
+<form method="POST" action = {%url 'cafe_search:search_after' request.user.id=request.user.id%}>
+    {% csrf_token %}
+    <input type="checkbox" id="s_tag1" name="s_mood_tag" value="coffee">
+    <label for="s_tag1">#커피가 맛있는</label>&nbsp;&nbsp;&nbsp;
+
+    <input type="checkbox" id="s_tag2" name="s_mood_tag" value="refined">
+    <label for="s_tag2">#세련된</label>&nbsp;&nbsp;&nbsp;
+
+    <input type="checkbox" id="s_tag3" name="s_mood_tag" value="together">
+    <label for="s_tag3">#단체모임하기 좋은</label><br>
+
+    <input type="checkbox" id="s_tag4" name="s_mood_tag" value="dessert">
+    <label for="s_tag4">#디저트가 맛있는</label>&nbsp;&nbsp;&nbsp;
+
+    <input type="checkbox" id="s_tag5" name="s_mood_tag" value="clean">
+    <label for="s_tag5">#깔끔한</label>&nbsp;&nbsp;&nbsp;
+
+    <input type="checkbox" id="s_tag6" name="s_mood_tag" value="study">
+    <label for="s_tag6">#카공하기 좋은</label><br>
+
+    <input type="checkbox" id="s_tag7" name="s_mood_tag" value="cozy">
+    <label for="s_tag7">#포근한</label>&nbsp;&nbsp;&nbsp;
+
+    <input type="checkbox" id="s_tag8" name="s_mood_tag" value="big">
+    <label for="s_tag8">#넓은</label>&nbsp;&nbsp;&nbsp;
+
+    <input type="checkbox" id="s_tag9" name="s_mood_tag" value="alone">
+    <label for="s_tag9">#혼자 있기 좋은</label><br>
+
+    <input type="checkbox" id="s_tag10" name="s_mood_tag" value="cuty">
+    <label for="s_tag10">#아기자기한</label>&nbsp;&nbsp;&nbsp;
+
+    <input type="checkbox" id="s_tag11" name="s_mood_tag" value="always">
+    <label for="s_tag11">#24시간 영업하는</label>&nbsp;&nbsp;&nbsp;
+
+    <input type="checkbox" id="s_tag12" name="s_mood_tag" value="picture">
+    <label for="s_tag12">#사진 찍기 좋은</label><br>
+
+    <button type="submit">확인</button>
+
+</form>

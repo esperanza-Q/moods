@@ -1,0 +1,126 @@
+{%load static%}
+{% if messages %}
+    {% for message in messages %}
+        {% if message.tags == "error" %}
+            <div class="error-box">{{ message }}</div>
+        {% elif message.tags == "warning" %}
+            <div class="warning-box">{{ message }}</div>
+        {% endif %}
+    {% endfor %}
+{% endif %}
+<title>
+    {% comment %} <script src="{% static 'js/test_modal.js' %}"></script>  {% endcomment %}
+    <script src="{% static 'js/test_modal.js' %}"></script>
+    <link rel="stylesheet" href="{% static 'css/test_modal.css' %}">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta3/css/all.min.css">
+</title>
+<body>
+    <div style="width:350px; border:2px solid black;">
+        <form method='post' action={% url 'cafe_select:select_searched' request.user.id %}>
+            {% csrf_token %}
+            <input type="text" name="select_searchbar" placeholder="카페명" style="width:300px;">
+            <button type="submit">검색</button>
+        </form>
+    </div><br>
+
+    <!-- 리뷰쓰기 버튼 -->
+    {% if review_already == 'Y' %}
+        <strong>리뷰 쓰기 완료!</strong><br><br>
+    {% else %}
+        <a href={%url 'cafe_select:review' request.user.id=request.user.id cafe_id=cafe_id %}><button>리뷰쓰기</button></a><br><br>
+    {% endif %}
+
+    {% comment %} <div style="border:2px solid black; width:700px; display:flex; height:500px; padding: 10px;">
+        <img src="{{cafeimage.cafeimage.url}}" style="width:160px;height:160px; margin-left:20px; margin-right:40px;">
+        <a href="https://place.map.kakao.com/{{cafe.cafeID}}" target='_blank'><div id="cafemap" style="width:500px;height:500px;border:1px solid black;"></div></a>
+        
+    </div> {% endcomment %}
+
+    <div style="border:2px solid black; width:1050px; display:flex; height:500px; padding: 10px; justify-content: center; align-items: center;">
+        <img src="{{cafeimage.cafeimage.url}}" style="width:500px;height:500px; margin-left:10px; margin-right:40px;">
+        <a href="https://place.map.kakao.com/{{cafe.cafeID}}" target='_blank'><div id="cafemap" style="width:500px;height:500px;border:1px solid black;margin-right:10px;"></div></a>       
+    </div><br><br>
+
+    <div style="margin-left: 20px;"><br><br>
+        <p><strong>{{ cafe.cafename }}</strong></p><br>
+        <p>{{ cafe.cafelocations }}</p><br>
+        <p>{{ cafe.cafeinfo }}</p><br>
+    </div>
+
+    <div class="moodsselectcontainer">
+    {% if mood_already == 'Y' %}
+        <strong>분위기 태그 투표 완료!</strong><br><br>
+        <a href={% url "cafe_select:reselect_tag" request.user.id=request.user.id cafe_id=cafe_id %}><button>다시 투표하기</button></a>
+    {% else %}
+        <form method="POST" action = {%url 'cafe_select:select_tag' request.user.id=request.user.id cafe_id=cafe_id %}>
+            {% csrf_token %}
+            <input type="checkbox" id="tag1" name="mood_tag" value="coffee">
+            <label for="tag1">#커피가 맛있는</label>&nbsp;&nbsp;&nbsp;
+
+            <input type="checkbox" id="tag2" name="mood_tag" value="refined">
+            <label for="tag2">#세련된</label>&nbsp;&nbsp;&nbsp;
+
+            <input type="checkbox" id="tag3" name="mood_tag" value="together">
+            <label for="tag3">#단체모임하기 좋은</label><br>
+
+            <input type="checkbox" id="tag4" name="mood_tag" value="dessert">
+            <label for="tag4">#디저트가 맛있는</label>&nbsp;&nbsp;&nbsp;
+
+            <input type="checkbox" id="tag5" name="mood_tag" value="clean">
+            <label for="tag5">#깔끔한</label>&nbsp;&nbsp;&nbsp;
+
+            <input type="checkbox" id="tag6" name="mood_tag" value="study">
+            <label for="tag6">#카공하기 좋은</label><br>
+
+            <input type="checkbox" id="tag7" name="mood_tag" value="cozy">
+            <label for="tag7">#포근한</label>&nbsp;&nbsp;&nbsp;
+
+            <input type="checkbox" id="tag8" name="mood_tag" value="big">
+            <label for="tag8">#넓은</label>&nbsp;&nbsp;&nbsp;
+
+            <input type="checkbox" id="tag9" name="mood_tag" value="alone">
+            <label for="tag9">#혼자 있기 좋은</label><br>
+
+            <input type="checkbox" id="tag10" name="mood_tag" value="cuty">
+            <label for="tag10">#아기자기한</label>&nbsp;&nbsp;&nbsp;
+
+            <input type="checkbox" id="tag11" name="mood_tag" value="always">
+            <label for="tag11">#24시간 영업하는</label>&nbsp;&nbsp;&nbsp;
+
+            <input type="checkbox" id="tag12" name="mood_tag" value="picture">
+            <label for="tag12">#사진 찍기 좋은</label><br>
+
+            <button type="submit">확인</button>
+
+        </form>
+    {% endif %}
+
+    </div>
+
+
+<!-- 카카오 지도 API 스크립트 -->
+<script type="text/javascript" src="https://dapi.kakao.com/v2/maps/sdk.js?appkey={{myjskey}}"></script>
+
+<script>
+    // 카카오 지도 API가 로드되면 실행되는 코드
+    kakao.maps.load(function() {
+        var cafeLat = {{ cafe.cafe_x }};
+        var cafeLng = {{ cafe.cafe_y }};
+        
+        var container = document.getElementById('cafemap');
+        var options = {
+            center: new kakao.maps.LatLng(cafeLng, cafeLat),
+            level: 2  // 지도 확대/축소 레벨
+        };
+
+        var map = new kakao.maps.Map(container, options);
+        
+        // 마커 추가
+        var marker = new kakao.maps.Marker({
+            position: new kakao.maps.LatLng(cafeLng, cafeLat)
+        });
+        marker.setMap(map);
+    });
+</script>
+
+</body>

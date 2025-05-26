@@ -1,0 +1,60 @@
+{%load static%}
+<!DOCTYPE html>
+<html lang="ko">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>SignUp</title>
+    <link rel="stylesheet" href="{%static 'css/signup.css' %}">
+    <style>
+        @import url('https://fonts.googleapis.com/css2?family=Kalnia&display=swap');
+    </style>
+    <script>
+    {% if messages %}
+    
+        window.onload = function() {
+            {% for message in messages %}
+                alert("{{ message }}");
+            {% endfor %}
+        };
+    {% endif %}
+    </script>
+</head>
+<body>
+    <div class="container">
+        <a href="{%url 'home:firstpage'%}"><img src="{%static 'img/moodsn_logo.png' %}" alt="Logo" class="logo"></a>
+        <h1 class="signup-title">SIGN UP</h1>
+        <form class="signup-form" method='POST' action ={%url 'accounts:signup'%}>
+            {% csrf_token %}
+            <div class="input-container">
+                <label for="name">NAME</label>
+                <input type="text" id="name" name='nickname' class="input-field" required>
+            </div>
+            
+            <div class="input-container">
+                <label for="email">EMAIL</label>
+                <input type="email" id="email" name='email' class="input-field" required>
+            </div>
+            
+            <div class="input-container">
+                <label for="id">ID</label>
+                <input type="text" id="id" name='username' class="input-field" required>
+            </div>
+            
+            <div class="input-container">
+                <label for="pw">PW</label>
+                <input type="password" id="pw" name='password1' class="input-field" required>
+            </div>
+            
+            <div class="input-container">
+                <label for="re-pw">Re-PW</label>
+                <input type="password" id="re-pw" name='password2' class="input-field" required>
+            </div>
+            <input type="submit" id="signup-submit" class="hidden-submit">
+            <label for="signup-submit" class="signup-btn">SIGN UP</label>
+            {% comment %} <span class="signup-btn" onclick="signUp()">SIGN UP</span> {% endcomment %}
+        </form>
+    </div>
+    <script src="signup.js"></script>
+</body>
+</html>

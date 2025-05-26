@@ -1,0 +1,293 @@
+body{
+    background: linear-gradient(#FFFFF3, #FFFEE0);
+}
+
+.selectheader{
+    display: flex;
+    flex-direction: row;
+}
+
+.selectheaderleft{
+    flex:1;
+}
+
+.selectheadermiddle{
+    width:830px;
+}
+
+.selecthdaerright{
+    flex: 1;
+}
+
+.selectlogoimg {
+    float: right;
+    margin-top: 85px;
+}
+
+.selectsearchpart {
+    display: flex;
+    flex-direction: row;
+}
+
+.selectsearch {
+    display: flex;
+    flex-direction: row;
+    border: 1px solid #BF0E00;
+    border-radius: 20px;
+    width: 450px;
+    height: 38px;
+    margin-top: 121px;
+    margin-left: 30px;
+    padding-left: 15px; 
+}
+
+.selectsearchicon {
+    margin-top: 120px;
+    margin-left: 2px;
+    background: none;
+    border: none;
+    cursor: pointer;
+}
+
+.headerline {
+    margin-top: 15px;
+}
+
+.selectleft {
+    flex: 1;
+}
+
+.navigationbar ul {
+    list-style-type: none;
+    float: right;
+    margin-right: 70px;
+    margin-top: 60px;
+}
+
+.navigationbar ul a{
+    text-decoration: none;
+    color:#BF0E00;
+    font-size: 18px;
+}
+
+.navigationbar ul a:hover{
+    background-color: #fae5e3;
+    border-radius: 10px;
+}
+
+.navigationbar ul li {
+    margin-bottom: 50px;
+}
+
+.selectmain {
+    border: 1px solid #BF0E00;
+    border-top: none;
+    width: 830px;
+    height: 430px;
+}
+
+.mypageprofile{
+    display: flex;
+    flex-direction: row;
+    background-color: #eef8ff88;
+    width: 100%;
+    height: 250px;
+}
+
+.mypageprofileimg{
+    background-color: rgb(192, 192, 192);
+    width: 180px;
+    height: 180px;
+    border-radius: 50%;
+    margin-left: 50px;
+    margin-top: 40px;
+}
+
+.mypageprofiletext{
+    display: flex;
+    flex-direction: column;
+    margin-left: 50px;
+    margin-top: 50px;
+    font-size: 16px;
+}
+
+.mypagename{
+    font-size: 25px;
+    background-color: #E9F6FF;
+    border-radius: 30px;
+    width: 80px;
+    padding: 8px;
+}
+
+.mypageidcontainer{
+    margin-left: 10px;
+    display: flex;
+    flex-direction: row;
+    margin-top: 18px;
+    font-size: 17px;
+}
+
+.mypageid{
+    margin-right: 13px;
+}
+
+.mypageemailcontainer{
+    margin-left: 10px;
+    display: flex;
+    flex-direction: row;
+    font-size: 17px;
+}
+
+.mypageemail{
+    margin-right: 13px;
+}
+
+.mypageprofilechage{
+    background: none;
+    border: none;
+    margin-top: 13px;
+    cursor: pointer;
+    font-size: 15px;
+}
+
+
+
+.modal {
+    display: none;
+    position: fixed;
+    z-index: 1000;
+    left: 0;
+    top: 0;
+    width: 100%;
+    height: 100%;
+    background-color: rgba(0, 0, 0, 0.4);
+    align-items: center;
+    justify-content: center;
+}
+
+.modal-content {
+    background-color: white;
+    width: 370px;
+    height: 430px;
+    text-align: center;
+    display: flex;
+    flex-direction: column;
+    border: 1px solid black;
+}
+
+.namechangebox{
+    display: flex;
+    flex-direction: row;
+    align-items: center;
+    justify-content: center;
+    gap: 15px;
+}
+
+.modaltop{
+    display: flex;
+    flex-direction: row;
+    height: 35px;
+    background-color: #ffa39c60;
+    position: relative;
+}
+
+.modaltoptext{
+    color: #979797;
+    margin: 9px;
+    font-size: 13px;
+}
+
+.close-btn {
+    position: absolute;
+    right: 10px;
+    font-size: 25px;
+    cursor: pointer;
+}
+
+.profileimgchange{
+    font-size: 40px;
+    color:#BF0E00;
+    border: 2px solid #BF0E00;
+    width: 170px;
+    height: 170px;
+    border-radius: 50%;
+    margin: 50px auto;
+    cursor: pointer;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+
+/*.profileimgafter{
+    margin-top: 30px;
+    width: 170px;
+    height: 170px;
+    background-color: #979797;
+    margin: 0 auto;
+    margin-bottom: 20px;
+}*/
+
+.namechange{
+    width: 100px;
+    height: 20px;
+    background-color: #E9F6FF;
+    border: none;
+    border-radius: 20px;
+}
+
+.submit-btn {
+    width: 40px;
+    background-color: #FFFEE0;
+    color: black;
+    border: 1px solid black;
+    border-radius: 20px;
+    font-size: 13px;
+    cursor: pointer;
+    margin: 40px auto;
+}
+
+.submit-btn:hover {
+    background-color: #fff09ea1;
+}
+
+.mypagerecord{
+    margin-top: 30px;
+    margin-left: 30px;
+    font-size: 25px;
+    color:#b1b1b1;
+}
+
+.mypagemoodselect a{
+    text-decoration: none;
+    color: black;
+}
+
+.mypagereview a{
+    text-decoration: none;
+    color: black;
+}
+
+.mypagemoodselect{
+    margin-left: 30px;
+    margin-top: 20px;
+}
+
+.mypagereview{
+    margin-left: 30px;
+    margin-top: 5px;
+}
+
+.selectright{
+    flex: 1;
+}
+
+.selectcontainer{
+    display: flex;
+    flex-direction: row;
+}
+
+.footer{
+    height: 110px;
+    background-color: #f7f2cd;
+    padding: 15px;
+}

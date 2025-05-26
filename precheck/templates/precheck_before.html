@@ -1,0 +1,60 @@
+{%load static%}
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>MYPAGE</title>
+    <link rel="stylesheet" href="{%static 'css/precheck_before.css'%}">
+    <link href="https://fonts.googleapis.com/css2?family=Kalnia&display=swap" rel="stylesheet">
+</head>
+<body>
+    <div class="selectheader">
+        <div class="selectheaderleft">
+            <div class="selectlogoimg"><a href="{%url 'home:firstpage' %}"><img src="{%static 'img/moodsn_logo.png'%}" style="width: 220px"></a></div>
+        </div>
+        <div class="selectheadermiddle">
+            <a href="{%url 'home:firstpage' %}" class="main-home">Main home</a>
+        </div>          
+        </div>
+        <div class="selectheaderright"></div>
+    </div>
+
+    <div class="headerline"></div>
+
+    <div class="selectcontainer">
+        <div class="selectleft">
+            <div class="profile-section">
+                <div><img src={{profile.profile_image.url}} alt='image' class="profile-img"></div>
+                <div class="nickname-box">{{profile.nickname}}</div>
+            </div>
+        </div>
+
+        <div class="selectmain">
+            <div class="mypost-title">My Certified Post</div>
+            <form method="POST" action={%url 'precheck:precheck_B' %} enctype="multipart/form-data">
+                {% csrf_token %}
+                <div class="mypost-box">
+                    {{ form.content }}
+                    <input type="file" name="checkimage"  required>
+                </div>
+            {% comment %} <textarea class="mypost-box">작성된 인증글이 없습니다. 인증글을 작성해주세요
+(인증글 작성 시 가이드글과 예시 작성문을 삭제 후 양식에 맞추어 재작성해주시면 됩니다)
+
+<인증 가이드>
+학번 / 성명 / 가입 시 사용한 이메일
+학교이름, 성명, 학번이 보이는 학생증 사진
+
+Ex) 20240000 / 김수정 / moodsncafe@naver.com</textarea> {% endcomment %}
+            {% comment %} <button class="mypost-upload">게시글 업로드</button> {% endcomment %}
+                
+                <button class="mypost-upload" type="submit">게시글 업로드</button>
+            </form>
+        </div>
+    </div>
+
+    <div class="footer">
+        &copy; moodsn <br><br><br> Backend 손정민 <br> Frontend 성유리 이가윤
+    </div>
+</body>
+</html>

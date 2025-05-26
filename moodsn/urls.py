@@ -16,8 +16,21 @@ Including another URLconf
 """
 from django.contrib import admin
 from django.urls import path, include
+from django.conf.urls.static import static
+from django.conf import settings
+
 
 urlpatterns = [
     path('admin/', admin.site.urls),
     path('moodsn/', include('home.urls')),
-]
+    path('moodsn/accounts/', include('accounts.urls')),
+    path('moodsn/precheck/', include('precheck.urls')),
+    path('moodsn/cafe/', include('cafe.urls')),
+    path('moodsn/cafe_select/', include('cafe_select.urls')),
+    path('kakaopai/', include('kakaopai.urls')),
+    path('moodsn/mypage/', include('mypage.urls')),
+    path('moodsn/cafe_search/', include('cafe_search.urls')),
+] + static(settings.MEDIA_URL, document_root=settings.MEDIA_ROOT)
+
+if settings.DEBUG:
+    urlpatterns += static(settings.MEDIA_URL, document_root=settings.MEDIA_ROOT)

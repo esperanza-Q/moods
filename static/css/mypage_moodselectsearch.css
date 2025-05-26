@@ -1,0 +1,170 @@
+body{
+    background: linear-gradient(#FFFFF3, #FFFEE0);
+}
+
+.selectheader{
+    display: flex;
+    flex-direction: row;
+}
+
+.selectheaderleft{
+    flex:1;
+}
+
+.selectheadermiddle{
+    width:830px;
+}
+
+.selecthdaerright{
+    flex: 1;
+}
+
+.selectlogoimg {
+    float: right;
+    margin-top: 85px;
+}
+
+.selectsearchpart {
+    display: flex;
+    flex-direction: row;
+}
+
+.selectsearch {
+    display: flex;
+    flex-direction: row;
+    border: 1px solid #BF0E00;
+    border-radius: 20px;
+    width: 450px;
+    height: 38px;
+    margin-top: 121px;
+    margin-left: 30px;
+    padding-left: 15px; 
+}
+
+.selectsearchicon {
+    margin-top: 120px;
+    margin-left: 2px;
+    background: none;
+    border: none;
+    cursor: pointer;
+}
+
+.headerline {
+    margin-top: 15px;
+}
+
+.selectleft {
+    flex: 1;
+}
+
+.navigationbar ul {
+    list-style-type: none;
+    float: right;
+    margin-right: 70px;
+    margin-top: 60px;
+}
+
+.navigationbar ul a{
+    text-decoration: none;
+    color:#BF0E00;
+    font-size: 18px;
+}
+
+.navigationbar ul a:hover{
+    background-color: #fae5e3;
+    border-radius: 10px;
+}
+
+.navigationbar ul li {
+    margin-bottom: 50px;
+}
+
+.selectmain {
+    border: 1px solid #BF0E00;
+    border-top: none;
+    width: 830px;
+    height: 410px;
+
+}
+
+.moodselectsearchhead{
+    color: gray;
+    font-size: 20px;
+    margin-top: 50px;
+    margin-left: 70px;
+}
+
+.mymoodselectcontainer {
+    display: flex;
+    background-color: #d1edff65;
+    margin: 30px 50px 50px 50px;
+    border-radius: 20px;
+}
+
+.tag-box {
+    width: 180px;
+    padding: 15px;
+    display: flex;
+    flex-direction: column;
+    gap: 20px;
+}
+
+.tag{
+    display: none;
+}
+
+.taglabel {
+    background-color: none;
+    padding: 10px;
+    border-radius: 20px;
+    font-size: 14px;
+    text-align: center;
+    border: 1px solid #ccc;
+    background-color: #FFFFF3;
+    cursor: pointer;
+}
+
+.taglabel:hover{
+    background-color: #ffb6a75f;
+    border: 1px solid #ff7f5079;
+}
+
+.tag:checked + .taglabel {
+    background-color: #ffb6a75f;
+    border: 1px solid #ff7f5079;
+}
+
+.mymoodselectbutton{
+    background: none;
+    border: none;
+    background-color: #d1edff65;
+    padding: 5px;
+    width: 60px;
+    border-radius: 20px;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    margin: 5px auto;
+    cursor: pointer;
+    color:#979797;
+}
+
+.mymoodselectbutton:hover{
+    background-color: #d1edffc3;
+    border:1px solid #93b7cec3;
+}
+
+.selectright{
+    flex: 1;
+}
+
+.selectcontainer{
+    display: flex;
+    flex-direction: row;
+}
+
+.footer{
+    height: 110px;
+    background-color: #f7f2cd;
+    padding: 15px;
+}

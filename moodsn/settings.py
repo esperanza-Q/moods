@@ -40,6 +40,12 @@ INSTALLED_APPS = [
     'moodsn',
     'accounts',
     'home',
+    'precheck',
+    'cafe',
+    'cafe_select',
+    'cafe_search',
+    'kakaopai',
+    'mypage',
 ]
 
 MIDDLEWARE = [
@@ -57,7 +63,7 @@ ROOT_URLCONF = 'moodsn.urls'
 TEMPLATES = [
     {
         'BACKEND': 'django.template.backends.django.DjangoTemplates',
-        'DIRS': [],
+        'DIRS': [BASE_DIR/ 'templates'],
         'APP_DIRS': True,
         'OPTIONS': {
             'context_processors': [
@@ -75,6 +81,31 @@ WSGI_APPLICATION = 'moodsn.wsgi.application'
 
 # Database
 # https://docs.djangoproject.com/en/5.1/ref/settings/#databases
+# import os
+# from pathlib import Path
+# from dotenv import load_dotenv
+
+# # BASE_DIR 정의
+# BASE_DIR = Path(__file__).resolve().parent.parent
+
+# # .env 파일 불러오기
+# load_dotenv(os.path.join(BASE_DIR, '.env'))
+
+# # SECRET_KEY 불러오기
+# SECRET_KEY = os.getenv('DJANGO_SECRET_KEY')
+
+# # DATABASE 설정
+# DATABASES = {
+#     'default': {
+#         'ENGINE': 'django.db.backends.mysql',
+#         'NAME': os.getenv('DB_NAME'),
+#         'USER': os.getenv('DB_USER'),
+#         'PASSWORD': os.getenv('DB_PASSWORD'),
+#         'HOST': os.getenv('DB_HOST', 'localhost'),  # 기본값으로 localhost
+#         'PORT': os.getenv('DB_PORT', '3306'),       # 기본값으로 3306
+#     }
+# }
+# 원래 이 위까지가 저거임. 저거 뭐야 그거. mysql 연동. 그런데 그냥 귀찮아서 sqlite로 바꿨어요.
 
 DATABASES = {
     'default': {
@@ -82,6 +113,7 @@ DATABASES = {
         'NAME': BASE_DIR / 'db.sqlite3',
     }
 }
+
 
 
 # Password validation
@@ -118,9 +150,19 @@ USE_TZ = True
 # Static files (CSS, JavaScript, Images)
 # https://docs.djangoproject.com/en/5.1/howto/static-files/
 
-STATIC_URL = 'static/'
+STATIC_URL = '/static/'
+STATICFILES_DIRS = [
+    BASE_DIR / 'static',  # 프로젝트 내 static 폴더를 추가
+]
+
+STATIC_ROOT = BASE_DIR / 'staticfiles'
 
 # Default primary key field type
 # https://docs.djangoproject.com/en/5.1/ref/settings/#default-auto-field
 
 DEFAULT_AUTO_FIELD = 'django.db.models.BigAutoField'
+
+import os
+
+MEDIA_URL = '/media/'
+MEDIA_ROOT = os.path.join(BASE_DIR, 'media')

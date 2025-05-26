@@ -1,0 +1,40 @@
+
+<script>
+    document.addEventListener('DOMContentLoaded', function () {
+        var rows = document.querySelectorAll('tr[data-href]');
+        rows.forEach(function (row) {
+            row.addEventListener('click', function () {
+                window.location.href = this.dataset.href;
+            });
+        });
+    });
+</script>
+<div>
+    <form method='post' action={% url 'cafe_select:select_searched' request.user.id %}>
+        {% csrf_token %}
+        <input type="text" name="select_searchbar" placeholder="카페명" style="width:300px;">
+        <button type="submit">검색</button>
+    </form>
+</div>
+
+
+{% for cafe, cafeimage in cafe_list %}
+
+    <div style="border:2px solid black; width:600px; height:160px; display: flex; align-items: center; padding: 10px;">                            
+
+        {% if cafeimage and cafeimage.cafeimage %}
+            <img src="{{cafeimage.cafeimage.url}}" style="width:160px;height:160px; cursor:pointer;" onclick="location.href='{% url 'cafe_select:select_detail' request.user.id=request.user.id cafe_id=cafe.id %}'">
+        {% else %}
+            <p style="width:160px; height:160px; display:flex; justify-content:center; align-items:center; border:1px solid gray;">사진 없음</p>
+        {% endif %}
+
+        <div style="margin-left: 20px;">
+            <p><strong>{{ cafe.cafename }}</strong></p>
+            <p>{{ cafe.cafelocations }}</p>
+            <p>{{ cafe.cafeinfo }}</p>
+        </div>
+
+    </div>
+    <br>
+
+{% endfor %}

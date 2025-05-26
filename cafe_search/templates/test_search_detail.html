@@ -1,0 +1,72 @@
+{%load static%}
+<title>
+    {% comment %} <script src="{% static 'js/test_modal.js' %}"></script>  {% endcomment %}
+    <script src="{% static 'js/test_modal.js' %}"></script>
+    {% comment %} <link rel="stylesheet" href="{% static 'css/test_modal.css' %}"> {% endcomment %}
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta3/css/all.min.css">
+</title>
+<body>
+    <div>
+        <a href="{%url 'cafe_search:search_before' request.user.id=request.user.id%}"><button>검색 다시하기</button></a>
+    </div><br>
+
+    <div style="margin-left: 20px;"><br>
+        <h2>{{ cafe.cafename }}</h2>
+        {% comment %} <p>{{ cafe.cafelocations }}</p><br> {% endcomment %}
+        <p>{{ cafe.cafeinfo }}</p><br>
+    </div><br>
+
+    <div style="border:2px solid black; width:1050px; display:flex; height:500px; padding: 10px; justify-content: center; align-items: center;">
+        <img src="{{cafeimage.cafeimage.url}}" style="width:500px;height:500px; margin-left:10px; margin-right:40px;">
+        <a href="https://place.map.kakao.com/{{cafe.cafeID}}" target='_blank'><div id="cafemap" style="width:500px;height:500px;border:1px solid black;margin-right:10px;"></div></a>       
+    </div><br><br>
+
+    
+
+
+    <h2>#moods</h2>
+    <div style="border:2px dotted black; width:500px; height:50px; align-content: center; text-align: center; border-radius: 20px;">
+        {%for tag in tags%}
+            <strong>#{{tag}}</strong>&nbsp;&nbsp;&nbsp;
+        {%endfor%}
+    </div><br><br>
+
+    <h2>#Review</h2>
+    <div style="border:2px solid black; width:1001px; height:500px; overflow-y: auto; display: flex; flex-direction: column; align-items: center; padding: 10px;">
+        {% for writer, review in reviews %}
+        <div style="border:1px dotted black; width:95%; max-width:960px; height:200px; display:flex; align-items:center; gap:20px; border-radius:20px; padding:15px; margin-bottom: 10px; text-align: center;">
+            <div style="width:120px; text-align:center; font-weight:bold;">{{writer.nickname}}</div>
+            <img src="{{review.review_image.url}}" style="width:150px; height:150px; border-radius:10px;">
+            <div style="flex-grow:1; border:1px solid black; padding:10px; height:180px; text-align: center; align-content: center;">{{review.review_content}}</div>
+        </div>
+        {% endfor %}
+    </div><br><br>
+    
+
+
+    <!-- 카카오 지도 API 스크립트 -->
+<script type="text/javascript" src="https://dapi.kakao.com/v2/maps/sdk.js?appkey={{myjskey}}"></script>
+
+<script>
+    // 카카오 지도 API가 로드되면 실행되는 코드
+    kakao.maps.load(function() {
+        var cafeLat = {{ cafe.cafe_x }};
+        var cafeLng = {{ cafe.cafe_y }};
+        
+        var container = document.getElementById('cafemap');
+        var options = {
+            center: new kakao.maps.LatLng(cafeLng, cafeLat),
+            level: 2  // 지도 확대/축소 레벨
+        };
+
+        var map = new kakao.maps.Map(container, options);
+        
+        // 마커 추가
+        var marker = new kakao.maps.Marker({
+            position: new kakao.maps.LatLng(cafeLng, cafeLat)
+        });
+        marker.setMap(map);
+    });
+</script>
+
+</body>
