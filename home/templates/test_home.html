@@ -15,9 +15,9 @@
 
 <a href="{%url 'accounts:logout' %}"><button>로그아웃</button></a>
     {%if user.is_superuser %}
-        <a href="{%url 'cafe:cafeadd' user_id %}"><button>카페 추가</button></a>
+        <a href="{%url 'cafe:cafeadd' request.user.id %}"><button>카페 추가</button></a>
     {%endif%}
-    <a href={%url 'cafe_select:select_before' user_id %}><button>select</button></a>
+    <a href={%url 'cafe_select:select_before' request.user.id %}><button>select</button></a>
 
 {%else%}
 {% comment %} 로그인 되었습니다!<br>

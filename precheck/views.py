@@ -6,17 +6,17 @@ from django.urls import reverse
 from accounts.models import Profile
 
 # Create your views here.
-def precheck(request, user_id):
+def precheck(request):
     if Checkpost.objects.filter(user=request.user).exists():  # 이미 인증글이 있으면
-        checkpost = get_object_or_404(Checkpost, user_id=user_id)
+        checkpost = get_object_or_404(Checkpost, user_id=request.user.id)
 
-        return redirect(reverse('precheck:precheck_A', kwargs={'user_id': user_id, 'checkpost_id': checkpost.id}))  # 인증글이 있으면 다른 페이지로 리다이렉트
+        return redirect('precheck:precheck_A')  # 인증글이 있으면 다른 페이지로 리다이렉트
     else:
-        return redirect('precheck:precheck_B', user_id)
+        return redirect('precheck:precheck_B')
 
-def precheck_A(request, user_id, checkpost_id):
-    profile=get_object_or_404(Profile, user_id=user_id)
-    checkpost = get_object_or_404(Checkpost, user_id=user_id)
+def precheck_A(request):
+    profile=get_object_or_404(Profile, user_id=request.user.id)
+    checkpost = get_object_or_404(Checkpost, user_id=request.user.id)
     checkimage=CheckImage.objects.filter(checkpost=checkpost).first()
     
     context = {
@@ -24,10 +24,10 @@ def precheck_A(request, user_id, checkpost_id):
         'checkimage': checkimage,
         'profile':profile
     }
-    return render(request, 'test_pre_check_A.html', context)
+    return render(request, 'precheck_after.html', context)
 
-def precheck_B(request, user_id):
-    profile=get_object_or_404(Profile, user_id=user_id)
+def precheck_B(request):
+    profile=get_object_or_404(Profile, user_id=request.user.id)
     if request.method == 'POST':
         form = Checkpostform(request.POST, request.FILES)
         if form.is_valid():
@@ -43,20 +43,20 @@ def precheck_B(request, user_id):
                 CheckImage.objects.create(checkpost=checkpost, checkimage=checkimage)
                 
             
-            return redirect(reverse('precheck:precheck_A', kwargs={'user_id': user_id, 'checkpost_id': checkpost.id}), profile) # 인증글 작성 후 precheck_A로 리디렉션
+            return redirect('precheck:precheck_A') # 인증글 작성 후 precheck_A로 리디렉션
         else:
             # 폼이 유효하지 않으면 precheck로 리디렉션
             print(form.errors)
             return redirect('precheck:test')
     else:
         form = Checkpostform()  # GET 요청일 경우 새 폼을 생성
-        return render(request, 'test_pre_check.html', {'user_id': user_id, 'form': form, 'profile':profile})
+        return render(request, 'precheck_before.html', {'form': form, 'profile':profile})
 
 
-def precheck_delete(request, user_id, checkpost_id):
+def precheck_delete(request, checkpost_id):
     checkpost = get_object_or_404(Checkpost, id=checkpost_id)
     checkpost.delete()
-    return redirect('precheck:precheck', user_id)
+    return redirect('precheck:precheck')
     
 def test(request):
     return render(request, 'test.html')

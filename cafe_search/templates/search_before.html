@@ -1,12 +1,26 @@
+{%load static%}
 <!DOCTYPE html>
 <html lang="en">
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>SEARCH</title>
-    <link rel="stylesheet" href="../css/search_before.css">
+    <link rel="stylesheet" href="{%static 'css/search_before.css' %}">
+    {% if messages %}
+    <script>
+        window.onload = function() {
+            {% for message in messages %}
+                
+                alert("{{ message }}");
+            {% endfor %}
+        };
+    </script>
+    {% endif %}
+    
 </head>
 <body>
+    
+
     <div class="selectheader">
         <div class="selectheaderleft">
             <div class="selectlogoimg">
@@ -22,9 +36,9 @@
         <div class="selectleft">
             <div class="navigationbar">
                 <ul>
-                    <li><a href="{% url 'cafe_select:select_before' user_id %}">select</a></li>
+                    <li><a href="{% url 'cafe_select:select_before' %}">select</a></li>
                     <li><a href="#">search</a></li>
-                    <li><a href="{% url 'mypage:mypage' user_id %}">mypage</a></li>
+                    <li><a href="{% url 'mypage:mypage' %}">mypage</a></li>
                 </ul>
             </div>
         </div>
@@ -33,40 +47,41 @@
             <div class="sdetailbottombox">
                 <div class="toptitletext">분위기 태그 선택하기</div>
 
-                <form method="GET" action="{% url 'search_after' %}">
+                <form method="POST" action="{% url 'cafe_search:search_after' %}">
+                    {% csrf_token %}
                     <div class="moodsselectcontainer">
                         <!-- 태그 라인 (각 div.tag-box 마다 3개씩) -->
                         <div class="tag-box">
-                            <input type="checkbox" id="tag1" class="tag" name="mood_tag" value="coffee">
-                            <label for="tag1" class="taglabel">#커피가 맛있는</label>
-                            <input type="checkbox" id="tag2" class="tag" name="mood_tag" value="refined">
-                            <label for="tag2" class="taglabel">#세련된</label>
-                            <input type="checkbox" id="tag3" class="tag" name="mood_tag" value="together">
-                            <label for="tag3" class="taglabel">#단체모임하기 좋은</label>
+                            <input type="checkbox" id="s_tag1" class="tag" name="s_mood_tag" value="coffee">
+                            <label for="s_tag1" class="taglabel">#커피가 맛있는</label>
+                            <input type="checkbox" id="s_tag2" class="tag" name="s_mood_tag" value="refined">
+                            <label for="s_tag2" class="taglabel">#세련된</label>
+                            <input type="checkbox" id="s_tag3" class="tag" name="s_mood_tag" value="together">
+                            <label for="s_tag3" class="taglabel">#단체모임하기 좋은</label>
                         </div>
                         <div class="tag-box">
-                            <input type="checkbox" id="tag4" class="tag" name="mood_tag" value="dessert">
-                            <label for="tag4" class="taglabel">#디저트가 맛있는</label>
-                            <input type="checkbox" id="tag5" class="tag" name="mood_tag" value="clean">
-                            <label for="tag5" class="taglabel">#깔끔한</label>
-                            <input type="checkbox" id="tag6" class="tag" name="mood_tag" value="study">
-                            <label for="tag6" class="taglabel">#카공하기 좋은</label>
+                            <input type="checkbox" id="s_tag4" class="tag" name="s_mood_tag" value="dessert">
+                            <label for="s_tag4" class="taglabel">#디저트가 맛있는</label>
+                            <input type="checkbox" id="s_tag5" class="tag" name="s_mood_tag" value="clean">
+                            <label for="s_tag5" class="taglabel">#깔끔한</label>
+                            <input type="checkbox" id="s_tag6" class="tag" name="s_mood_tag" value="study">
+                            <label for="s_tag6" class="taglabel">#카공하기 좋은</label>
                         </div>
                         <div class="tag-box">
-                            <input type="checkbox" id="tag7" class="tag" name="mood_tag" value="cozy">
-                            <label for="tag7" class="taglabel">#포근한</label>
-                            <input type="checkbox" id="tag8" class="tag" name="mood_tag" value="big">
-                            <label for="tag8" class="taglabel">#넓은</label>
-                            <input type="checkbox" id="tag9" class="tag" name="mood_tag" value="alone">
-                            <label for="tag9" class="taglabel">#혼자 있기 좋은</label>
+                            <input type="checkbox" id="s_tag7" class="tag" name="s_mood_tag" value="cozy">
+                            <label for="s_tag7" class="taglabel">#포근한</label>
+                            <input type="checkbox" id="s_tag8" class="tag" name="s_mood_tag" value="big">
+                            <label for="s_tag8" class="taglabel">#넓은</label>
+                            <input type="checkbox" id="s_tag9" class="tag" name="s_mood_tag" value="alone">
+                            <label for="s_tag9" class="taglabel">#혼자 있기 좋은</label>
                         </div>
                         <div class="tag-box">
-                            <input type="checkbox" id="tag10" class="tag" name="mood_tag" value="cuty">
-                            <label for="tag10" class="taglabel">#아기자기한</label>
-                            <input type="checkbox" id="tag11" class="tag" name="mood_tag" value="always">
-                            <label for="tag11" class="taglabel">#24시간 영업하는</label>
-                            <input type="checkbox" id="tag12" class="tag" name="mood_tag" value="picture">
-                            <label for="tag12" class="taglabel">#사진 찍기 좋은</label>
+                            <input type="checkbox" id="s_tag10" class="tag" name="s_mood_tag" value="cuty">
+                            <label for="s_tag10" class="taglabel">#아기자기한</label>
+                            <input type="checkbox" id="s_tag11" class="tag" name="s_mood_tag" value="always">
+                            <label for="s_tag11" class="taglabel">#24시간 영업하는</label>
+                            <input type="checkbox" id="s_tag12" class="tag" name="s_mood_tag" value="picture">
+                            <label for="s_tag12" class="taglabel">#사진 찍기 좋은</label>
                         </div>
                     </div>
                     <button type="submit" class="moodsselectbutton">확인</button>
@@ -81,6 +96,6 @@
         &copy; moodsn <br><br><br> Backend 손정민 <br> Frontend 성유리 이가윤
     </div>
 
-    <script src="../js/search_before.js"></script>
+    <script src="{%static 'js/search_before.js'%}"></>
 </body>
 </html>

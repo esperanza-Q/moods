@@ -14,7 +14,7 @@
     <div style="border:2px solid black; width:600px; height:160px; display: flex; align-items: center; padding: 10px;">                            
 
         {% if cafeimage and cafeimage.cafeimage %}
-            <img src="{{cafeimage.cafeimage.url}}" style="width:160px;height:160px; cursor:pointer;" onclick="location.href='{% url 'cafe_search:search_detail' user_id=user_id cafe_id=cafe.id %}'">
+            <img src="{{cafeimage.cafeimage.url}}" style="width:160px;height:160px; cursor:pointer;" onclick="location.href='{% url 'cafe_search:search_detail' request.user.id=request.user.id cafe_id=cafe.id %}'">
         {% else %}
             <p style="width:160px; height:160px; display:flex; justify-content:center; align-items:center; border:1px solid gray;">사진 없음</p>
         {% endif %}

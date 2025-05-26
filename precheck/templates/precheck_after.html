@@ -1,0 +1,60 @@
+{%load static%}
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>MYPAGE</title>
+    <link rel="stylesheet" href="{% static 'css/precheck_after.css' %}">
+    <link href="https://fonts.googleapis.com/css2?family=Kalnia&display=swap" rel="stylesheet">
+</head>
+<body>
+    <!-- 헤더 -->
+    <div class="selectheader">
+        <div class="selectheaderleft">
+            <div class="selectlogoimg">
+                <a href="{%url 'home:firstpage' %}"><img src="{% static 'img/moodsn_logo.png' %}" style="width: 220px"></a>
+            </div>
+        </div>
+        <div class="selectheadermiddle">
+            {% comment %} 로그아웃으로 바꿔놓음 {% endcomment %}
+            <a href="{%url 'accounts:logout' %}" class="main-home">Logout</a>
+        </div>
+        <div class="selectheaderright"></div>
+    </div>
+
+    <div class="headerline"></div>
+
+    <!-- 본문 -->
+    <div class="selectcontainer">
+        <!-- 왼쪽 메뉴바 -->
+        <div class="selectleft">
+            <div class="profile-section">
+                <div><img src={{profile.profile_image.url}} alt='image' class="profile-img"></div>
+                <div class="nickname-box">{{profile.nickname}}</div>
+            </div>
+        </div>
+
+        <!-- 오른쪽 내용 영역 -->
+        <div class="selectmain">
+            <div class="mypost-title">My Certified Post</div>
+            <div class="mypost-content-wrapper">
+                <div class="mypost-textbox">
+                    {{checkpost.content}}
+                </div>
+                <div class="mypost-imagebox">
+                    <img src="{{checkimage.checkimage.url}}" alt="Image">
+                </div>
+            </div>
+            <a href={%url 'precheck:precheck_delete' checkpost_id=checkpost.id %}><button class="mypost-upload">다시 작성하기</button></a>
+        </div>
+        {% comment %} 아래 클래스 임의로 넣어둠. 버튼도 임의로 넣어둠둠 {% endcomment %}
+        
+    </div>
+
+    <!-- 푸터 -->
+    <div class="footer">
+        &copy; moodsn <br><br><br> Backend 손정민 <br> Frontend 성유리 이가윤
+    </div>
+</body>
+</html>

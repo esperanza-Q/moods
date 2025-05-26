@@ -1,4 +1,4 @@
-<form method='post' action={% url 'cafe_select:select_searched' user_id %}>
+<form method='post' action={% url 'cafe_select:select_searched' request.user.id %}>
     {% csrf_token %}
     <input type="text" name="select_searchbar" placeholder="남기고 싶은 카페를 검색해보세요">
     <button type="submit">검색</button>

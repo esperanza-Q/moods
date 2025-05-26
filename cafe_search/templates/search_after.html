@@ -1,9 +1,20 @@
+{%load static%}
 <!DOCTYPE html>
 <html lang="en">
 <head>
     <meta charset="UTF-8">
     <title>검색 결과</title>
-    <link rel="stylesheet" href="../css/search_after.css">
+    <link rel="stylesheet" href="{%static 'css/search_after.css' %}">
+    <script>
+    document.addEventListener('DOMContentLoaded', function () {
+        var rows = document.querySelectorAll('tr[data-href]');
+        rows.forEach(function (row) {
+            row.addEventListener('click', function () {
+                window.location.href = this.dataset.href;
+            });
+        });
+    });
+    </script>
 </head>
 <body>
     <!-- 상단 헤더 -->
@@ -20,9 +31,9 @@
     <!-- 왼쪽 메뉴 고정 영역 -->
     <div class="sidebar">
         <ul>
-            <li><a href="{% url 'cafe_select:select_before' user_id %}">select</a></li>
-            <li><a href="#">search</a></li>
-            <li><a href="{% url 'mypage:mypage' user_id %}">mypage</a></li>
+            <li><a href="{% url 'cafe_select:select_before' %}">select</a></li>
+            <li><a href="{% url 'cafe_search:search_before' %}">search</a></li>
+            <li><a href="{% url 'mypage:mypage'%}">mypage</a></li>
         </ul>
     </div>
 
@@ -33,15 +44,19 @@
         </div>
 
         <div class="cafe-list">
-            {% for cafe in cafes %}
+            {%for cafe, cafeimage in cafe_list%}
             <div class="cafe-card">
-                <div class="cafe-img">대표사진</div>
+                {% if cafeimage and cafeimage.cafeimage %}
+                <img src="{{cafeimage.cafeimage.url}}" class="cafe-img" onclick="location.href='{% url 'cafe_search:search_detail' cafe_id=cafe.id %}'">
+                {% else %}
+                <p class="cafe-img">사진 없음</p>
+                {% endif %}
                 <div class="cafe-info">
-                    <div class="cafe-name">{{ cafe.name }}</div>
-                    <div class="cafe-address">{{ cafe.address }}</div>
+                    <div class="cafe-name">{{ cafe.cafename }}</div>
+                    <div class="cafe-address">{{ cafe.cafelocations }}</div>
                     <div class="cafe-tags">
                         {% for tag in cafe.tags %}
-                            <span class="tag">#{{ tag }}</span>
+                            <span class="tag">{{ tag.label }}</span>
                         {% endfor %}
                     </div>
                 </div>
@@ -54,6 +69,6 @@
         footer
     </footer>
 
-    <script src="../js/search_after.js"></script>
+    <script src="{% static 'js/search_after.js' %}"></script>
 </body>
 </html>

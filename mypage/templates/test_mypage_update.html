@@ -5,13 +5,13 @@
 <link rel="stylesheet" href="{% static 'css/home.css' %}">
 
 <div>
-    <a href={%url 'home:home' user_id %}>moods카페</a><br><br>
-    <a href={%url 'cafe_select:select_before' user_id%}>select</a>&nbsp;&nbsp;&nbsp;
+    <a href={%url 'home:home' %}>moods카페</a><br><br>
+    <a href={%url 'cafe_select:select_before'%}>select</a>&nbsp;&nbsp;&nbsp;
     <a href='#'>search</a>&nbsp;&nbsp;&nbsp;
-    <a href={%url 'mypage:mypage' user_id%}>mypage</a>
+    <a href={%url 'mypage:mypage'%}>mypage</a>
 </div>
 
-<form action="{% url 'mypage:profile_update' user_id %}" method="post" enctype="multipart/form-data">
+<form action="{% url 'mypage:profile_update' %}" method="post" enctype="multipart/form-data">
     {% csrf_token %}
     {% comment %} 기존 프로필 이미지 가져옴+프로필 이미지 수정 폼 가져옴 {% endcomment %}
     {% comment %} {{profile_update_form.profile_image}}<br><br> {% endcomment %}

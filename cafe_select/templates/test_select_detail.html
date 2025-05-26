@@ -16,7 +16,7 @@
 </title>
 <body>
     <div style="width:350px; border:2px solid black;">
-        <form method='post' action={% url 'cafe_select:select_searched' user_id %}>
+        <form method='post' action={% url 'cafe_select:select_searched' request.user.id %}>
             {% csrf_token %}
             <input type="text" name="select_searchbar" placeholder="카페명" style="width:300px;">
             <button type="submit">검색</button>
@@ -27,7 +27,7 @@
     {% if review_already == 'Y' %}
         <strong>리뷰 쓰기 완료!</strong><br><br>
     {% else %}
-        <a href={%url 'cafe_select:review' user_id=user_id cafe_id=cafe_id %}><button>리뷰쓰기</button></a><br><br>
+        <a href={%url 'cafe_select:review' request.user.id=request.user.id cafe_id=cafe_id %}><button>리뷰쓰기</button></a><br><br>
     {% endif %}
 
     {% comment %} <div style="border:2px solid black; width:700px; display:flex; height:500px; padding: 10px;">
@@ -50,9 +50,9 @@
     <div class="moodsselectcontainer">
     {% if mood_already == 'Y' %}
         <strong>분위기 태그 투표 완료!</strong><br><br>
-        <a href={% url "cafe_select:reselect_tag" user_id=user_id cafe_id=cafe_id %}><button>다시 투표하기</button></a>
+        <a href={% url "cafe_select:reselect_tag" request.user.id=request.user.id cafe_id=cafe_id %}><button>다시 투표하기</button></a>
     {% else %}
-        <form method="POST" action = {%url 'cafe_select:select_tag' user_id=user_id cafe_id=cafe_id %}>
+        <form method="POST" action = {%url 'cafe_select:select_tag' request.user.id=request.user.id cafe_id=cafe_id %}>
             {% csrf_token %}
             <input type="checkbox" id="tag1" name="mood_tag" value="coffee">
             <label for="tag1">#커피가 맛있는</label>&nbsp;&nbsp;&nbsp;
