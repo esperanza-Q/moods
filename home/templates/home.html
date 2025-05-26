@@ -12,7 +12,7 @@
 <body>
     <div class="homeheader">
         <div class="keywordtext">Keyword</div>
-        <div class="homeheaderlogo"><img src="{%static 'img/home_img/homeheaderlogo.png' %}" width="350px"></div>
+        <div class="homeheaderlogo"><a href="{%url 'home:firstpage' %}"><img src="{%static 'img/home_img/homeheaderlogo.png' %}" width="350px"></a></div>
         <div class="recommendation">RECOMMENDATION</div>
         <div class="headerlinetext">
             <div class="moodsn">moodsn</div>
@@ -45,7 +45,7 @@
             <div class="hselectdetail">카페의 리뷰를 남기고<br>
                 분위기 선택하러 가기</div>
         </button></a>
-        <a href="./search_before.html">
+        <a href="{%url 'cafe_search:search_before' %}">
         <button class="hbottomboxright">
             <div class="hsearchimg"><img src="{%static 'img/home_img/searchimg.png' %}"  style="width: 50px;"></div>
             <div class="hsearchtext"><img src="{%static 'img/home_img/Search.png' %}" style="width: 120px;"></div>
@@ -81,6 +81,9 @@
 
     <div class="footer">
         &copy; moodsn <br><br><br> Backend 손정민 <br> Frontend 성유리 이가윤
+        {%if user.is_superuser %}
+            <a href="{%url 'cafe:cafeadd' %}"><button>카페 추가</button></a>
+        {%endif%}
     </div>
 
 </body>

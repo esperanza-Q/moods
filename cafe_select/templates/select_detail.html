@@ -1,32 +1,46 @@
+{%load static%}
 <!DOCTYPE html>
 <html lang="en">
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>SELECT</title>
-    <link rel="stylesheet" href="../css/select_detail.css">
+    <link rel="stylesheet" href="{%static 'css/select_detail.css' %}">
+    <script>
+    {% if messages %}
+    
+        window.onload = function() {
+            {% for message in messages %}
+                alert("{{ message }}");
+            {% endfor %}
+        };
+    {% endif %}
+    </script>
 </head>
 <body>
     <div class="selectheader">
         <div class="selectheaderleft">
-            <div class="selectlogoimg"><a href="../html/home.html">
-                <img src="../home_img/homeheaderlogo.png" style="width: 180px">
-              </a></div>
+            <div class="selectlogoimg"><a href="{%url 'home:firstpage'%}">
+                <img src="{%static 'img/home_img/homeheaderlogo.png' %}" style="width: 180px">
+            </a></div>
         </div>
         <div class="selectheadermiddle">
-            <div class="selectsearchpart"><input type="text" class="selectsearch" placeholder="남기고 싶은 카페를 검색해보세요"> 
-                <button class="selectsearchicon"><img src="../select_img/selectsearchicon.png" style="width: 25px"></button></div>
+            <form class="selectsearchpart" method='get' action={% url 'cafe_select:select_searched'%}>
+                {% csrf_token %}
+                <input type="text" name="select_searchbar" class="selectsearch" placeholder="남기고 싶은 카페를 검색해보세요">
+                <button type="submit" class="selectsearchicon"><img src="{%static 'img/select_img/selectsearchicon.png' %}" style="width: 25px"></button>
+            </form>
         </div>
         <div class="selecthdaerright"></div>
     </div>
- 
+
     <div class="headerline" style="border-top: 1px solid #b22222; width: 100%;"></div>
 
     <div class="selectcontainer">
         <div class="selectleft">
-            <div class="navigationbar"><ul><li class="selecthover"><a href="./select_before.html">select</a></li>
-                <li><a href="./search_before.html">search</a></li>
-                <li><a href="./mypage.html">mypage</a></li></ul></div>
+            <div class="navigationbar"><ul><li class="selecthover"><a href="{%url 'cafe_select:select_before'%}">select</a></li>
+                <li><a href="{%url 'cafe_search:search_before'%}">search</a></li>
+                <li><a href="{%url 'mypage:mypage'%}">mypage</a></li></ul></div>
         </div>
 
         <div class="selectmain">
@@ -34,14 +48,15 @@
             <div class="sdetailtopbox">
                 <div class="topboxcafeintro">
                     <div class="topboxcafeintrotop">
-                        <div class="topboxcafeintroimg"><img src="../select_img/topboxcafeintroimg.png" width="30px"></div>
-                        <div class="topboxcafeintroname">카페명</div>
+                        <div class="topboxcafeintroimg"><img src="{%static 'img/select_img/topboxcafeintroimg.png' %}" width="30px"></div>
+                        <div class="topboxcafeintroname">{{ cafe.cafename }}</div>
                     </div>
-                    <div class="topboxcafeintrocomment">코멘트 한 줄</div>
+                    <div class="topboxcafeintrocomment">{{ cafe.cafeinfo }}</div>
                 </div>
 
+                {% if review_already == 'N' %}
                 <div class="sdetailreview">
-                    <div class="sdetailreviewimg"><img src="../select_img/sdetailreviewimg.png" width="30px"></div>
+                    <div class="sdetailreviewimg"><img src="{%static 'img/select_img/sdetailreviewimg.png' %}" width="30px"></div>
                     <div class="modalcontainer">
                         <button class="sdetailreviewtext" onclick="openModal()">리뷰 쓰기</button>
 
@@ -51,7 +66,7 @@
                                     <div class="modaltoptext">리뷰 쓰기</div>
                                     <span class="close-btn" onclick="closeModal()">&times;</span>
                                 </div>
-                                <buttun class="reviewimg">+</buttun>
+                                <button class="reviewimg">+</button>
                                 <!--<div class="reviewimgafter"></div>-->
                                 <textarea placeholder="리뷰를 입력하세요..."></textarea>
                                 <button class="submit-btn">확인</button>
@@ -59,27 +74,33 @@
                         </div>
                     </div>
 
-                    <script src="../js/select_detail.js"></script>
+                    <script src="{%static 'js/select_detail.js' %}"></script>
                 </div>
-
-                <!--<div class="reviewafter">
-                    <div class="reviewafterimg"><img src="../select_img/check.png"></div>
+                {% else %}
+                <div class="reviewafter">
+                    <div class="reviewafterimg"><img src="{%static 'img/select_img/check.png' %}"></div>
                     <div class="reviewaftertext">리뷰 쓰기 완료!</div>
-                </div>-->
+                </div>
+                {% endif %}
             </div>
 
             <hr class="topline">
 
-            <div class="sdetailmiddlebox">
+            {% comment %} <div class="sdetailmiddlebox">
                 <div class="middleboximg"></div>
                 <div class="middleboxmap"></div>
+            </div> {% endcomment %}
+
+            <div class="sdetailmiddlebox">
+                <img src="{{cafeimage.cafeimage.url}}" class="middleboximg">
+                <a href="https://place.map.kakao.com/{{cafe.cafeID}}" target='_blank'><div id="cafemap" class="middleboxmap"></div></a>
             </div>
 
             <div class="sdetailbottombox">
                 <div class="toptitletext">분위기 태그 선택하기</div>
-
-                <form method="POST" action = {%url 'cafe_select:select_tag' request.user.id=request.user.id cafe_id=cafe_id %}>
-        
+                {% if mood_already == 'N' %}
+                <form method="POST" action = {%url 'cafe_select:select_tag' cafe_id=cafe.id %}>
+                    {% csrf_token %}
                     <div class="moodsselectcontainer">
                         <div class="tag-box">
                             <input type="checkbox" id="tag1" class="tag" name="mood_tag" value="coffee">
@@ -124,12 +145,12 @@
                     </div>
                     <button type="submit" class="moodsselectbutton">확인</button>
                 </form>
-
-                <!--<div class="moodsselectafter">
-                    <div class="moodsselectafterimg"><img src="../select_img/check.png"></div>
+                {% else %}
+                <div class="moodsselectafter">
+                    <a href="{%url 'cafe_select:reselect_tag' cafe_id=cafe.id %}"><div class="moodsselectafterimg"><img src="{%static 'img/select_img/check.png' %}"></div></a>
                     <div class="moodsselectaftertext">분위기 태그 선택 완료!</div>
-                </div>-->
-
+                </div>
+                {% endif %}
             </div>
 
         </div>
@@ -141,6 +162,31 @@
     <div class="footer">
         &copy; moodsn <br><br><br> Backend 손정민 <br> Frontend 성유리 이가윤
     </div>
+
+    <!-- 카카오 지도 API 스크립트 -->
+<script type="text/javascript" src="https://dapi.kakao.com/v2/maps/sdk.js?appkey={{myjskey}}"></script>
+
+<script>
+    // 카카오 지도 API가 로드되면 실행되는 코드
+    kakao.maps.load(function() {
+        var cafeLat = {{ cafe.cafe_x }};
+        var cafeLng = {{ cafe.cafe_y }};
+        
+        var container = document.getElementById('cafemap');
+        var options = {
+            center: new kakao.maps.LatLng(cafeLng, cafeLat),
+            level: 2  // 지도 확대/축소 레벨
+        };
+
+        var map = new kakao.maps.Map(container, options);
+        
+        // 마커 추가
+        var marker = new kakao.maps.Marker({
+            position: new kakao.maps.LatLng(cafeLng, cafeLat)
+        });
+        marker.setMap(map);
+    });
+</script>
 
 </body>
 </html>

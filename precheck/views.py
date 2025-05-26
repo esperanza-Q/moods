@@ -10,7 +10,7 @@ def precheck(request):
     if Checkpost.objects.filter(user=request.user).exists():  # 이미 인증글이 있으면
         checkpost = get_object_or_404(Checkpost, user_id=request.user.id)
 
-        return redirect(reverse('precheck:precheck_A', kwargs={'request.user.id': request.user.id, 'checkpost_id': checkpost.id}))  # 인증글이 있으면 다른 페이지로 리다이렉트
+        return redirect('precheck:precheck_A')  # 인증글이 있으면 다른 페이지로 리다이렉트
     else:
         return redirect('precheck:precheck_B')
 
@@ -24,7 +24,7 @@ def precheck_A(request):
         'checkimage': checkimage,
         'profile':profile
     }
-    return render(request, 'test_pre_check_A.html', context)
+    return render(request, 'precheck_after.html', context)
 
 def precheck_B(request):
     profile=get_object_or_404(Profile, user_id=request.user.id)
@@ -43,7 +43,7 @@ def precheck_B(request):
                 CheckImage.objects.create(checkpost=checkpost, checkimage=checkimage)
                 
             
-            return redirect(reverse('precheck:precheck_A', kwargs={'checkpost_id': checkpost.id}), profile) # 인증글 작성 후 precheck_A로 리디렉션
+            return redirect('precheck:precheck_A') # 인증글 작성 후 precheck_A로 리디렉션
         else:
             # 폼이 유효하지 않으면 precheck로 리디렉션
             print(form.errors)

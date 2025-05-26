@@ -4,7 +4,7 @@ from django.contrib.auth.models import User
 from django.db.models import Count, Q
 from functools import reduce
 import operator
-from cafe.models import Cafe, CafeImage
+from cafe.models import Cafe, CafeImage, Tag
 from accounts.models import Profile
 from cafe_select.models import Review
 from django.contrib import messages
@@ -14,7 +14,7 @@ import os
 
 # Create your views here.
 def search_before(request):
-    return render(request, "test_search_before.html")
+    return render(request, "search_before.html")
 
 def search_after(request):
     user=get_object_or_404(User, pk=request.user.id)
@@ -28,15 +28,24 @@ def search_after(request):
                 return redirect('cafe_search:search_before')
             else:
                 searched = ','.join(request.POST.getlist('s_mood_tag'))
-            
-        return redirect(f'{reverse("cafe_search:search_after", kwargs={"request.user.id": request.user.id})}?searched={searched}')
+        return redirect(f'{reverse("cafe_search:search_after")}?searched={searched}')
     else:
         searched_term = request.GET.get('searched', '')
         searched=searched_term.split(',')
+        search_tag=[]
         
-        query_list = [Q(cafe_most_tags__contains=[term]) for term in searched]
-        final_query = reduce(operator.and_, query_list)
-        cafes = Cafe.objects.filter(final_query)
+        for search in searched:
+            tag_obj = Tag.objects.filter(code=search).first()
+            if tag_obj:
+                search_tag.append(tag_obj.code)
+        
+        query_list = [Q(cafe_most_tags__code=code) for code in search_tag]
+
+        if not query_list:
+            cafes = Cafe.objects.none()
+        else:
+            final_query = reduce(operator.and_, query_list)
+            cafes = Cafe.objects.filter(final_query)
         
         cafe_list=[]
         
@@ -46,7 +55,7 @@ def search_after(request):
         context = {
             'cafe_list':cafe_list,
         }
-        return render(request, "test_search_after.html", context)
+        return render(request, "search_after.html", context)
     
 def search_detail(request, cafe_id):
     user=get_object_or_404(User, pk=request.user.id)
@@ -56,8 +65,10 @@ def search_detail(request, cafe_id):
     
     reviews=[(Profile.objects.get(user=review.user),review) for review in reviews_all]
     
-    tagname_dic={"coffee":"커피가 맛있는","refined":"세련된","together":"단체모임하기 좋은","dessert":"디저트가 맛있는","clean":"깔끔한","study":"카공하기 좋은","cozy":"포근한","big":"넓은","alone":"혼자 있기 좋은","cuty":"아기자기한","always":"24시간 영업하는","picture":"사진 찍기 좋은"}
-    tags=[tagname_dic[tag] for tag in cafe.cafe_most_tags]
+    # tagname_dic={"coffee":"커피가 맛있는","refined":"세련된","together":"단체모임하기 좋은","dessert":"디저트가 맛있는","clean":"깔끔한","study":"카공하기 좋은","cozy":"포근한","big":"넓은","alone":"혼자 있기 좋은","cuty":"아기자기한","always":"24시간 영업하는","picture":"사진 찍기 좋은"}
+    # tags=[tagname_dic[tag] for tag in cafe.cafe_most_tags]
+    
+    
     
     load_dotenv()
     
@@ -69,7 +80,8 @@ def search_detail(request, cafe_id):
         'cafeimage' : cafeimage,
         'reviews' : reviews,
         'myjskey':myjskey,
-        'tags' : tags
+        # 'tags' : tags
     }
     
-    return render(request, "test_search_detail.html", context)
+    return render(request, "search_detail.html", context)
+

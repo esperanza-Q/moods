@@ -9,10 +9,20 @@
     <style>
         @import url('https://fonts.googleapis.com/css2?family=Kalnia&display=swap');
     </style>
+    <script>
+    {% if messages %}
+    
+        window.onload = function() {
+            {% for message in messages %}
+                alert("{{ message }}");
+            {% endfor %}
+        };
+    {% endif %}
+    </script>
 </head>
 <body>
     <div class="container">
-        <img src="{%static 'img/moodsn_logo.png' %}" alt="Logo" class="logo">
+        <a href="{%url 'home:firstpage'%}"><img src="{%static 'img/moodsn_logo.png' %}" alt="Logo" class="logo"></a>
         <h1 class="signup-title">SIGN UP</h1>
         <form class="signup-form" method='POST' action ={%url 'accounts:signup'%}>
             {% csrf_token %}
@@ -45,14 +55,6 @@
             {% comment %} <span class="signup-btn" onclick="signUp()">SIGN UP</span> {% endcomment %}
         </form>
     </div>
-    <script src="signup.js">
-        {% comment %} {% if messages %}
-        window.onload = function() {
-            {% for message in messages %}
-                alert("{{ message }}");
-            {% endfor %}
-        };
-        {% endif %} {% endcomment %}
-    </script>
+    <script src="signup.js"></script>
 </body>
 </html>

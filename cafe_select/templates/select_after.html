@@ -1,47 +1,70 @@
+{%load static%}
 <!DOCTYPE html>
 <html lang="en">
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>SELECT</title>
-    <link rel="stylesheet" href="../css/select_after.css">
+    <link rel="stylesheet" href="{%static 'css/select_after.css' %}">
+    
+    <script>
+        document.addEventListener('DOMContentLoaded', function () {
+            var rows = document.querySelectorAll('tr[data-href]');
+            rows.forEach(function (row) {
+                row.addEventListener('click', function () {
+                    window.location.href = this.dataset.href;
+                });
+            });
+        });
+    </script>
 </head>
 <body>
     <div class="selectheader">
         <div class="selectheaderleft">
-            <div class="selectlogoimg"><a href="../html/home.html">
-                <img src="../home_img/homeheaderlogo.png" style="width: 180px">
-              </a></div>
+            <div class="selectlogoimg"><a href="{%url 'home:firstpage'%}">
+                <img src="{%static 'img/home_img/homeheaderlogo.png' %}" style="width: 180px">
+            </a></div>
         </div>
         <div class="selectheadermiddle">
-            <div class="selectsearchpart"><input type="text" class="selectsearch" placeholder="남기고 싶은 카페를 검색해보세요"> 
-                <button class="selectsearchicon"><img src="../select_img/selectsearchicon.png" style="width: 25px"></button></div>
+            <form class="selectsearchpart" method='get' action={% url 'cafe_select:select_searched'%}>
+                {% csrf_token %}
+                <input type="text" name="select_searchbar" class="selectsearch" placeholder="남기고 싶은 카페를 검색해보세요">
+                <button type="submit" class="selectsearchicon"><img src="{%static 'img/select_img/selectsearchicon.png' %}" style="width: 25px"></button>
+            </form>
         </div>
         <div class="selecthdaerright"></div>
     </div>
- 
+
     <div class="headerline" style="border-top: 1px solid #b22222; width: 100%;"></div>
 
     <div class="selectcontainer">
         <div class="selectleft">
-            <div class="navigationbar"><ul><li><a href="./select_before.html">select</a></li>
-                <li><a href="./search_before.html">search</a></li>
-                <li><a href="./mypage.html">mypage</a></li></ul></div>
+            <div class="navigationbar"><ul><li><a href="{% url 'cafe_select:select_before' %}">select</a></li>
+                <li><a href="{% url 'cafe_search:search_before' %}">search</a></li>
+                <li><a href="{% url 'mypage:mypage' %}">mypage</a></li></ul></div>
         </div>
 
         <div class="selectmain">
-
+            {% for cafe, cafeimage in cafe_list %}
             <div class="maincafesearchlist1">
+                
                 <div class="maincafesearch1">
-                    <div class="maincafesearchimg1"></div>
+
+                    {% if cafeimage and cafeimage.cafeimage %}
+                        <img class="maincafesearchimg1" src="{{cafeimage.cafeimage.url}}" style="width:160px;height:160px; cursor:pointer;" onclick="location.href='{% url 'cafe_select:select_detail' cafe_id=cafe.id %}'">
+                    {% else %}
+                        <div class="maincafesearchimg1">사진 없음</div>
+                    {% endif %}    
+                        
                     <div class="maincafesearchtext1">
-                        <div class="maincafesearchname1">카페명</div>
-                        <div class="maincafesearchcomment1">코멘트 한 줄</div>
-                        <div class="maincafesearchaddress1">주소</div>
+                        <div class="maincafesearchname1">{{ cafe.cafename }}</div>
+                        <div class="maincafesearchcomment1">{{ cafe.cafeinfo }}</div>
+                        <div class="maincafesearchaddress1">{{ cafe.cafelocations }}</div>
                     </div>
                 </div>
                 <hr class="selectafterbottomline"></hr>
             </div>
+            {% endfor %}
 
         </div>
 

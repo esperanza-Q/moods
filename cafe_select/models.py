@@ -1,6 +1,7 @@
 from django.db import models
 from cafe.models import Cafe
 from django.contrib.auth.models import User
+from cafe.models import Tag
 
 
 # Create your models here.
@@ -14,8 +15,16 @@ class Review(models.Model):
     def __str__(self):
         return self.review_content[:50]
     
+# class Mood_tags(models.Model):
+#     user = models.ForeignKey(User, on_delete=models.CASCADE)
+#     cafe = models.ForeignKey(Cafe, on_delete=models.CASCADE)
+#     mood_select = models.JSONField(default=list)
+    
 class Mood_tags(models.Model):
     user = models.ForeignKey(User, on_delete=models.CASCADE)
     cafe = models.ForeignKey(Cafe, on_delete=models.CASCADE)
-    mood_select = models.JSONField(default=list)
+    tags = models.ManyToManyField(Tag)
+
+    class Meta:
+        unique_together = ('user', 'cafe')
     
