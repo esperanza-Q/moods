@@ -25,11 +25,6 @@
             </a></div>
         </div>
         <div class="selectheadermiddle">
-            <form class="selectsearchpart" method='get' action={% url 'cafe_select:select_searched'%}>
-                {% csrf_token %}
-                <input type="text" name="select_searchbar" class="selectsearch" placeholder="남기고 싶은 카페를 검색해보세요">
-                <button type="submit" class="selectsearchicon"><img src="{%static 'img/select_img/selectsearchicon.png' %}" style="width: 25px"></button>
-            </form>
         </div>
         <div class="selecthdaerright"></div>
     </div>
