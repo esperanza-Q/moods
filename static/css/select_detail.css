@@ -88,8 +88,10 @@ body{
 
 .sdetailtopbox{
     display: flex;
-    flex-direction: row;
+    justify-content: space-between;
+    align-items: flex-start;
     padding: 55px;
+    gap: 16px;
 }
 
 .topboxcafeintro{
@@ -104,27 +106,34 @@ body{
 }
 
 .topboxcafeintroname{
-    margin-top: 6px;
     font-size: 27px;
     margin-left: 15px;
+    white-space: nowrap;         
+    overflow: hidden;            
+    text-overflow: ellipsis;
+    max-width: 500px;      
 }
 
 .topboxcafeintrocomment{
+    font-size: 19px;
     margin-top: 10px;
 }
 
 .sdetailreview{
     display: flex;
     flex-direction: column;
+    align-items: flex-end;
+    flex-shrink: 0;
+    align-items: center;
 }
 
 .sdetailreviewimg{
-    margin-left: 500px;
     margin-top: 15px;
+    max-width: 100%;
+    height: auto;
 }
 
 .sdetailreviewtext{
-    margin-left: 478px;
     font-size: 13px;
     color:#979797;
     background-color: #ffa39c58;
@@ -154,6 +163,7 @@ body{
     background-color: #979797;
     margin-left: 60px;
     margin-top: 30px;
+    border: 1px solid rgba(251, 251, 251, 0.549);
 }
 
 .middleboxmap{
@@ -162,6 +172,7 @@ body{
     background-color: #979797;
     margin-left: 60px;
     margin-top: 30px;
+    border: 1px solid rgba(251, 251, 251, 0.549);
 }
 
 .sdetailbottombox{
@@ -221,7 +232,7 @@ body{
     padding: 5px;
     width: 60px;
     border-radius: 20px;
-    margin: 20px auto;
+    margin: 15px auto;
     display: flex;
     justify-content: center;
     align-items: center;
@@ -235,8 +246,8 @@ body{
 }
 
 
-/*.moodsselectafter{
-    margin-top: 25px;
+.moodsselectafter{
+    margin-top: 80px;
     display: flex;
     flex-direction: column;
     justify-content: center;
@@ -244,12 +255,11 @@ body{
 }
 
 .reviewafter{
-    margin-top: 20px;
     display: flex;
     flex-direction: column;
     justify-content: center;
     align-items: center;
-}*/
+}
 
 
 
@@ -280,7 +290,7 @@ body{
     background-color: white;
     /* width: 417px; */
     min-width: 417px;
-    min-height: 460px;
+    min-height: 360px;
     /* height: 460px; */
     text-align: center;
     display: flex;
@@ -320,23 +330,23 @@ body{
     font-size: 40px;
     margin-top: 30px;
     margin-bottom: 40px;
-    
     cursor: pointer;
     /* background-color: #ccc; */
 }
 
-/*.reviewimgafter{
+.reviewimgafter{
     margin-top: 30px;
     width: 170px;
     height: 170px;
     background-color: #979797;
     margin: 0 auto;
     margin-bottom: 20px;
-}*/
+}
 
 textarea {
+    font-size: 18px;
     width: 340px;
-    height: 200px;
+    height: 120px;
     padding: 10px;
     margin: 0 auto;
     border: 1px solid #ccc;
@@ -373,16 +383,17 @@ textarea {
 }
 
 #preview-image {
-    /* width: 100%; */
+    display: none;
     margin-top: 10px;
     margin-bottom: 10px;
-    margin-right: 10px;
     margin-left: 10px;
-    max-height: 600px;
-    max-width: 1000px;
+    margin-right: 10px;
+    max-width: 100%;
+    max-height: 300px;
     object-fit: cover;
-    display: none;
+    border-radius: 10px;
 }
+
 
 #plus-icon {
     font-size: 48px;
