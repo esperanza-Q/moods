@@ -205,6 +205,10 @@ body{
     border: none;
 }
 
+.profilemypage{
+    margin-top: 8px;
+}
+
 .profilemypage:hover{
     border: 1px solid black;
     border-radius: 20px;
