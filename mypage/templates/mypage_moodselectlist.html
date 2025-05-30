@@ -32,9 +32,11 @@
         <div class="selectmain">
             <div class="moodselectsearchhead">내 기록 모아보기 > 분위기 남긴 카페 내역</div>
 
+            <div class="moodselect-container">
             {%for tag in search_tags%}
             <div class="moodselecttag">{{tag.label}}</div>
             {%endfor%}
+            </div>
 
             
             {%for cafe, image in cafe_list%}
