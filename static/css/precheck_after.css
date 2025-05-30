@@ -1,8 +1,16 @@
-@import url('https://fonts.googleapis.com/css2?family=Kalnia&display=swap');
+html {
+  height: 100%;
+  background: linear-gradient(to bottom, #FFFFF3, #FFFEE0);
+  background-attachment: fixed;
+  background-repeat: no-repeat;
+  background-size: cover;
+}
 
 body {
-    background: linear-gradient(#FFFFF3, #FFFEE0);
-    font-family: 'Kalnia', sans-serif;
+  height: 100%;
+  margin: 0;
+  padding: 0;
+  background: transparent;
 }
 
 /* 헤더 */
@@ -16,20 +24,20 @@ body {
     border-bottom: 2px solid #BF0E00;
 }
 
-a.main-home:link,
-a.main-home:visited,
-a.main-home:hover,
-a.main-home:focus,
-a.main-home:active {
+a.logout:link,
+a.logout:visited,
+a.logout:hover,
+a.logout:focus,
+a.logout:active {
     color: #BF0E00 !important;
     text-decoration: none;
 }
 
-a.main-home {
+a.logout {
     display: block;
     color: #BF0E00 !important;
     text-decoration: none;
-    font-size: 18px;
+    font-size: 23px;
     font-style: italic;
     margin-right: 800px;
 }
