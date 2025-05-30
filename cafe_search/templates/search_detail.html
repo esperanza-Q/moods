@@ -13,58 +13,68 @@
     <div class="selectheader">
         <div class="selectheaderleft">
             <div class="selectlogoimg">
-                <a href="{%url 'home:firstpage'%}"><img src="{% static 'img/home_img/homeheaderlogo.png' %}" style="width: 180px"></a>
+                <a href="{%url 'home:firstpage' %}"><img src="{% static 'img/home_img/homeheaderlogo.png' %}" style="width: 180px"></a>
             </div>
+        </div>
+        <div class="selectheadermiddle">
         </div>
         <div class="selecthdaerright"></div>
     </div>
-    <div class="headerline"></div>
+
+    <div class="headerline" style="border-top: 1px solid #b22222; width: 100%;"></div>
 
     <!-- 사이드바 -->
-    <div class="sidebar">
-        <ul>
-            <li><a href="{% url 'cafe_select:select_before' %}">select</a></li>
-            <li><a href="{%url 'cafe_search:search_before'%}">search</a></li>
-            <li><a href="{% url 'mypage:mypage' %}">mypage</a></li>
-        </ul>
-    </div>
+    <div class="selectcontainer">
+        <div class="selectleft">
+            <div class="navigationbar"><ul><li><a href="{%url 'cafe_select:select_before'%}">select</a></li>
+                <li><a href="{%url 'cafe_search:search_before'%}">search</a></li>
+                <li><a href="{%url 'mypage:mypage'%}">mypage</a></li></ul></div>
+        </div>
 
     <!-- 본문 -->
-    <div class="main-content">
-        <!-- 카페 정보 상단 -->
-        <div class="cafe-header">
-            <h2>☕ {{ cafe.cafename }}</h2>
-            <p>{{ cafe.cafeinfo }}</p>
-        </div>
-
-        <!-- 사진 & 지도 -->
-        <div class="image-map-container">
-            <img src="{{cafeimage.cafeimage.url}}" class="cafe-image">
-            <a href="https://place.map.kakao.com/{{cafe.cafeID}}" target='_blank'><div id="cafemap" class="cafe-map"></div></a>
-        </div>
-
-        <!-- 태그 -->
-        <div class="moods-section">
-            <h3>#Moods</h3>
-            <div class="tag-buttons">
-                {%for tag in tags%}
-                    <span class="tag">{{tag.label}}</span>
-                {% endfor %}
+        <div class="main-content">
+            <!-- 카페 정보 상단 -->
+            <div class="cafe-header">
+                    <div class="topboxcafeintrotop">
+                            <div class="topboxcafeintroimg"><img src="{%static 'img/select_img/topboxcafeintroimg.png' %}" width="30px"></div>
+                            <div class="topboxcafeintroname">{{ cafe.cafename }}</div>
+                    </div>
+                    <div class="topboxcafeintrocomment">{{ cafe.cafeinfo }}</div>
             </div>
-        </div>
+            <hr class="topline">
 
-        <!-- 리뷰 -->
-        <div class="review-section">
-            <h3>Review</h3>
-            <div class="review-scroll-box">
-                {% for writer, review in reviews %}
-                <div class="review-box">
-                    <img src="{{review.review_image.url}}" class="review-img">
-                    <div class="review-content">{{review.review_content}}</div>
+
+            <!-- 사진 & 지도 -->
+            <div class="image-map-container">
+                <img src="{{cafeimage.cafeimage.url}}" class="cafe-image">
+                <a href="https://place.map.kakao.com/{{cafe.cafeID}}" target='_blank'><div id="cafemap" class="cafe-map"></div></a>
+            </div>
+
+            <!-- 태그 -->
+            <div class="moods-section">
+                <div class="moodstag">#Moods</div>
+                <div class="tag-buttons">
+                    {%for tag in tags%}
+                        <span class="tag">{{tag.label}}</span>
+                    {% endfor %}
                 </div>
-                {% endfor %}
+            </div>
+
+            <!-- 리뷰 -->
+            <div class="review-section">
+                <div class="reviewtext">Review</div>
+                <div class="review-scroll-box">
+                    {% for writer, review in reviews %}
+                    <div class="review-box">
+                        <img src="{{review.review_image.url}}" class="review-img">
+                        <div class="review-content">{{review.review_content}}</div>
+                    </div>
+                    {% endfor %}
+                </div>
             </div>
         </div>
+
+        <div class="selectright"></div>
     </div>
 
     <footer class="footer">
