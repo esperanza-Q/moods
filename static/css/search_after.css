@@ -1,75 +1,108 @@
+html {
+  height: 100%;
+  background: linear-gradient(to bottom, #FFFFF3, #FFFEE0);
+  background-attachment: fixed;
+  background-repeat: no-repeat;
+  background-size: cover;
+}
+
 body {
-    margin: 0;
-    font-family: 'Kalnia', sans-serif;
-    background: linear-gradient(#FFFFF3, #FFFEE0);
+  height: 100%;
+  margin: 0;
+  padding: 0;
+  background: transparent;
 }
 
-.container {
+.selectheader{
     display: flex;
+    flex-direction: row;
 }
 
-/* 왼쪽 고정 사이드바 */
-.sidebar {
-    position: fixed;
-    top: 0;
-    left: 0;
-    width: 200px;
-    height: 100vh;
-    background-color: transparent;
-    padding-top: 30px;
-    text-align: center;
+.selectheaderleft{
+    flex:1;
 }
 
-.sidebar .logo {
-    margin-bottom: 40px;
+.selectheadermiddle{
+    width:830px;
 }
 
-.sidebar ul {
-    list-style: none;
-    padding: 0;
+.selecthdaerright{
+    flex: 1;
 }
 
-.sidebar li {
-    margin: 40px 0;
+.selectlogoimg {
+    float: right;
+    margin-top: 85px;
 }
 
-.sidebar a {
+.headerline {
+    margin-top: 15px;
+}
+
+.selectleft {
+    flex: 1;
+}
+
+.navigationbar ul {
+    list-style-type: none;
+    float: right;
+    margin-right: 70px;
+    margin-top: 60px;
+}
+
+.navigationbar ul a{
     text-decoration: none;
-    color: #BF0E00;
+    color:#BF0E00;
     font-size: 18px;
 }
 
-.sidebar a:hover {
+.navigationbar ul a:hover{
     background-color: #fae5e3;
-    padding: 5px 10px;
     border-radius: 10px;
 }
 
-/* 오른쪽 본문 */
+.navigationbar ul li {
+    margin-bottom: 50px;
+}
+
 .main-content {
-    margin-left: 200px;
-    padding: 30px 50px;
-    width: calc(100% - 200px);
-    overflow-y: auto;
+    border: 1px solid #BF0E00;
+    border-top: none;
+    display: flex;
+    flex-direction: column;
+    width: 830px;
+    margin: 0 auto;
+    padding: 30px 0;
+    min-height: 800px;
+    box-sizing: border-box
 }
 
 .search-tag-header {
+    margin-left: 20px;
+    margin-top: 10px;
     margin-bottom: 30px;
+    display: flex;
+    gap: 15px;
 }
 
 .search-tag {
-    background-color: #ffffff;
-    border: 1px solid #BF0E00;
+    background-color: #ffa39c4d;
+    width: 130px;
     border-radius: 20px;
-    padding: 10px 20px;
-    font-size: 18px;
-    color: #BF0E00;
+    padding: 5px;
+    font-size: 14px;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    border: 3px solid rgb(255, 238, 238);
+    text-align: center;
 }
 
 .cafe-list {
+    padding: 15px;
     display: flex;
     flex-direction: column;
-    gap: 25px;
+    gap: 10px;
 }
 
 .cafe-card {
@@ -78,6 +111,10 @@ body {
     padding: 20px;
     border-radius: 10px;
     align-items: center;
+    width: 100%;
+    box-sizing: border-box;
+    margin-bottom: 20px; /* 카드 사이 간격 */
+    box-shadow: 0 2px 8px rgba(0,0,0,0.04);
 }
 
 .cafe-img {
@@ -89,6 +126,7 @@ body {
     align-items: center;
     margin-right: 25px;
     font-size: 14px;
+    cursor: pointer;
 }
 
 .cafe-info {
@@ -120,75 +158,17 @@ body {
     color: #485F50;
 }
 
-/* footer */
-.footer {
-    background-color: #f7d5c4;
-    text-align: center;
-    padding: 30px;
-    margin-top: 50px;
+.selectright{
+    flex: 1;
 }
 
-.selectheader {
-    margin-top: 50px;
+.selectcontainer{
     display: flex;
-    justify-content: space-between;
-    align-items: center;
-    padding: 20px 40px 0 40px;
+    flex-direction: row;
 }
 
-.selectheaderleft {
-    display: flex;
-    align-items: center;
-}
-
-.selectlogoimg img {
-    width: 180px;
-}
-
-.selecthdaerright {
-    flex-grow: 1;
-}
-
-.headerline {
-    height: 1px;
-    background-color: #C8B6A6;
-    margin: 0 40px 30px 40px;
-}
-
-/* 왼쪽 메뉴 고정 스타일 */
-.sidebar {
-    position: fixed;
-    top: 140px; /* 헤더 높이 고려 */
-    left: 0;
-    width: 180px;
-    padding-left: 30px;
-}
-
-.sidebar ul {
-    list-style: none;
-    padding: 0;
-}
-
-.sidebar li {
-    margin: 30px 0;
-}
-
-.sidebar a {
-    text-decoration: none;
-    color: #BF0E00;
-    font-size: 18px;
-}
-
-.sidebar a:hover {
-    background-color: #fae5e3;
-    padding: 5px 10px;
-    border-radius: 10px;
-}
-
-/* 본문 내용 */
-.main-content {
-    margin-left: 200px;
-    padding: 20px 50px;
-    width: calc(100% - 200px);
-    overflow-y: auto;
+.footer{
+    height: 110px;
+    background-color: #f7f2cd;
+    padding: 15px;
 }

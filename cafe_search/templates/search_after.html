@@ -24,48 +24,52 @@
                 <a href="{%url 'home:firstpage' %}"><img src="{% static 'img/home_img/homeheaderlogo.png' %}" style="width: 180px"></a>
             </div>
         </div>
+        <div class="selectheadermiddle">
+        </div>
         <div class="selecthdaerright"></div>
     </div>
-    <div class="headerline"></div>
+
+    <div class="headerline" style="border-top: 1px solid #b22222; width: 100%;"></div>
 
     <!-- 왼쪽 메뉴 고정 영역 -->
-    <div class="sidebar">
-        <ul>
-            <li><a href="{% url 'cafe_select:select_before' %}">select</a></li>
-            <li><a href="{% url 'cafe_search:search_before' %}">search</a></li>
-            <li><a href="{% url 'mypage:mypage'%}">mypage</a></li>
-        </ul>
-    </div>
+    <div class="selectcontainer">
+        <div class="selectleft">
+            <div class="navigationbar"><ul><li><a href="{%url 'cafe_select:select_before'%}">select</a></li>
+                <li><a href="{%url 'cafe_search:search_before'%}">search</a></li>
+                <li><a href="{%url 'mypage:mypage'%}">mypage</a></li></ul></div>
+        </div>
 
     <!-- 본문 내용 -->
-    <div class="main-content">
-        <div class="search-tag-header">
-            {%for search_tag in search_tags %}
-            <span class="search-tag">{{search_tag.label}}</span>
-            {%endfor%}
-        </div>
-        
+        <div class="main-content">
+            <div class="search-tag-header">
+                {%for search_tag in search_tags %}
+                <span class="search-tag">{{search_tag.label}}</span>
+                {%endfor%}
+            </div>
+            
 
-        <div class="cafe-list">
-            {%for cafe, cafeimage in cafe_list%}
-            <div class="cafe-card">
-                {% if cafeimage and cafeimage.cafeimage %}
-                <img src="{{cafeimage.cafeimage.url}}" class="cafe-img" onclick="location.href='{% url 'cafe_search:search_detail' cafe_id=cafe.id %}'">
-                {% else %}
-                <p class="cafe-img">사진 없음</p>
-                {% endif %}
-                <div class="cafe-info">
-                    <div class="cafe-name">{{ cafe.cafename }}</div>
-                    <div class="cafe-address">{{ cafe.cafelocations }}</div>
-                    <div class="cafe-tags">
-                        {% for tag in cafe.tags %}
-                            <span class="tag">{{ tag.label }}</span>
-                        {% endfor %}
+            <div class="cafe-list">
+                {%for cafe, cafeimage in cafe_list%}
+                <div class="cafe-card">
+                    {% if cafeimage and cafeimage.cafeimage %}
+                    <img src="{{cafeimage.cafeimage.url}}" class="cafe-img" onclick="location.href='{% url 'cafe_search:search_detail' cafe_id=cafe.id %}'">
+                    {% else %}
+                    <p class="cafe-img">사진 없음</p>
+                    {% endif %}
+                    <div class="cafe-info">
+                        <div class="cafe-name">{{ cafe.cafename }}</div>
+                        <div class="cafe-address">{{ cafe.cafelocations }}</div>
+                        <div class="cafe-tags">
+                            {% for tag in cafe.tags %}
+                                <span class="tag">{{ tag.label }}</span>
+                            {% endfor %}
+                        </div>
                     </div>
                 </div>
+                {% endfor %}
             </div>
-            {% endfor %}
         </div>
+        <div class="selectright"></div>
     </div>
 
     <footer class="footer">

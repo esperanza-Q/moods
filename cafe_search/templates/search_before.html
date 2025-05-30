@@ -20,27 +20,25 @@
 </head>
 <body>
     
-
-    <div class="selectheader">
+<div class="selectheader">
         <div class="selectheaderleft">
             <div class="selectlogoimg">
                 <a href="{%url 'home:firstpage' %}"><img src="{% static 'img/home_img/homeheaderlogo.png' %}" style="width: 180px"></a>
             </div>
         </div>
+        <div class="selectheadermiddle">
+        </div>
         <div class="selecthdaerright"></div>
     </div>
 
-    <div class="headerline"></div>
+    <div class="headerline" style="border-top: 1px solid #b22222; width: 100%;"></div>
 
+    <!-- 사이드바 -->
     <div class="selectcontainer">
         <div class="selectleft">
-            <div class="navigationbar">
-                <ul>
-                    <li><a href="{% url 'cafe_select:select_before' %}">select</a></li>
-                    <li><a href="#">search</a></li>
-                    <li><a href="{% url 'mypage:mypage' %}">mypage</a></li>
-                </ul>
-            </div>
+            <div class="navigationbar"><ul><li><a href="{%url 'cafe_select:select_before'%}">select</a></li>
+                <li><a href="{%url 'cafe_search:search_before'%}">search</a></li>
+                <li><a href="{%url 'mypage:mypage'%}">mypage</a></li></ul></div>
         </div>
 
         <div class="selectmain">

@@ -1,102 +1,149 @@
+html {
+  height: 100%;
+  background: linear-gradient(to bottom, #FFFFF3, #FFFEE0);
+  background-attachment: fixed;
+  background-repeat: no-repeat;
+  background-size: cover;
+}
+
 body {
-    font-family: Kalnia, sans-serif;
-    background-color: #FFFDEA;
-    margin: 0;
-    padding: 0;
+  height: 100%;
+  margin: 0;
+  padding: 0;
+  background: transparent;
 }
 
 /* 헤더 */
-.selectheader {
+.selectheader{
     display: flex;
-    justify-content: space-between;
-    align-items: center;
-    padding: 20px 40px 0 40px;
+    flex-direction: row;
 }
 
-.selectheaderleft {
-    display: flex;
-    align-items: center;
+.selectheaderleft{
+    flex:1;
 }
 
-.selectlogoimg img {
-    width: 180px;
+.selectheadermiddle{
+    width:830px;
+}
+
+.selecthdaerright{
+    flex: 1;
+}
+
+.selectlogoimg {
+    float: right;
+    margin-top: 85px;
 }
 
 .headerline {
-    height: 1px;
-    background-color: #C8B6A6;
-    margin: 0 40px 30px 40px;
+    margin-top: 15px;
 }
 
-/* 사이드바 */
-.sidebar {
-    position: fixed;
-    top: 140px;
-    left: 0;
-    width: 180px;
-    padding-left: 30px;
+.selectleft {
+    flex: 1;
 }
 
-.sidebar ul {
-    list-style: none;
-    padding: 0;
+.navigationbar ul {
+    list-style-type: none;
+    float: right;
+    margin-right: 70px;
+    margin-top: 60px;
 }
 
-.sidebar li {
-    margin: 30px 0;
-}
-
-.sidebar a {
+.navigationbar ul a{
     text-decoration: none;
-    color: #BF0E00;
+    color:#BF0E00;
     font-size: 18px;
 }
 
-.sidebar a:hover {
+.navigationbar ul a:hover{
     background-color: #fae5e3;
-    padding: 5px 10px;
     border-radius: 10px;
+}
+
+.navigationbar ul li {
+    margin-bottom: 50px;
 }
 
 /* 본문 */
 .main-content {
-    margin-left: 200px;
-    padding: 20px 50px;
+    border: 1px solid #BF0E00;
+    border-top: none;
+    display: flex;
+    flex-direction: column;
+    width: 830px;
+    margin: 0 auto;
+    padding: 30px 0;
+    min-height: 800px;
+    box-sizing: border-box;
 }
 
-/* 카페 상단 텍스트 */
-.cafe-header h2 {
-    font-size: 28px;
-    margin-bottom: 5px;
+.cafe-header {
+    display: flex;
+    flex-direction: column;
+    padding: 40px 75px;
 }
 
-.cafe-header p {
-    color: #333;
-    font-size: 16px;
-    margin-bottom: 30px;
+.topboxcafeintrotop {
+    display: flex;
+    flex-direction: row;
 }
 
-/* 사진과 지도 */
+.topboxcafeintroname {
+    font-size: 27px;
+    margin-left: 15px;
+    white-space: nowrap;
+    overflow: hidden;
+    text-overflow: ellipsis;
+    max-width: 500px;
+}
+
+.topboxcafeintrocomment {
+    font-size: 19px;
+    margin-top: 10px;
+}
+
+.topline {
+    border: none;
+    border-top: 1px solid #d6d5d5;
+    margin: -5px 0;
+    height: 0;
+    background: none;
+}
+
 .image-map-container {
     display: flex;
-    gap: 30px;
-    margin-bottom: 40px;
+    flex-direction: row;
 }
 
-.cafe-image, .cafe-map {
-    width: 300px;
-    height: 200px;
-    background-color: #ddd;
-    display: flex;
-    justify-content: center;
-    align-items: center;
+.cafe-image {
+    width: 240px;
+    height: 240px;
+    background-color: #979797;
+    margin-left: 60px;
+    margin-top: 30px;
+    border: 1px solid rgba(251, 251, 251, 0.549);
+}
+
+.cafe-map {
+    width: 410px;
+    height: 240px;
+    background-color: #979797;
+    margin-left: 60px;
+    margin-top: 30px;
+    border: 1px solid rgba(251, 251, 251, 0.549);
 }
 
 /* 태그 영역 */
-.moods-section h3 {
+.moods-section {
+    margin-left: 60px;
+}
+.moodstag {
     font-size: 20px;
-    color: #808F7F;
+    color: #9bc6ec;
     margin-bottom: 10px;
+    margin-top: 50px;
 }
 
 .tag-buttons {
@@ -104,7 +151,8 @@ body {
 }
 
 .tag {
-    border: 1px solid #808F7F;
+    border: 2px solid #ffffff;
+    background-color: #E8F3FC ;
     border-radius: 20px;
     padding: 6px 12px;
     margin-right: 10px;
@@ -112,18 +160,24 @@ body {
 }
 
 /* 리뷰 */
-.review-section h3 {
+.review-section{
+    margin-left: 60px;
+}
+
+.reviewtext {
     font-size: 20px;
-    color: #808F7F;
+    color: #9bc6ec;
     margin-bottom: 10px;
 }
 
 .review-scroll-box {
     background-color: #E8F3FC;
     border-radius: 15px;
-    max-height: 300px;
+    max-height: 130px;
     overflow-y: scroll;
     padding: 20px;
+    margin-right: 50px;
+    border: 2px solid rgba(251, 251, 251, 0.549);
 }
 
 .review-box {
@@ -133,6 +187,7 @@ body {
     border-radius: 15px;
     padding: 10px 20px;
     margin-bottom: 15px;
+    border: 2px solid rgb(226, 240, 252);
 }
 
 .review-img {
@@ -143,6 +198,7 @@ body {
     display: flex;
     justify-content: center;
     align-items: center;
+    border: 1px solid rgba(251, 251, 251, 0.549);
 }
 
 .review-content {
@@ -150,13 +206,19 @@ body {
     font-size: 14px;
 }
 
-/* 푸터 */
-.footer {
-    margin-top: 50px;
-    text-align: center;
-    color: #333;
-    padding: 20px;
-    background-color: #FAE7DA;
+.selectright{
+    flex: 1;
+}
+
+.selectcontainer{
+    display: flex;
+    flex-direction: row;
+}
+
+.footer{
+    height: 110px;
+    background-color: #f7f2cd;
+    padding: 15px;
 }
 
 .hidden-submit {
