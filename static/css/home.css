@@ -70,6 +70,10 @@ body {
     align-items: center;
 }
 
+.hbottombox a{
+    text-decoration: none;
+}
+
 .hbottomboxleft{
     border: 1px solid #BF0E00;
     height: 230px;

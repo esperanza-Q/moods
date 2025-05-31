@@ -1,33 +1,8 @@
-html {
-  height: 100%;
-  background: linear-gradient(to bottom, #FFFFF3, #FFFEE0);
-  background-attachment: fixed;
-  background-repeat: no-repeat;
-  background-size: cover;
-}
-
-body {
-  height: 100%;
-  margin: 0;
-  padding: 0;
-  background: transparent;
-}
-
-.pageContainer {
-    display: flex;
-    flex-direction: column;
-    min-height: 100vh;
-}
-
-.wrapper {
-    flex: 1;
-}
-
 .footer {
     height: 110px;
     background-color: #f7f2cd;
-    padding: 15px;
+    padding: 23px;
     font-size: 16px;
-    color: #333;
+    color: #575757;
     text-align: left;
 }
