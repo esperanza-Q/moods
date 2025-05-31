@@ -1,14 +1,10 @@
+{% extends 'moodsn/base.html' %}
 {%load static%}
-{%load static%}
-<!DOCTYPE html>
-<html lang="en">
-<head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+{% block content %}
     <title>MYPAGE</title>
     <link rel="stylesheet" href="{%static 'css/mypage_moodselectlist.css' %}">
-</head>
-<body>
+
     <div class="selectheader">
         <div class="selectheaderleft">
             <div class="selectlogoimg"><a href="{%url 'home:firstpage'%}">
@@ -59,9 +55,4 @@
         </div>
     </div>
 
-    <div class="footer">
-        &copy; moodsn <br><br><br> Backend 손정민 <br> Frontend 성유리 이가윤
-    </div>
-
-</body>
-</html>
+ {% endblock %}

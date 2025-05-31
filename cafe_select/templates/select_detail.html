@@ -1,9 +1,7 @@
+{% extends 'moodsn/base.html' %}
 {%load static%}
-<!DOCTYPE html>
-<html lang="en">
-<head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+{% block content %}
     <title>SELECT</title>
     <link rel="stylesheet" href="{%static 'css/select_detail.css' %}">
     <script>
@@ -16,8 +14,7 @@
         };
     {% endif %}
     </script>
-</head>
-<body>
+
     <div class="selectheader">
         <div class="selectheaderleft">
             <div class="selectlogoimg"><a href="{%url 'home:firstpage'%}">
@@ -166,10 +163,6 @@
         </div>
     </div>
 
-    <div class="footer">
-        &copy; moodsn <br><br><br> Backend 손정민 <br> Frontend 성유리 이가윤
-    </div>
-
     <!-- 카카오 지도 API 스크립트 -->
 <script type="text/javascript" src="https://dapi.kakao.com/v2/maps/sdk.js?appkey={{myjskey}}"></script>
 
@@ -213,6 +206,4 @@
     });
 
 </script>
-
-</body>
-</html>
+{% endblock %}

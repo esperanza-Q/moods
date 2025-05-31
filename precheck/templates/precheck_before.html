@@ -1,20 +1,16 @@
+{% extends 'moodsn/base.html' %}
 {%load static%}
-<!DOCTYPE html>
-<html lang="en">
-<head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>MYPAGE</title>
+
+{% block content %}
+    <title>PRECHECK</title>
     <link rel="stylesheet" href="{% static 'css/precheck_before.css' %}">
     <link href="https://fonts.googleapis.com/css2?family=Kalnia&display=swap" rel="stylesheet">
-</head>
-<body>
+
     <div class="selectheader">
         <div class="selectheaderleft">
-            <div class="selectlogoimg"><a href="{%url 'home:firstpage' %}"><img src="{%static 'img/moodsn_logo.png'%}" style="width: 220px"></a></div>
+            <div class="selectlogoimg"><img src="{%static 'img/moodsn_logo.png'%}" style="width: 220px"></div>
         </div>
-
-        </div>
+        
         <div class="selectheaderright"></div>
     </div>
 
@@ -59,9 +55,4 @@ Ex) 20240000 / 김수정 / moodsncafe@naver.com</textarea>
 </div> <!-- 여기까지 -->
 
     </div>
-
-    <div class="footer">
-        &copy; moodsn <br><br><br> Backend 손정민 <br> Frontend 성유리 이가윤
-    </div>
-</body>
-</html>
+ {% endblock %}
