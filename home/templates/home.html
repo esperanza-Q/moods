@@ -1,15 +1,12 @@
+{% extends 'moodsn/base.html' %}
 {%load static%}
 <!DOCTYPE html>
-<html lang="en">
-<head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+{% block content %}
     <title>HOME</title>
     <link rel="stylesheet" href="{% static 'css/home.css' %}">
     <script src="{%static 'js/home.js' %}"></script>
-</head>
-
-<body>
+    
     <div class="homeheader">
         <div class="keywordtext">Keyword</div>
         <div class="homeheaderlogo"><a href="{%url 'home:firstpage' %}"><img src="{%static 'img/home_img/homeheaderlogo.png' %}" width="350px"></a></div>
@@ -77,14 +74,7 @@
             <div class="promo"><img src="{%static 'img/home_img/promo3.png'%}" width="900px" alt="promo3"></div>
         </div>
     </div>
-
-
-    <div class="footer">
-        &copy; moodsn <br><br><br> Backend 손정민 <br> Frontend 성유리 이가윤
-        {%if user.is_superuser %}
-            <a href="{%url 'cafe:cafeadd' %}"><button>카페 추가</button></a>
-        {%endif%}
-    </div>
-
-</body>
-</html>
+    {%if user.is_superuser %}
+        <a href="{%url 'cafe:cafeadd' %}"><button>카페 추가</button></a>
+    {%endif%}
+    {% endblock %}

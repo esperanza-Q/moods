@@ -1,9 +1,8 @@
+{% extends 'moodsn/base.html' %}
 {%load static%}
-<!DOCTYPE html>
-<html lang="en">
-<head>
-    <meta charset="UTF-8">
-    <title>검색 결과</title>
+
+{% block content %}
+    <title>SEARCH</title>
     <link rel="stylesheet" href="{%static 'css/search_after.css' %}">
     <script>
     document.addEventListener('DOMContentLoaded', function () {
@@ -15,8 +14,7 @@
         });
     });
     </script>
-</head>
-<body>
+
     <!-- 상단 헤더 -->
     <div class="selectheader">
         <div class="selectheaderleft">
@@ -72,8 +70,5 @@
         <div class="selectright"></div>
     </div>
 
-    {% include 'moodsn/base.html' %}
-
     <script src="{% static 'js/search_after.js' %}"></script>
-</body>
-</html>
+ {% endblock %}

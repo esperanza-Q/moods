@@ -1,7 +1,19 @@
 @import url('https://fonts.googleapis.com/css2?family=Kalnia&display=swap');
 
+html {
+  height: 100%;
+  background: linear-gradient(to bottom, #FFFFF3, #FFFEE0);
+  background-attachment: fixed;
+  background-repeat: no-repeat;
+  background-size: cover;
+}
+
 body {
-    background: linear-gradient(#FFFFF3, #FFFEE0);
+  height: 100%;
+  margin: 0;
+  padding: 0;
+  background: transparent;
+  font-family: 'Kalnia', sans-serif;
 }
 
 /* 헤더 */
@@ -107,6 +119,7 @@ a.main-home {
     font-size: 20px;
     color: #BF0E00;
     font-family: Kalnia, sans-serif;
+    margin-bottom: 20px;
 }
 
 /* 🔽 수정 시작: textarea 크기 증가 */
@@ -140,14 +153,6 @@ textarea {
     background-color: #fff09ea1;
 }
 /* 🔼 수정 끝 */
-
-/* 푸터 */
-.footer {
-    height: 110px;
-    background-color: #FFE4D2;
-    padding: 15px;
-    text-align: center;
-}
 
 /* 텍스트 + 이미지 박스 가로 배치 */
 .mypost-content-wrapper {
@@ -184,6 +189,7 @@ textarea::placeholder {
     max-height: 100%;
     object-fit: cover;
     transition: opacity 0.3s ease;
+    cursor: pointer;
 }
 
 /* 파일 input 숨기기 */
@@ -191,14 +197,6 @@ textarea::placeholder {
     display: none;
 }
 
-
-/* 푸터 */
-.footer {
-    height: 110px;
-    background-color: #FFE4D2;
-    padding: 15px;
-    text-align: center;
-}
 
 /* 내가 추가한 거 */
 textarea::placeholder {

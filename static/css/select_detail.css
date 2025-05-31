@@ -387,12 +387,6 @@ textarea {
     height: 1px;
 }
 
-.footer{
-    height: 110px;
-    background-color: #f7f2cd;
-    padding: 15px;
-}
-
 #preview-image {
     display: none;
     margin-top: 10px;

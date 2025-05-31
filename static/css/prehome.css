@@ -201,7 +201,7 @@ body {
     height: 120px;
     border-radius: 50%;
     background-color: white;
-    border: 1px solid black;
+    border: 1px solid #97b7cd;
     margin-top: 20px;
 }
 
@@ -257,10 +257,4 @@ body {
 
 .profilecontainer{
     flex: 1;
-}
-
-.footer{
-    height: 110px;
-    background-color: #f7f2cd;
-    padding: 15px;
 }

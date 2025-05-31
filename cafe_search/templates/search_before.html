@@ -1,9 +1,7 @@
+{% extends 'moodsn/base.html' %}
 {%load static%}
-<!DOCTYPE html>
-<html lang="en">
-<head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+{% block content %}
     <title>SEARCH</title>
     <link rel="stylesheet" href="{%static 'css/search_before.css' %}">
     {% if messages %}
@@ -16,9 +14,6 @@
         };
     </script>
     {% endif %}
-    
-</head>
-<body>
     
 <div class="selectheader">
         <div class="selectheaderleft">
@@ -90,8 +85,5 @@
         <div class="selectright"></div>
     </div>
 
-    {% include 'moodsn/base.html' %}
-
-    <script src="{%static 'js/search_before.js'%}"></>
-</body>
-</html>
+    <script src="{%static 'js/search_before.js'%}"></script>
+ {% endblock %}
