@@ -16,9 +16,7 @@
                 <a href="{%url 'home:firstpage' %}"><img src="{% static 'img/moodsn_logo.png' %}" style="width: 220px"></a>
             </div>
         </div>
-        <div class="selectheadermiddle">
-            {% comment %} 로그아웃으로 바꿔놓음 {% endcomment %}
-        </div>
+        
         <div class="selectheaderright"></div>
     </div>
 
@@ -31,6 +29,7 @@
             <div class="profile-section">
                 <div><img src={{profile.profile_image.url}} alt='image' class="profile-img"></div>
                 <div class="nickname-box">{{profile.nickname}}</div>
+                <button class="logout-button">Logout</button> <!-- 수정 : 로그아웃 버튼 추가 -->
             </div>
         </div>
 
@@ -46,9 +45,8 @@
                 </div>
             </div>
             <a href={%url 'precheck:precheck_delete' checkpost_id=checkpost.id %}><button class="mypost-upload">다시 작성하기</button></a>
-            <a href="{%url 'accounts:logout' %}" class="logout">Logout</a>
         </div>
-        {% comment %} 아래 클래스 임의로 넣어둠. 버튼도 임의로 넣어둠 {% endcomment %}
+        
         
     </div>
 
