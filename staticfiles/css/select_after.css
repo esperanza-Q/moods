@@ -1,0 +1,148 @@
+
+.selectheader{
+    display: flex;
+    flex-direction: row;
+}
+
+.selectheaderleft{
+    flex:1;
+}
+
+.selectheadermiddle{
+    width:830px;
+}
+
+.selecthdaerright{
+    flex: 1;
+}
+
+.selectlogoimg {
+    float: right;
+    margin-top: 85px;
+}
+
+.selectsearchpart {
+    display: flex;
+    flex-direction: row;
+}
+
+.selectsearch {
+    display: flex;
+    flex-direction: row;
+    border: 1px solid #BF0E00;
+    border-radius: 20px;
+    width: 450px;
+    height: 38px;
+    margin-top: 121px;
+    margin-left: 30px;
+    padding-left: 15px;
+}
+
+.selectsearchicon {
+    margin-top: 120px;
+    margin-left: 2px;
+    background: none;
+    border: none;
+    cursor: pointer;
+}
+
+.headerline {
+    margin-top: 15px;
+}
+
+.selectleft {
+    flex: 1;
+}
+
+.navigationbar ul {
+    list-style-type: none;
+    float: right;
+    margin-right: 70px;
+    margin-top: 60px;
+}
+
+.navigationbar ul a{
+    text-decoration: none;
+    color:#BF0E00;
+    font-size: 18px;
+}
+
+.navigationbar ul a:hover{
+    background-color: #fae5e3;
+    border-radius: 10px;
+}
+
+.navigationbar ul li {
+    margin-bottom: 50px;
+}
+
+.selectmain {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  height: 100%;
+  min-height: 800px;
+  width: 830px;
+  border: 1px solid #BF0E00;
+  border-top: none;
+  overflow-x: hidden;
+  overflow-y: hidden;
+}
+
+.maincafesearchlist1{
+    width: 100%;
+    display: flex;
+    flex-direction: column;
+    background-color: #ffffe8;
+}
+
+.maincafesearch1{
+    display: flex;
+    flex-direction: row;
+    padding-top: 30px;
+    padding-left: 30px;
+}
+
+.maincafesearchtext1{
+    display: flex;
+    flex-direction: column;
+    margin-left: 30px;
+    margin-top: 18px;
+}
+
+.maincafesearchimg1{
+    border: 1px solid rgba(251, 251, 251, 0.549);
+    background-color: #b3afae;
+    width: 130px;
+    height: 130px;
+}
+
+.maincafesearchname1{
+    font-size: 25px;
+}
+
+.maincafesearchcomment1{
+    margin-top: 30px;
+    font-size: 18px;
+}
+
+.maincafesearchaddress1{
+    margin-top: 5px;
+    font-size: 18px;
+}
+
+.selectafterbottomline{
+    width: 100%;
+    background-color: rgba(251, 251, 251, 0.955);
+    height: 1px;
+    margin-top: 40px;
+}
+
+.selectright{
+    flex: 1;
+}
+
+.selectcontainer{
+    display: flex;
+    flex-direction: row;
+}

@@ -1,0 +1,174 @@
+.selectheader{
+    display: flex;
+    flex-direction: row;
+}
+
+.selectheaderleft{
+    flex:1;
+}
+
+.selectheadermiddle{
+    width:830px;
+}
+
+.selecthdaerright{
+    flex: 1;
+}
+
+.selectlogoimg {
+    float: right;
+    margin-top: 85px;
+}
+
+.selectsearchpart {
+    display: flex;
+    flex-direction: row;
+}
+
+.selectsearch {
+    display: flex;
+    flex-direction: row;
+    border: 1px solid #BF0E00;
+    border-radius: 20px;
+    width: 450px;
+    height: 38px;
+    margin-top: 121px;
+    margin-left: 30px;
+    padding-left: 15px; 
+}
+
+.selectsearchicon {
+    margin-top: 120px;
+    margin-left: 2px;
+    background: none;
+    border: none;
+    cursor: pointer;
+}
+
+.headerline {
+    margin-top: 15px;
+}
+
+.selectleft {
+    flex: 1;
+}
+
+.navigationbar ul {
+    list-style-type: none;
+    float: right;
+    margin-right: 70px;
+    margin-top: 60px;
+}
+
+.navigationbar ul a{
+    text-decoration: none;
+    color:#BF0E00;
+    font-size: 18px;
+}
+
+.navigationbar ul a:hover{
+    background-color: #fae5e3;
+    border-radius: 10px;
+}
+
+.navigationbar ul li {
+    margin-bottom: 50px;
+}
+
+.selectmain {
+    border: 1px solid #BF0E00;
+    border-top: none;
+    width: 830px;
+    min-height: 800px;
+    display: flex;
+    flex-direction: column;
+    border-top: none;
+    padding-bottom: 30px;
+}
+
+.moodselectsearchhead{
+    color: gray;
+    font-size: 20px;
+    margin-top: 50px;
+    margin-left: 70px;
+}
+
+.moodselect-container{
+    margin-left: 70px;
+    display: flex;
+    gap: 15px;
+}
+
+.moodselecttag{
+    margin-top: 20px;
+    background-color: #ffa39c4d;
+    width: 130px;
+    border-radius: 20px;
+    padding: 5px;
+    font-size: 14px;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    margin-bottom: 20px;
+    border: 3px solid rgb(255, 238, 238);
+    text-align: center;
+}
+
+.mypmoodselectmain1{
+    display: flex;
+    flex-direction: row;
+    padding-top: 30px;
+    padding-left: 70px;
+}
+
+.mypmoodselecttext1 {
+    display: flex;
+    flex-direction: column;
+    margin-left: 30px;
+    margin-top: 18px;
+}
+
+.mypmoodselecttext1 a{
+    text-decoration: none;
+    color: inherit;
+}
+
+.mypmoodselectimg1 {
+    background-color: #b3afae;
+    width: 130px;
+    height: 130px;
+    border: 1px solid rgba(251, 251, 251, 0.549);
+}
+
+.mypmoodselectname1{
+    font-size: 23px;
+}
+
+.mypmoodselectcomment1{
+    margin-top: 25px;
+}
+
+.moodselectbottomline{
+    border: none;
+    height: 1px;
+    width: 830px;
+    margin-top: 30px;
+    background-color: rgb(209, 209, 209);
+}
+
+
+.selectright{
+    flex: 1;
+}
+
+.selectcontainer{
+    display: flex;
+    flex-direction: row;
+}
+
+
+
+
+
+
+

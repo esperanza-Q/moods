@@ -10,12 +10,14 @@ from cafe_select.models import Review
 from django.contrib import messages
 from dotenv import load_dotenv
 import os
-
+from django.contrib.auth.decorators import login_required
 
 # Create your views here.
+@login_required
 def search_before(request):
     return render(request, "search_before.html")
 
+@login_required
 def search_after(request):
     user=get_object_or_404(User, pk=request.user.id)
     if request.method=='POST':
@@ -73,6 +75,7 @@ def search_after(request):
         }
         return render(request, "search_after.html", context)
     
+@login_required
 def search_detail(request, cafe_id):
     user=get_object_or_404(User, pk=request.user.id)
     cafe=get_object_or_404(Cafe, pk=cafe_id)

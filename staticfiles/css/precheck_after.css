@@ -11,7 +11,6 @@
     border-bottom: 2px solid #BF0E00;
 }
 
-/* 🔽 수정 시작: main-home 삭제됨 (관련 스타일 유지할 필요 없음)
 a.main-home:link,
 a.main-home:visited,
 a.main-home:hover,
@@ -29,8 +28,8 @@ a.main-home {
     font-style: italic;
     margin-right: 800px;
 }
-🔼 수정 끝 */
 
+/* 본문 레이아웃 */
 .selectcontainer {
     display: flex;
     flex-direction: row;
@@ -66,10 +65,8 @@ a.main-home {
     margin-top: 10px;
     font-size: 18px;
     font-weight: bold;
-    margin: 0;
 }
 
-/* 🔽 수정 시작: logout 버튼 추가 */
 .logout-button {
     margin-top: 20px;
     padding: 8px 16px;
@@ -82,9 +79,8 @@ a.main-home {
 .logout-button:hover {
     background-color: #ffcaa3;
 }
-/* 🔼 수정 끝 */
 
-/* 오른쪽 영역 */
+/* 오른쪽 본문 영역 */
 .selectmain {
     flex: 1;
     padding: 20px;
@@ -106,23 +102,53 @@ a.main-home {
     margin-bottom: 20px;
 }
 
-/* 🔽 수정 시작: textarea 크기 증가 */
-textarea {
-    width: 95%;
-    height: 280px; /* 기존보다 큼 */
-    padding: 10px;
-    border: 1px solid #ccc;
-    border-radius: 5px;
-    background-color: #EEF8FF;
-    box-sizing: border-box;
-    margin-bottom: 30px;
-    font-family: Kalnia, sans-serif;
+/* 글/이미지 가로 배치 영역 */
+.mypost-content-wrapper {
+    display: flex;
+    flex-direction: row;
+    justify-content: space-between;
+    gap: 20px;
+    height: 350px;
 }
-/* 🔼 수정 끝 */
 
-/* 🔽 수정 시작: 업로드 버튼 여백 증가 */
+/* 텍스트 박스 */
+.mypost-textbox,
+.mypost-imagebox {
+    width: 50%;
+    height: 100%;
+    border: 2px solid #D1D1D1;
+    border-radius: 10px;
+    box-sizing: border-box;
+}
+
+/* 텍스트 내용 */
+.mypost-textbox {
+    background-color: #EEF8FF;
+    padding: 15px;
+    overflow-y: auto;
+    line-height: 1.5;
+}
+
+/* 이미지 박스 */
+.mypost-imagebox {
+    background-color: #FAFAFA;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    overflow: hidden;
+    padding: 10px;
+}
+
+.mypost-imagebox img {
+    max-width: 100%;
+    max-height: 100%;
+    object-fit: contain;
+}
+
+
+/* 로그아웃 버튼에 내가 잠깐 입혀놓음 Q */
 .mypost-upload {
-    margin-top: 50px; /* 더 아래로 내림 */
+    margin-top: 10px;
     padding: 10px 20px;
     background-color: #FFE3D0;
     color: black;
@@ -133,58 +159,7 @@ textarea {
     box-sizing: border-box;
     margin-bottom: 40px;
 }
+
 .mypost-upload:hover {
     background-color: #fff09ea1;
-}
-/* 🔼 수정 끝 */
-
-/* 텍스트 + 이미지 박스 가로 배치 */
-.mypost-content-wrapper {
-    display: flex;
-    gap: 20px;
-}
-
-/* textarea placeholder 스타일 */
-textarea::placeholder {
-    font-size: 18px;
-    line-height: 1.5;
-    color: #999;
-    white-space: pre-wrap; /* 줄바꿈 유지 */
-}
-
-/* 이미지 업로드 박스 */
-.mypost-imagebox {
-    width: 220px;
-    height: 280px; /* textarea 높이와 맞춤 */
-    border: 2px dashed #ccc;
-    /* background-color: #fafafa; */
-    background-color: #ffffff;
-    display: flex;
-    justify-content: center;
-    align-items: center;
-    cursor: pointer;
-    position: relative;
-    overflow: hidden;
-    border-radius: 8px;
-}
-
-/* 이미지 박스 내 이미지 */
-.mypost-imagebox img {
-    max-width: 100%;
-    max-height: 100%;
-    object-fit: cover;
-    transition: opacity 0.3s ease;
-    cursor: pointer;
-}
-
-/* 파일 input 숨기기 */
-.mypost-imagebox input[type="file"] {
-    display: none;
-}
-
-
-/* 내가 추가한 거 */
-textarea::placeholder {
-    color: #666; /* 또는 적당히 눈에 띄는 색상 */
-    opacity: 1;  /* 일부 브라우저에서 placeholder가 흐리게 나오는 걸 방지 */
 }

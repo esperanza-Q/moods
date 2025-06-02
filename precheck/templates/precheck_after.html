@@ -25,7 +25,7 @@
             <div class="profile-section">
                 <div><img src={{profile.profile_image.url}} alt='image' class="profile-img"></div>
                 <div class="nickname-box">{{profile.nickname}}</div>
-                <button class="logout-button">Logout</button> <!-- 수정 : 로그아웃 버튼 추가 -->
+                <a href={%url 'accounts:logout' %}><button class="logout-button">Logout</button></a> <!-- 수정 : 로그아웃 버튼 추가 -->
             </div>
         </div>
 
