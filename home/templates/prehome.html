@@ -5,7 +5,7 @@
 {% block content %}
     <title>PREHOME</title>
     <link rel="stylesheet" href="{% static 'css/prehome.css' %}">
-    <script src="../js/home.js"></script>
+    <script src="{%static 'js/home.js' %}"></script>
     
     <div class="homeheader">
         <div class="keywordtext">Keyword</div>
@@ -36,14 +36,14 @@
     {% comment %} 여기 위 인덴테이션 내가 수정 {% endcomment %}
 
         <div class="hbottombox">
-        <a href="./select_before.html">
+        <a href="#" onclick="requireLogin()">
         <button class="hbottomboxleft">
             <div class="hselectheart"><img src="{% static 'img/home_img/selectheart.png' %}" href="./select.html" style="width: 60px;"></div>
             <div class="hselecttext"><img src="{% static 'img/home_img/select.png' %}" style="width: 120px;"></div>
             <div class="hselectdetail">카페의 리뷰를 남기고<br>
                 분위기 선택하러 가기</div>
         </button></a>
-        <a href="./search_before.html">
+        <a href="#" onclick="requireLogin()">
         <button class="hbottomboxright">
             <div class="hsearchimg"><img src="{% static 'img/home_img/searchimg.png' %}"  style="width: 50px;"></div>
             <div class="hsearchtext"><img src="{% static 'img/home_img/Search.png' %}" style="width: 120px;"></div>
@@ -76,4 +76,11 @@
             <div class="promo"><img src="{% static 'img/home_img/promo3.png' %}" width="900px" alt="promo3"></div>
         </div>
     </div>
+
+<script>
+    function requireLogin() {
+        alert("로그인이 필요합니다!");
+        window.location.href = "{% url 'accounts:login' %}";  // 여기에 실제 로그인 URL 입력
+    }
+</script>
 {% endblock %}

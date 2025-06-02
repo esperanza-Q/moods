@@ -1,0 +1,174 @@
+
+
+.selectheader{
+    display: flex;
+    flex-direction: row;
+}
+
+.selectheaderleft{
+    flex:1;
+}
+
+.selectheadermiddle{
+    width:830px;
+}
+
+.selecthdaerright{
+    flex: 1;
+}
+
+.selectlogoimg {
+    float: right;
+    margin-top: 85px;
+}
+
+.headerline {
+    margin-top: 15px;
+}
+
+.selectleft {
+    flex: 1;
+}
+
+.navigationbar ul {
+    list-style-type: none;
+    float: right;
+    margin-right: 70px;
+    margin-top: 60px;
+}
+
+.navigationbar ul a{
+    text-decoration: none;
+    color:#BF0E00;
+    font-size: 18px;
+}
+
+.navigationbar ul a:hover{
+    background-color: #fae5e3;
+    border-radius: 10px;
+}
+
+.navigationbar ul li {
+    margin-bottom: 50px;
+}
+
+.selectmain {
+    border: 1px solid #BF0E00;
+    border-top: none;
+    width: 830px;
+    min-height: 800px;
+    display: flex;
+    flex-direction: column;
+    border-top: none;
+    padding-bottom: 30px;
+}
+
+.moodselectsearchhead{
+    padding: 5px;
+    color: gray;
+    font-size: 20px;
+    margin-top: 40px;
+    margin-left: 50px;
+    margin-bottom: 10px;
+}
+
+.reviewmain1{
+    position: relative;  /* 기준이 되는 부모 */
+    display: flex;
+    flex-direction: row;
+    margin-top: 20px;
+    margin-left: 50px;
+    padding-right: 75px;
+}
+
+.reviewleft1{
+    background-color: #d1edff65;
+    border: 2px solid rgb(224, 233, 239);
+    width: 300px;
+    height: 110px;
+    padding: 5px 5px;
+    font-size: 15px;
+    border-radius: 8px;
+    word-wrap: break-word;
+}
+
+.reviewtext1{
+    margin: 10px 15px;
+    font-size: 15px;
+}
+
+.reviewright1{
+    display: flex;
+    flex-direction: row;
+    margin-left: 30px;
+}
+
+.mypreviewmain1{
+    margin-left: 20px;
+}
+
+.mypreviewname1{
+    font-size: 20px;
+    margin-top: 10px;
+    white-space: nowrap;         
+    overflow: hidden;            
+    text-overflow: ellipsis;
+    max-width: 200px;
+}
+
+.mypreviewmain1 a,
+.mypreviewmain1 a:visited,
+.mypreviewmain1 a:active {
+  color: inherit;
+  text-decoration: none;
+}
+
+.mypreviewcomment1{
+    font-size: 15px;
+    margin-top: 15px;
+    max-width: 200px;
+    white-space: nowrap;  
+    text-overflow: ellipsis;
+    overflow: hidden; 
+}
+
+.mypreviewaddress1{
+    font-size: 15px;
+    margin-top: 5px;
+}
+
+.mypreviewimg1{
+    width: 120px;
+    height: 120px;
+    background-color: #d9d9d9;
+    border: 2px solid rgba(233, 229, 229, 0.549);
+}
+
+.deletebutton1{
+    position: absolute;
+    right: 15px;
+    top: 50%;
+    transform: translateY(-50%);  /* 수직 가운데 정렬 */
+    padding: 8px 12px;
+    background-color: #ffecec;
+    border-radius: 8px;
+    font-size: 14px;
+    color: #bf0e00;
+    cursor: pointer;
+    border: 1px solid rgb(255, 255, 255);
+}
+
+.deletebutton1:hover{
+    background-color: #ffd4d4b8;
+
+}
+
+.selectright{
+    flex: 1;
+}
+
+.selectcontainer{
+    display: flex;
+    flex-direction: row;
+}
+

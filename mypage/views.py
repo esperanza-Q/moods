@@ -10,6 +10,7 @@ from django.db.models import Count, Q, Case, When
 from collections import Counter
 # from .forms import ProfileForm
 # Create your views here.
+from django.contrib.auth.decorators import login_required
 
 @login_required
 def mypage(request):
@@ -22,6 +23,7 @@ def mypage(request):
     }
     return render(request, 'mypage.html', context)
 
+@login_required
 def profile_update(request):
     user = get_object_or_404(User, pk=request.user.id)
     profile=get_object_or_404(Profile, user=user)
@@ -38,6 +40,7 @@ def profile_update(request):
 
     return redirect('mypage:mypage')
     
+@login_required
 def my_review(request):
     reviews=Review.objects.filter(user_id=request.user.id)
     reviewCafe=[]
@@ -45,6 +48,7 @@ def my_review(request):
         reviewCafe.append((review, Cafe.objects.filter(pk=review.cafe_id).first()))
     return render(request, 'mypage_reviewlist.html', {'reviewCafe':reviewCafe})
 
+@login_required
 def delete_myreview(request, cafe_id):
     cafe=get_object_or_404(Cafe, pk=cafe_id)
     user=get_object_or_404(User, pk=request.user.id)
@@ -53,10 +57,11 @@ def delete_myreview(request, cafe_id):
     
     return redirect('mypage:my_review')
 
-
+@login_required
 def my_mood(request):
     return render(request, 'mypage_moodselectsearch.html')
 
+@login_required
 def my_mood_cafe(request):
     user = get_object_or_404(User, pk=request.user.id)
 

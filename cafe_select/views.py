@@ -12,9 +12,11 @@ import heapq
 from django.views.decorators.http import require_POST
 from cafe.views import update_top_tags
 from cafe_select.models import Mood_tags
+from django.contrib.auth.decorators import login_required
 
 
 # Create your views here.
+@login_required
 def select_before(request):
     return render(request, 'select_before.html')
 
@@ -56,6 +58,7 @@ def select_searched(request):
         
     return render(request, 'select_after.html', {'cafe_list':sorted_cafe})
     
+@login_required
 def select_detail(request, cafe_id):
     cafe = get_object_or_404(Cafe, pk =cafe_id)
     cafeimage=CafeImage.objects.filter(cafe_id=cafe_id).first()
@@ -87,9 +90,11 @@ def select_detail(request, cafe_id):
     }
     return render(request, 'select_detail.html', context)
 
+@login_required
 def review_form(request):
     return render(request, 'review_form.html')
 
+@login_required
 def review(request, cafe_id):
     cafe=get_object_or_404(Cafe, pk=cafe_id)
     user=get_object_or_404(User, pk=request.user.id)
@@ -111,6 +116,7 @@ def review(request, cafe_id):
         }
         return render(request, 'test_review_write.html', context)
 
+@login_required
 def delete_review(request, cafe_id):
     cafe=get_object_or_404(Cafe, pk=cafe_id)
     user=get_object_or_404(User, pk=request.user.id)
@@ -119,6 +125,7 @@ def delete_review(request, cafe_id):
     
     return redirect('cafe_select:select_detail', cafe_id=cafe_id)
 
+@login_required
 @require_POST  
 def select_tag(request, cafe_id):
     cafe=get_object_or_404(Cafe, pk=cafe_id)
@@ -153,6 +160,7 @@ def select_tag(request, cafe_id):
             return redirect('cafe_select:select_detail', cafe_id=cafe_id)
     return redirect('cafe_select:select_detail', cafe_id=cafe_id)
 
+@login_required
 def reselect_tag(request, cafe_id):
     cafe=get_object_or_404(Cafe, pk=cafe_id)
     user=get_object_or_404(User, pk=request.user.id)

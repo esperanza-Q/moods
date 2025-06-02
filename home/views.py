@@ -11,7 +11,7 @@ def home(request):
     profile=get_object_or_404(Profile, user=user)
     
     if request.user.profile.user_type == 'guest':
-        return redirect('precheck:precheck', user.id)
+        return redirect('precheck:precheck')
     else:
         
         

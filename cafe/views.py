@@ -4,8 +4,10 @@ from .models import Cafe, CafeImage
 from rest_api.api import get_location
 from django.db.models import Count
 from cafe_select.models import Mood_tags
+from django.contrib.auth.decorators import login_required
 
 # Create your views here.
+@login_required
 def cafeadd(request):
     if not request.user.is_superuser:
         return redirect('home:prehome')

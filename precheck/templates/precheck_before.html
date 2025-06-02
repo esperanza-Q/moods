@@ -21,19 +21,19 @@
             <div class="profile-section">
                 <div><img src={{profile.profile_image.url}} alt='image' class="profile-img"></div>
                 <div class="nickname-box">{{profile.nickname}}</div>
-                <button class="logout-button">Logout</button> <!-- 수정 : 로그아웃 버튼 추가 -->
+                <a href={%url 'accounts:logout' %}><button class="logout-button">Logout</button></a> <!-- 수정 : 로그아웃 버튼 추가 -->
             </div>
         </div>
 
         <div class="selectmain">
-    <div class="mypost-title">My Certified Post</div>
-    
-    <form method="POST" action="{% url 'precheck:precheck_B' %}" enctype="multipart/form-data">
-        {% csrf_token %}
-        
-        <!-- 여기부터 div 태그 닫히는 곳까지 수정정-->
-        <div class="mypost-content-wrapper">
-            <textarea name="content" class="mypost-textarea" required>작성된 인증글이 없습니다. 인증글을 작성해주세요
+            <div class="mypost-title">My Certified Post</div>
+            
+            <form method="POST" action="{% url 'precheck:precheck_B' %}" enctype="multipart/form-data">
+                {% csrf_token %}
+                
+                <!-- 여기부터 div 태그 닫히는 곳까지 수정정-->
+                <div class="mypost-content-wrapper">
+                    <textarea name="content" class="mypost-textarea" required>작성된 인증글이 없습니다. 인증글을 작성해주세요
 (인증글 작성 시 가이드글과 예시 작성문을 삭제 후 양식에 맞추어 재작성해주시면 됩니다)
 
 <인증 가이드>
@@ -42,17 +42,41 @@
 
 Ex) 20240000 / 김수정 / moodsncafe@naver.com</textarea>
 
-            <div class="mypost-imagebox">
-                <label for="imageUpload">
-                    <img src="{% static 'img/select_img/precheck_new.png' %}" alt="인증 이미지" id="previewImage" />
-                </label>
-                <input type="file" id="imageUpload" name="checkimage" accept="image/*" required />
-            </div>
-        </div>
+                    <div class="mypost-imagebox">
+                        <label for="imageUpload">
+                            <img src="{% static 'img/select_img/precheck_new.png' %}" 
+                                alt="인증 이미지" 
+                                id="previewImage" 
+                                style="cursor: pointer;" />
+                        </label>
+                        <input type="file" id="imageUpload" name="checkimage" accept="image/*" required style="display: none;" />
+                    </div>
+                </div>
 
-        <button class="mypost-upload" type="submit">게시글 업로드</button>
-    </form>
-</div> <!-- 여기까지 -->
+                <button class="mypost-upload" type="submit">게시글 업로드</button>
+            </form>
+        </div> <!-- 여기까지 -->
+
 
     </div>
- {% endblock %}
+
+<!-- ✅ 이미지 미리보기용 JavaScript 추가 -->
+<script>
+    document.getElementById('imageUpload').addEventListener('change', function(event) {
+        const file = event.target.files[0];
+        const preview = document.getElementById('previewImage');
+
+        if (file && file.type.startsWith('image/')) {
+            const reader = new FileReader();
+            reader.onload = function(e) {
+                preview.src = e.target.result;
+            };
+            reader.readAsDataURL(file);
+        } else {
+            preview.src = "{% static 'img/select_img/precheck_new.png' %}"; // 기본 이미지로 되돌림
+        }
+    });
+</script>
+
+{% endblock %}
+

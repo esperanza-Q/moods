@@ -1,0 +1,244 @@
+.homeheader {
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+}
+
+.keywordtext {
+    margin-top: 130px;
+    color: #2A4130;
+    font-size: 16px;
+}
+
+.homeheaderlogo {
+    margin-top: 5px;
+}
+
+.recommendation {
+    font-size: 48px;
+    color: #4A5F51;
+}
+
+.headerlinetext{
+    display: flex;
+    margin-top: 30px;
+    flex-direction: row;
+    gap: 500px;
+    color: #BF0E00;
+    font-size: 15px;
+    margin-bottom: 5px;
+}
+
+.mainhomecontainer{
+    display: flex;
+    flex-direction: column;
+    width: 850px;
+}
+
+.tophomebox {
+    border: 1px solid #BF0E00;
+    height: 670px;
+    width: 850px;
+    margin: 0 auto;
+    border-top: 0px;
+    background-color: #E4F4FF;
+    display: flex;
+    flex-direction: column;
+    text-align: center;
+}
+
+.hbottombox {
+    display: flex;
+    flex-direction: row;
+    justify-content: center;
+    align-items: center;
+}
+
+.hbottombox a{
+    text-decoration: none;
+}
+
+.hbottomboxleft{
+    border: 1px solid #BF0E00;
+    height: 230px;
+    width: 425px;
+    border-top: 0px;
+    border-right: 0px;
+    border-bottom: 0px;
+    display: flex;
+    flex-direction: column;
+    text-align: center;
+    background: none;
+    cursor: pointer;
+}
+
+.hbottomboxleft:hover{
+    background-color: #fef8c5a8;
+}
+
+.hbottomboxright {
+    border: 1px solid #BF0E00;
+    height: 230px;
+    width: 425px;
+    border-top: 0px;
+    border-bottom: 0px;
+    display: flex;
+    flex-direction: column;
+    text-align: center;
+    background: none;
+    cursor: pointer;
+}
+
+
+.hbottomboxright:hover{
+    background-color: #fef8c5a8;
+}
+
+.tophomeimg {
+    padding-top: 120px;
+}
+
+.tophometext {
+    font-size: 9px;
+    color: #582727;
+    margin-top: 10px;
+}
+
+.homeimg2 {
+    padding-top: 110px;
+}
+
+.homeimg3 {
+    padding-top: 20px;
+}
+
+.homeimg4 {
+    padding-top: 15px;
+}
+
+.hselectheart {
+    padding-top: 40px;
+}
+
+.hsearchimg {
+    padding-top: 45px;
+}
+
+.hselecttext{
+    padding-top: 5px;
+}
+
+.hsearchtext {
+    padding-top: 20px;
+}
+
+.hselectdetail {
+    padding-top: 10px;
+    font-size: 15px;
+}
+
+.hsearchdetail {
+    padding-top: 10px;
+    font-size: 15px;
+}
+
+.promotion {
+    display: flex;
+    text-align: center;
+    justify-content: center;
+}
+
+.scrollpromo {
+    display: flex;
+    overflow-x: auto;
+    scroll-snap-type: x mandatory;
+    width: 1281px;
+    height: 630px;
+    overflow-x: hidden;
+}
+
+.promo {
+    margin-top: -60px;
+    min-width: 1281px;
+    scroll-snap-align: start;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
+
+.profilein {
+    border: 1px solid #BF0E00;
+    width: 200px;
+    height: 270px;
+    border-top-left-radius: 50%;
+    border-top-right-radius: 50%;
+    background-color: #E4F4FF;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    margin-left: 25px;
+    margin-top: 40px;
+    outline: 1px solid #BF0E00;
+    outline-offset: 3px;
+}
+
+.profileimg {
+    width: 120px;
+    height: 120px;
+    border-radius: 50%;
+    background-color: white;
+    border: 1px solid #97b7cd;
+    margin-top: 20px;
+}
+
+.profilename {
+    font-size: 23px;
+    margin-top: 18px;
+}
+
+.profilemypage a {
+    text-decoration: none;
+    color: black;
+    font-size: 20px;
+    background: none;
+    border: none;
+}
+
+.profilemypage{
+    margin-top: 8px;
+}
+
+.profilemypage:hover{
+    border: 1px solid black;
+    border-radius: 20px;
+    background-color: #CCDFEC;
+}
+
+.logoutbutton {
+    font-size: 15px;
+    margin-top: 13px;
+    margin-bottom: 8px;
+    background: none;
+    border: none;
+}
+
+.logoutbutton:hover{
+    border: 1px solid black;
+    border-radius: 20px;
+    background-color: #CCDFEC
+}
+
+.homecontainer {
+    display: flex;
+    justify-content: center;
+    width: 100%;
+}
+
+.leftbox {
+    flex: 1;
+}
+
+.profilecontainer{
+    flex: 1;
+}

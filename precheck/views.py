@@ -4,8 +4,10 @@ from .models import Checkpost, CheckImage
 from .forms import Checkpostform
 from django.urls import reverse
 from accounts.models import Profile
+from django.contrib.auth.decorators import login_required
 
 # Create your views here.
+@login_required
 def precheck(request):
     if Checkpost.objects.filter(user=request.user).exists():  # 이미 인증글이 있으면
         checkpost = get_object_or_404(Checkpost, user_id=request.user.id)
@@ -14,6 +16,7 @@ def precheck(request):
     else:
         return redirect('precheck:precheck_B')
 
+@login_required
 def precheck_A(request):
     profile=get_object_or_404(Profile, user_id=request.user.id)
     checkpost = get_object_or_404(Checkpost, user_id=request.user.id)
@@ -26,6 +29,7 @@ def precheck_A(request):
     }
     return render(request, 'precheck_after.html', context)
 
+@login_required
 def precheck_B(request):
     profile=get_object_or_404(Profile, user_id=request.user.id)
     if request.method == 'POST':
@@ -52,7 +56,7 @@ def precheck_B(request):
         form = Checkpostform()  # GET 요청일 경우 새 폼을 생성
         return render(request, 'precheck_before.html', {'form': form, 'profile':profile})
 
-
+@login_required
 def precheck_delete(request, checkpost_id):
     checkpost = get_object_or_404(Checkpost, id=checkpost_id)
     checkpost.delete()
